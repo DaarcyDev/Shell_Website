@@ -1,0 +1,110 @@
+.content-home{
+    background: $azulChido;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    .before{
+        background-image: url("/build/img/cmsRC6.2.1-min.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        animation: 80s ease 0s normal none infinite running zoomEffect;
+        z-index: 0;
+        
+    }
+    @keyframes zoomEffect {
+        from {transform: scale(1, 1)}
+        to {transform: scale(2, 2)}
+    }
+    .after{  
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50vw;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: brightness(0.5) blur(10px);
+        z-index: 0;
+
+    }
+    @include tablet{
+        .after{  
+            
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            backdrop-filter: brightness(0.5) blur(10px);
+    
+    
+        }
+    }
+    .bannertext{
+        z-index: 2;
+        width: 100%;
+        padding: 2rem;
+        text-align: center;
+        color: $blanco;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        top: 25%;
+        @include tablet{
+            width: 100vw;
+        }
+        .text-banner{
+            z-index: 0;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        .name-home{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            img{
+                width: 20%;
+            }
+        }
+        h2{ 
+            margin: 0;
+            font-weight: 900;
+            height: auto;
+        }
+    }
+    
+}
+.section-home{
+    
+    .next-home{
+        position: absolute;
+        bottom: 2%;
+        right: 0%;
+        img{
+            width: 10rem;
+            margin-right: 5rem;
+            filter: invert(100%);
+            padding: 1rem;
+            
+        }
+        background-color: $azulChido;
+        border-radius: 2rem 0 0 2rem;
+        z-index: 1;
+        @include tablet{
+            bottom: 0%;
+            right: 2%;
+            border-radius: 2rem 2rem 0 0rem;
+            img{
+                margin-right: 0rem;
+                margin-bottom: 5rem;  
+            }
+        }
+    }
+}

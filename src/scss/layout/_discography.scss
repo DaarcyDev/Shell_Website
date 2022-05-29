@@ -1,0 +1,377 @@
+
+// .discography{
+//   height: 100vh;
+//   width: 100vw;
+//   background-color: $azulChido;
+//   z-index: 1;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   background-image: url("/build/img/cmsRC8.2.1-min.png");
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: top;
+//   position: relative;
+//   z-index: 1;
+//   .carousel1{
+//     height: 100vh;
+//     width: 100vw;
+//     align-items: center;
+//     display: flex;
+//     justify-content: center;
+//     .content-discography{
+//       display: grid;
+//       grid-template-columns: auto auto auto;
+//       gap: 2rem;
+//       margin: 0 !important;
+//       padding: 2rem;
+//       overflow: hidden;
+//       width: 85vw;
+//       background: rgba(255, 255, 255, 0.1);
+//       box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+//       border: 1px solid rgba(255, 255, 255, 0.25);
+//       border-right: 1px solid rgba(255, 255, 255, 0.1);
+//       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+//       border-radius: 10px;
+//       backdrop-filter: brightness(0.5) blur(10px);
+//       box-shadow: 0px 0px 30px 11px rgba(0,0,0,0.75);
+//       border-radius: 2rem;
+//       justify-items: center;
+//       max-height: 75%;
+//       @include tablet{
+//         grid-template-columns: auto auto;
+//       }
+//       .album-content{
+//         margin: 0;
+//         width: auto;
+//         border: 1px solid rgba($blanco, $alpha: .1);
+//         border-radius: 2rem;
+//         padding: 1rem;
+//         max-width: 65%;
+//         transform: scale(1);
+//         transition: border .3s ease-in-out, transform  .2s ease-in-out;
+//         &:hover{
+//           border: 1px solid rgba($blanco, $alpha: 1);
+//           transform: scale(1.07);
+//         }
+//         .image{
+//           border-radius: 2rem;
+//         }
+//         @include tablet{
+//           max-width: 20rem;;
+//           padding: .5rem;
+//         }
+
+//       }
+//     }
+//     h2{
+//       position: absolute;
+//       top: 5%;
+//       left: 50%;
+//       transform: translate(-50%, -50%);
+//     }
+//     .button {
+      
+//       position: absolute;
+//       bottom: 0%;
+//       left: 50%;
+//       transform: translate(-50%, -50%);
+//       font-size: 17px;
+//       font-weight: bold;
+//       border: none;
+//       border-radius: 1rem;
+//       &:hover .button_top {
+//         transform: translateY(-0.33em);
+//       }
+//       &:active .button_top {
+//         transform: translateY(0);
+//       }
+//     }
+//     .boton-discography{
+//       margin: 3rem;
+//       text-transform: uppercase;
+//       width: auto;
+//       border-radius: 2rem;
+//       font-weight: 900;
+//       cursor: pointer;
+//       text-align: center;
+//     }
+//     .button_top {
+//     display: block;
+//     box-sizing: border-box;
+//     border: 2px solid $blanco;
+//     border-radius: 1rem;
+//     padding: 0.75em 1.5em;
+//     backdrop-filter: blur(10px)  brightness(.6);
+//     transform: translateY(-0.2em);
+//     transition: transform 0.1s ease;
+//     }
+    
+//   }
+
+// }
+
+.discography{
+  min-height: 100vh;
+  width: 100vw;
+  background-color: $azulChido;
+  //padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/build/img/cmsRC8.2.1-min.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  // position: relative;
+  z-index: 1;
+
+  .carousel1{
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .content-discography{
+      // position: absolute;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      gap: 2rem;
+      margin: 0 !important;
+      padding: 2rem;
+      overflow: hidden;
+      width: 85vw;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      backdrop-filter: brightness(0.5) blur(10px);
+      box-shadow: 0px 0px 30px 11px rgba(0,0,0,0.75);
+      border-radius: 2rem;
+      justify-items: center;
+      max-height: auto;
+      @include tablet{
+        grid-template-columns: auto auto;
+      }
+      .album-content{
+        // position: relative;
+
+        margin: 0;
+        width: auto;
+        border: 1px solid rgba($blanco, $alpha: .1);
+        border-radius: 2rem;
+        padding: 1rem;
+        max-width: 30rem;
+        transform: scale(1);
+        transition: border .3s ease-in-out, transform  .2s ease-in-out;
+        &:hover{
+          border: 1px solid rgba($blanco, $alpha: 1);
+          transform: scale(1.07);
+        }
+        .image{
+          border-radius: 2rem;
+        }
+        @include tablet{
+          max-width: 20rem;;
+          padding: .5rem;
+        }
+
+      }
+    }
+    h2{
+      margin: 0;
+      // position: absolute;
+      //top: 5%;
+      //left: 50%;
+      //transform: translate(-50%, -50%);
+    }
+    .button {
+      
+      // position: absolute;
+      // bottom: 0%;
+      // left: 50%;
+      // transform: translate(-50%, -50%);
+      font-size: 17px;
+      font-weight: bold;
+      border: none;
+      border-radius: 1rem;
+      &:hover .button_top {
+        transform: translateY(-0.33em);
+      }
+      &:active .button_top {
+        transform: translateY(0);
+      }
+    }
+    .boton-discography{
+      margin: 3rem;
+      text-transform: uppercase;
+      width: auto;
+      border-radius: 2rem;
+      font-weight: 900;
+      cursor: pointer;
+      text-align: center;
+    }
+    .button_top {
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid $blanco;
+    border-radius: 1rem;
+    padding: 0.75em 1.5em;
+    backdrop-filter: blur(10px)  brightness(.6);
+    transform: translateY(-0.2em);
+    transition: transform 0.1s ease;
+    }
+    
+  }
+
+}
+
+.section-contact{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  width: 100%;
+  background-color: $azulChido;
+  background-image: url("/build/img/cms\ RC2.1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.container-contact{
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  backdrop-filter: blur(25px);
+}
+.container-contact::before{
+  content: '';
+  position: relative;
+  top: 0;
+  left: -40%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  transform: skewX(-15deg);
+}
+.container-contact h2{
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.container-contact .row100{
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+}
+.container-contact .row100 .col{
+  position: relative;
+  width: 100%;
+  padding: 0 10px;
+  margin: 30px 0 20px;   
+}
+.container-contact .row100 .col .inputBox{
+  position: relative;
+  width: 100%;
+  height:  40px;
+  color: #fff;
+}
+.container-contact .row100 .col .inputBox input,
+.container-contact .row100 .col .inputBox textarea{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  padding: 0 10px;
+  z-index: 1;
+  color: #000;
+}
+.container-contact .row100 .col .inputBox .text-contact{
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 40px;
+  font-size: 18px;
+  padding: 0 10px;
+  display: block;
+  transition: 0.5s;
+  pointer-events: none;
+
+}
+
+.container-contact .row100 .col .inputBox input:focus + .text-contact,
+.container-contact .row100 .col .inputBox input:valid + .text-contact,
+.container-contact .row100 .col .inputBox textarea:focus + .text-contact,
+.container-contact .row100 .col .inputBox textarea:valid + .text-contact{
+  top: -35px;
+  left: -10px;
+}
+.container-contact .row100 .col .inputBox .line-contact{
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  transition: 0.5s;
+  border-radius: 2px;
+  pointer-events: none;
+}
+.container-contact .row100 .col .inputBox input:focus ~ .line-contact,
+.container-contact .row100 .col .inputBox input:valid ~ .line-contact{
+  height: 100%;
+}
+.container-contact .row100 .col .inputBox.textarea{
+  position: relative;
+  width: 100%;
+  height: 100px;
+  padding: 10px 0;
+}
+.container-contact .row100 .col .inputBox textarea:focus ~ .line-contact,
+.container-contact .row100 .col .inputBox textarea:valid ~ .line-contact{
+  height: 100%;
+}
+
+.container-contact .row100 .col input[type="submit"]{
+  border: none;
+  padding: 10px 40px;
+  cursor: pointer;
+  outline: none;
+  background-color: #fff;
+  color: #000;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 2px;
+}
+@media (max-width:768px) {
+  // .section-contact::before{
+  //     transform: translate(-200px,-180px);
+  // }
+  // .section-contact::after{
+  //     transform: translate(220px,180px);
+  // }
+  .container-contact{
+      padding: 20px;
+  }
+  
+}

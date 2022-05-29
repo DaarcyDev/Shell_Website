@@ -1,0 +1,107 @@
+.merch{
+    height: 100vh;
+    width: 100vw;
+    background-color: $azulChido;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/build/img/IFILC\ 3.png");
+    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    @include tablet{
+        background-size: cover;
+        background-position: top;
+    }
+    z-index: 0;
+    .carousel1{
+      height: 100vh;
+      align-items: center;
+      display: flex;
+      .swiper1{
+        overflow: hidden;
+        padding: 5rem;
+      }
+      h2{
+        position: absolute;
+        top: 5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .button {
+        
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 17px;
+        font-weight: bold;
+        border: none;
+        border-radius: 1rem;
+        &:hover .button_top {
+          transform: translateY(-0.33em);
+        }
+        &:active .button_top {
+          transform: translateY(0);
+        }
+      }
+  
+      .button_top {
+      display: block;
+      box-sizing: border-box;
+      border: 2px solid $blanco;
+      border-radius: 1rem;
+      padding: 0.75em 1.5em;
+      backdrop-filter: blur(10px)  brightness(.6);
+      transform: translateY(-0.2em);
+      transition: transform 0.1s ease;
+      }
+    }
+    .swiper-slide-active {
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      max-width: 50%;
+      z-index: 2 !important;
+      backdrop-filter: blur(10px)  brightness(.6);
+      transition: backdrop-filter .8s ease-in  !important;
+      .image{
+        background-color: rgba($blanco, $alpha: 1) !important;
+        max-width: 100%;
+      }
+      .boton-merch{
+        margin: 3rem;
+        text-transform: uppercase;
+        width: auto;
+        border-radius: 2rem;
+        font-weight: 900;
+        cursor: pointer;
+        padding: .5rem 2rem;
+        text-align: center;
+      }
+    }
+    .swiper-slide {
+      flex-direction: column;
+      margin: 0;
+      max-width: 50%;
+      padding: 0;
+      .image{
+        background-color: rgba($blanco, $alpha: .1);
+        max-width: 100%;
+      }
+    }
+    .swiper-wrapper{
+      align-items: flex-start;
+      width: 50%;
+      @include tablet{
+        width: 100%;
+      }
+    }
+  
+  }
+  
