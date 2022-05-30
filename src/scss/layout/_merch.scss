@@ -19,21 +19,13 @@
       height: 100vh;
       align-items: center;
       display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
       .swiper1{
         overflow: hidden;
         padding: 5rem;
       }
-      h2{
-        position: absolute;
-        top: 5%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
       .button {
-        
-        position: absolute;
-        bottom: 5%;
-        left: 50%;
         transform: translate(-50%, -50%);
         font-size: 17px;
         font-weight: bold;
@@ -45,6 +37,17 @@
         &:active .button_top {
           transform: translateY(0);
         }
+      }
+      h2{
+        margin: 0;
+        align-items: center;
+        color: $blanco;
+        display: flex;
+        z-index: 1;
+        text-transform: uppercase;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 7rem;
       }
   
       .button_top {

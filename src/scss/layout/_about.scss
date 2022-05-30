@@ -23,7 +23,14 @@
             transform: translate(-50%, -50%);
             z-index: 2;
             h2{
-                height: auto;
+                align-items: center;
+                color: $blanco;
+                display: flex;
+                z-index: 1;
+                text-transform: uppercase;
+                justify-content: center;
+                font-weight: bold;
+                font-size: 7rem;
             }
             @include tablet{
                 left: 50%;
@@ -64,7 +71,7 @@
             @include tablet{
                 flex-direction: column;
                 width: 90%;
-                top: 45%;
+                top: 55%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 p{

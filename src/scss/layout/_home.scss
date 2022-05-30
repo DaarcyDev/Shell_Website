@@ -58,6 +58,7 @@
         top: 25%;
         @include tablet{
             width: 100vw;
+            top: 10%;
         }
         .text-banner{
             z-index: 0;
@@ -69,6 +70,9 @@
             align-items: center;
             justify-content: center;
             gap: 2rem;
+            .image-Sheru{
+                width: 40%;
+            }
             img{
                 width: 20%;
             }
