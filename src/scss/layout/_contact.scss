@@ -10,12 +10,32 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
+    
     @include tablet{
         background-size: cover;
         background-position: top;
+        flex-direction: column;
     }
+    &::after{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        //left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 0;
+        background-image: url("/build/img/4-min.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: left;
+        @include desktopPlus{
+            content: none;
+        }
+    }
+
 }
 .container-contact{
+    margin: 2rem;
     position: relative;
     z-index: 1;
     width: 100%;
@@ -62,8 +82,10 @@
 .container-contact .row100{
     position: relative;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    display: flex;
+    flex-direction: column;
+
+    //grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
 }
 .container-contact .row100 .col{
     position: relative;
@@ -77,8 +99,7 @@
     height:  40px;
     color: #fff;
 }
-.container-contact .row100 .col .inputBox input,
-.container-contact .row100 .col .inputBox textarea{
+.container-contact .row100 .col .inputBox input{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -104,9 +125,7 @@
 }
 
 .container-contact .row100 .col .inputBox input:focus + .text-contact,
-.container-contact .row100 .col .inputBox input:valid + .text-contact,
-.container-contact .row100 .col .inputBox textarea:focus + .text-contact,
-.container-contact .row100 .col .inputBox textarea:valid + .text-contact{
+.container-contact .row100 .col .inputBox input:valid + .text-contact{
     top: -35px;
     left: -10px;
 }
@@ -130,10 +149,6 @@
     width: 100%;
     height: 100px;
     padding: 10px 0;
-}
-.container-contact .row100 .col .inputBox textarea:focus ~ .line-contact,
-.container-contact .row100 .col .inputBox textarea:valid ~ .line-contact{
-    height: 100%;
 }
 
 .container-contact .row100 .col input[type="submit"]{

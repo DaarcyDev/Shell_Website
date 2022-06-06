@@ -15,6 +15,22 @@
         background-position: top;
     }
     z-index: 0;
+    &::after{
+      content: "";
+      position: absolute;
+      bottom: 0;
+      //left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      background-image: url("/build/img/DP\ 1-min.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: left;
+      @include desktopPlus{
+          display: none;
+      }
+    }
     .carousel1{
       height: 100vh;
       align-items: center;

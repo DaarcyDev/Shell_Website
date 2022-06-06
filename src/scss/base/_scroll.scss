@@ -48,8 +48,8 @@
     -ms-overflow-style: none;
     scroll-behavior: smooth;
     overflow:auto;
-    //scroll-snap-type: y mandatory;
-    scroll-snap-type: y proximity;
+    scroll-snap-type: y mandatory;
+    //scroll-snap-type: y proximity;
 }
 ::-webkit-scrollbar{
     display: none;

@@ -15,7 +15,12 @@
     @media (max-width: #{$desktop}) {
         @content;
     }
-}
+}    
+@mixin desktopPlus {
+    @media (max-width: #{$desktopPlus}) {
+        @content;
+    }
+}    
 @mixin grid($columnas, $espaciado ) {
     display: grid;
     gap: $espaciado;
