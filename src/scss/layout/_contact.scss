@@ -49,6 +49,9 @@
     border-radius: 10px;
     overflow: hidden;
     backdrop-filter: blur(25px);
+    @include tablet{
+        padding: 1rem;
+    }
     h2{
         margin: 0;
         align-items: center;
@@ -78,6 +81,10 @@
     color: #fff;
     font-size: 36px;
     margin-bottom: 20px;
+    @include tablet{
+        font-size: 2rem;
+        margin: 0;
+    }
 }
 .container-contact .row100{
     position: relative;
@@ -163,12 +170,6 @@
     border-radius: 2px;
 }
 @media (max-width:768px) {
-    // .section-contact::before{
-    //     transform: translate(-200px,-180px);
-    // }
-    // .section-contact::after{
-    //     transform: translate(220px,180px);
-    // }
     .container-contact{
         padding: 20px;
     }

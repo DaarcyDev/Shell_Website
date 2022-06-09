@@ -49,7 +49,9 @@
     scroll-behavior: smooth;
     overflow:auto;
     scroll-snap-type: y mandatory;
-    //scroll-snap-type: y proximity;
+    @include tablet{
+        scroll-snap-type: y proximity;
+    }
 }
 ::-webkit-scrollbar{
     display: none;
