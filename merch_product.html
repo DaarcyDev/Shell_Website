@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <title>Shell</title>
+  <link rel="stylesheet" href="build/css/app.css">
+</head>
+
+<body>
+  <div class="circle-container">
+    <div class="circle">
+      <button id="close">
+        <i class="fas fa-times"></i>
+      </button>
+      <button id="open">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+  <div class="container">
+
+
+    <div id="merch" class="merch2">
+      <div class="content-merch2">
+        <div class="merch2-content-text">
+          <div class="title-merch2">
+            <h2>merch</h2>
+          </div>
+        </div>
+        <div class="product-merch">
+          <div class="img-product">
+            <img class="product-img" src="build/img/Shirt - dangerous potential balck.webp" />
+          </div>
+          <div class="content-product">
+            <h2>Shout and play forever Shirt</h2>
+            <h2>$13 - $16</h2>
+            <form class="variations-form">
+              <table class="variations">
+                <tbody>
+                  <tr>
+                    <th class="label">
+                      <label for="Colors">Color</label>
+                    </th>
+                    <td class="value">
+                      <select class="colors" class="" name="attribute_colors">
+                        <option value="">Choose an option</option>
+                        <option value="Black" selected="selected" class="attached enabled">Black</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="label">
+                      <label for="sizes">Sizes</label>
+                    </th>
+                    <td class="value">
+                      <select id="sizes" class="sizes" name="attribute_sizes">
+                        <option value="">Choose an option</option>
+                        <option value="S" class="attached enabled">S</option>
+                        <option value="M" class="attached enabled">M</option>
+                        <option value="L" selected="selected" class="attached enabled">L</option>
+                        <option value="XL" class="attached enabled">XL</option>
+                        <option value="2XL" class="attached enabled">2XL</option>
+                        <option value="3XL" class="attached enabled">3XL</option>
+                        <option value="4XL" class="attached enabled">4XL</option>
+                        <option value="5XL" class="attached enabled">5XL</option>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="single-variations">
+                <div class="quantity">
+                  <button class="button-" type="button">-</button>
+                  <h2>1</h2>
+                  <button type="button">+</button>  
+                </div>
+                <button class="button-add" type="button">Add to cart</button> 
+              </div>
+            </form>
+          </div>
+        </div>
+        <div>
+          <a href="merch.html" class="button"><span class="button_top"> Back</span></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <nav class="nav">
+    <ul class="lu">
+      <li><i class="fas fa-home"></i><a class="link" href="index.html" data-text="Home">Home</a></li>
+      <li><i class="fas fa-user-alt"></i><a class="link" href="index.html" data-text="about">About</a></li>
+      <li><i class="fas fa-envelope"></i><a class="link" href="index.html" data-text="Contact">Contact</a></li>
+    </ul>
+  </nav>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="build/js/bundle.js"></script>
+
+</body>
+
+</html>
