@@ -5,8 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("/build/img/IFILC\ 3.png");
-    background-size: cover;
+    background-image: url("/build/img/IFILC-3.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
@@ -23,7 +22,7 @@
       width: 100vw;
       height: 100vh;
       z-index: -1;
-      background-image: url("/build/img/DP\ 1-min.png");
+      background-image: url("/build/img/DP-1-min.webp");
       background-size: contain;
       background-repeat: no-repeat;
       background-position: left;
@@ -41,19 +40,6 @@
         overflow: hidden;
         padding: 5rem;
       }
-      .button {
-        transform: translate(-50%, -50%);
-        font-size: 17px;
-        font-weight: bold;
-        border: none;
-        border-radius: 1rem;
-        &:hover .button_top {
-          transform: translateY(-0.33em);
-        }
-        &:active .button_top {
-          transform: translateY(0);
-        }
-      }
       h2{
         margin: 0;
         align-items: center;
@@ -66,25 +52,12 @@
         font-size: 7rem;
       }
   
-      .button_top {
-      display: block;
-      box-sizing: border-box;
-      border: 2px solid $blanco;
-      border-radius: 1rem;
-      padding: 0.75em 1.5em;
-      backdrop-filter: blur(10px)  brightness(.6);
-      transform: translateY(-0.2em);
-      transition: transform 0.1s ease;
-      }
+      
     }
     .swiper-slide-active {
       flex-direction: column;
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
+      @include background;
+      background: rgba(100, 100, 100, 0.1);
       max-width: 50%;
       z-index: 2 !important;
       backdrop-filter: blur(10px)  brightness(.6);
@@ -97,11 +70,17 @@
         margin: 3rem;
         text-transform: uppercase;
         width: auto;
-        border-radius: 2rem;
-        font-weight: 900;
+        border-radius: .5rem;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.50);
         cursor: pointer;
         padding: .5rem 2rem;
         text-align: center;
+        transition: transform .1s ease-in  !important;
+        &:hover{
+          transform: scale(1.05);
+        }
       }
     }
     .swiper-slide {
@@ -112,6 +91,8 @@
       .image{
         background-color: rgba($blanco, $alpha: .1);
         max-width: 100%;
+        border-radius: 10px;
+        margin: 0;
       }
     }
     .swiper-wrapper{

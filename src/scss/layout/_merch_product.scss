@@ -13,7 +13,6 @@
             flex-direction: column;
             align-items: center;
 
-            //height: 100vh;
             .merch2-img1 {
                 position: absolute;
                 top: 0;
@@ -36,13 +35,12 @@
                     background-repeat: no-repeat;
                     background-position: center center;
                     background-size: cover;
-                    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/build/img/ITILC-cover-1000\ COMP.webp);
+                    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/build/img/ITILC-cover-1000-COMP.webp);
                     height: 45rem;
                     box-shadow: 0px -80px 43px -53px rgba(0, 0, 0, 0.75) inset;
                     z-index: 1;
 
                     h2 {
-                        //margin: 0;
                         align-items: center;
                         color: $blanco;
                         display: flex;
@@ -58,32 +56,31 @@
             .product-merch {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                background: rgba(255, 255, 255, 0.1);
-                box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.25);
-                border-right: 1px solid rgba(255, 255, 255, 0.1);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 10px;
-                backdrop-filter: brightness(0.5) blur(10px);
+                @include background;
+                backdrop-filter: brightness(0.7) blur(20px);
                 box-shadow: 0px 0px 30px 11px rgba(0, 0, 0, 0.75);
-                border-radius: 2rem;
                 justify-items: center;
                 max-height: auto;
                 width: 90%;
                 margin-top: -20rem;
                 z-index: 2;
-                @include tablet{
+
+                @include tablet {
                     grid-template-columns: auto;
                     grid-template-rows: auto 1fr;
                 }
+
                 .img-product {
-                    background: rgba(255, 255, 255, 0.4);
+                    background: rgba(255, 255, 255, 0.8);
                     margin: 2rem;
                     border-radius: 2rem;
+                    display: flex;
+                    align-items: center;
                 }
 
                 .content-product {
                     padding: 1rem;
+
                     h2 {
                         align-items: center;
                         color: $blanco;
@@ -109,10 +106,11 @@
                                     justify-content: center;
                                     align-items: center;
                                     margin: 2rem 0;
+                                    @include background;
                                     background: rgba(255, 255, 255, 0.1);
-                                    border-top: 1px solid $blanco;
-                                    border-bottom: 1px solid $blanco;
+                                    //border: 1px solid $blanco;
                                     padding: 1rem;
+
                                     label {
                                         align-items: center;
                                         color: $blanco;
@@ -123,58 +121,67 @@
                                         font-weight: bold;
                                         font-size: 2rem;
                                     }
-                                    .value{
+
+                                    .value {
                                         margin: 1rem;
                                         width: 100%;
-                                        
+
                                         .colors,
-                                        .sizes{
+                                        .sizes {
                                             width: 100%;
                                             background-color: $grisOscuro;
                                             color: $blanco;
                                             padding: .7rem;
                                         }
                                     }
-                                    
+
                                 }
                             }
                         }
-                        .single-variations{
+
+                        .single-variations {
                             display: grid;
                             grid-template-columns: 1fr 2fr;
                             justify-items: center;
                             align-items: center;
                             gap: 5rem;
                             margin: 10rem 0;
-                            @include tablet{
+
+                            @include tablet {
                                 gap: 2rem;
                             }
-                            .quantity{
+
+                            .quantity {
                                 display: grid;
                                 grid-template-columns: 1fr 1fr 1fr;
+                                border: 1px solid hsla(0,0%,100%,.25);
                                 justify-items: center;
                                 align-items: center;
                                 width: 100%;
                                 background: rgba(255, 255, 255, 0.1);
-                                h2{
+
+                                h2 {
                                     margin: 0;
                                     font-size: 2.5rem;
                                 }
-                                button{
+
+                                button {
                                     background: $grisOscuro;
                                     border: 1px solid rgba(255, 255, 255, 0.25);
                                     color: $blanco;
                                     font-size: 3rem;
                                     height: 100%;
                                     width: 100%;
-                                    &:active{
+
+                                    &:active {
                                         transition: transform .05s ease-in-out;
                                         transform: scale(.95);
                                     }
                                 }
                             }
                         }
-                        .button-add{
+
+                        .button-add {
                             background: $rojo;
                             border: 1px solid rgba(255, 255, 255, 0.25);
                             color: $blanco;
@@ -182,7 +189,9 @@
                             text-transform: uppercase;
                             height: 100%;
                             width: 100%;
-                            &:active{
+                            border-radius: .5rem;
+
+                            &:active {
                                 transition: transform .05s ease-in-out;
                                 transform: scale(.99);
                             }
@@ -213,7 +222,6 @@
                 border: 2px solid $blanco;
                 border-radius: 1rem;
                 padding: 2rem 10rem;
-                backdrop-filter: blur(10px) brightness(.6);
                 backdrop-filter: blur(10px) brightness(.6);
                 transform: translateY(-0.2em);
                 transition: transform 0.1s ease;

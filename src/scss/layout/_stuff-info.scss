@@ -1,0 +1,192 @@
+.news2 {
+    background-color: $azulChido;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 70%;
+        z-index: 0;
+        background-image: url("/build/img/4-min.webp");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right;
+
+        @include desktopPlus {
+            background-position: bottom;
+        }
+    }
+
+    .content-news2 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .news2-img1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20%;
+
+            @include tablet {
+                width: 60%;
+            }
+        }
+
+        .news2-content-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            .title-news2 {
+                width: 100vw;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+                background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/build/img/Tuttifrutti-cover-1000-comp.webp);
+                height: 45rem;
+                box-shadow: 0px -80px 43px -53px rgba(0, 0, 0, 0.75) inset;
+                z-index: 0;
+
+                h2 {
+                    //margin: 0;
+                    align-items: center;
+                    color: $blanco;
+                    display: flex;
+                    z-index: 2;
+                    text-transform: uppercase;
+                    justify-content: center;
+                    font-weight: bold;
+                    font-size: 7rem;
+
+                    @include tablet {
+                        font-size: 5rem;
+                        margin-top: 10rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.contenido-principal-news2 {
+    margin-top: -20rem;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .blog {
+        z-index: 1;
+    }
+
+    h3 {
+        color: $blanco;
+        text-align: start;
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .blog-news2 {
+        z-index: 2;
+
+        
+    }
+
+    .entrada-news2 {
+        display: block;
+        padding: 0 1rem ;
+        border-radius: .5rem;
+        margin: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        
+        h3 {
+            @include background;
+            text-align: center;
+            color: $blanco;
+        }
+
+        .entrada-info-news2 {
+            @include background;
+            box-shadow: -2px 1px 22px 0px rgba(0, 0, 0, 1.75);
+            backdrop-filter: blur(10px) brightness(.5);
+            padding: 0 3rem;
+            text-align: center;
+            color: $blanco;
+            .entrada-imagen-news2{
+                margin: 5rem;
+            }
+            p {
+                text-align: start;
+                font-size: 1.7rem;
+            }
+        }
+
+    }
+}
+
+
+
+.lineas_cont {
+    color: $blanco;
+    padding: 2rem;
+    margin: .5rem;
+    position: relative;
+    @include background;
+    box-shadow: -2px 1px 22px 0px rgba(0, 0, 0, 1.75);
+    border: .5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0rem;
+
+    @include lines(.5rem);
+
+
+    .widget-curso-news2 {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        @include tablet{
+            flex-direction: row
+        }
+
+        .widget-image-news2 {
+            width: 20rem;
+            position: relative;
+        }
+
+        .widget-info-news2 {
+            text-align: center;
+
+            h4 {
+                font-size: 2rem;
+                margin: 0;
+                font-size: 1.5rem;
+                color: $blanco;
+            }
+
+            p {
+                font-size: 1.3rem;
+            }
+        }
+
+    }
+}
+
+.sidebar-news2 {
+    z-index: 1;
+    .tittle-sidebar{
+        @include background;
+    }
+}
+

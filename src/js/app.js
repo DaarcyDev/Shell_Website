@@ -6,6 +6,69 @@ const body = document.querySelector('body');
 const lu = document.querySelector('.lu');
 const nav = document.querySelector('.nav');
 const overlay = document.createElement('DIV');
+const areaItem = document.querySelectorAll('.area-item');
+const active = document.querySelector('.active');
+const number = document.getElementById("number");
+var counterVal = 1
+
+
+function incrementClick(){
+  updateDisplay(++counterVal)
+  
+}
+function decrementClick(){
+  updateDisplay(--counterVal)
+}
+function updateDisplay(val){
+  if(val <=0){
+    val=2
+    counterVal = 1
+  }else{
+    number.innerHTML = val;
+  }
+  
+}
+let pagina=1;
+const singles = document.querySelector('.content-img-discography-singles')
+const album = document.querySelector('.content-img-discography-album')
+const all = document.querySelector('.content-img-discography-all')
+areaItem.forEach(item => {
+    item.addEventListener('click',()=>{
+      removeActiveClasses();
+      item.classList.add('active');
+      //console.log(areaItem)
+
+      change = document.getElementsByClassName('area-item active')
+      page = document.getElementById(change[0]['id'])
+      //console.log(change[0]['id']);
+      console.log(page['id']);
+      if(page["id"] == 1){
+        singles.classList.remove('show-info')
+        album.classList.add('show-info')
+        all.classList.add('show-info')
+      }
+      if(page["id"] == 2){
+        album.classList.remove('show-info')
+        singles.classList.add('show-info')
+        all.classList.add('show-info')
+      }
+      if(page["id"] == 3){
+        all.classList.remove('show-info')
+        singles.classList.add('show-info')
+        album.classList.add('show-info')
+      }
+
+    })
+});
+function removeActiveClasses(){
+  areaItem.forEach(item =>{
+    item.classList.remove('active');
+  })
+}
+
+const seccionActual = document.querySelector(`#info-${pagina}`)
+
+
 body.appendChild(overlay);
 
 open.addEventListener('click',()=> {

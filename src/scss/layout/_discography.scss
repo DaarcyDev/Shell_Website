@@ -7,49 +7,87 @@
   align-items: center;
   justify-content: center;
   background-image: url("/build/img/cmsRC8.2.1-min.png");
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
-  background-position: top;
+  background-position: bottom;
   // position: relative;
   z-index: 1;
+  @include tablet{
+    background-size: cover;
+    background-position: top;
+}
 
   .carousel1{
     height: 100vh;
     width: 100vw;
     align-items: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    padding: 0 3rem;
+    gap: 3rem;
     justify-content: space-around;
+    @include tablet{
+      flex-direction: column;
+      gap: 0rem;
+    }
+    .last-realease{
+      @include background;
+      backdrop-filter: brightness(0.5) blur(10px);
+      //box-shadow: 0px 0px 30px 11px rgba(0,0,0,0.75);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50vw;
+      
+      h2{
+        font-size: 3rem;
+        text-align: center;
+        padding: 1rem;
+      }
+      @include tablet{
+        width: 90vw;
+        height: 40%;
+        h2{
+          font-size: 1.5rem;
+        }
+      }
+      .spotify{
+        width:95%;
+        height:8rem;
+        margin: 1rem;
+      }
+      .youtube{
+        width:95%;
+        margin: 1rem;
+      }
+    }
     .content-discography{
       // position: absolute;
       display: grid;
-      grid-template-columns: auto auto auto;
+      grid-template-columns: repeat(2,1fr);
       gap: 2rem;
       margin: 0 !important;
       padding: 2rem;
       overflow: hidden;
-      width: 85vw;
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
+      width: 50vw;
+      @include background;
+      // border-radius: 10px;
       backdrop-filter: brightness(0.5) blur(10px);
-      box-shadow: 0px 0px 30px 11px rgba(0,0,0,0.75);
-      border-radius: 2rem;
+      //box-shadow: 0px 0px 30px 11px rgba(0,0,0,0.75);
       justify-items: center;
       max-height: auto;
       @include tablet{
-        grid-template-columns: auto auto;
+        width: 90vw;
+        gap: 1rem;
+        
       }
       .album-content{
         // position: relative;
-
+        background: rgba(255, 255, 255, 0.1);
         margin: 0;
         width: auto;
         border: 1px solid rgba($blanco, $alpha: .1);
-        border-radius: 2rem;
+        border-radius: 5px;
         padding: 1rem;
         max-width: 30rem;
         transform: scale(1);
@@ -59,7 +97,7 @@
           transform: scale(1.07);
         }
         .image{
-          border-radius: 2rem;
+          border-radius: .5rem;
         }
         @include tablet{
           max-width: 20rem;;
@@ -82,37 +120,17 @@
         font-size: 4rem;
       }
     }
-    .button {
-      font-size: 17px;
-      font-weight: bold;
-      border: none;
-      border-radius: 1rem;
-      &:hover .button_top {
-        transform: translateY(-0.33em);
+    .container-button{
+      grid-column: 1 / 3;
+      margin: 0;
+      .button{
+        margin: 0rem;
       }
-      &:active .button_top {
-        transform: translateY(0);
+      .button_top{
+        margin-top: 2rem;
       }
     }
-    .boton-discography{
-      margin: 3rem;
-      text-transform: uppercase;
-      width: auto;
-      border-radius: 2rem;
-      font-weight: 900;
-      cursor: pointer;
-      text-align: center;
-    }
-    .button_top {
-    display: block;
-    box-sizing: border-box;
-    border: 2px solid $blanco;
-    border-radius: 1rem;
-    padding: 0.75em 1.5em;
-    backdrop-filter: blur(10px)  brightness(.6);
-    transform: translateY(-0.2em);
-    transition: transform 0.1s ease;
-    }
+    
     
   }
 

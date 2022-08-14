@@ -1,0 +1,374 @@
+.news2 {
+    background-color: $azulChido;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 70%;
+        z-index: 0;
+        background-image: url("/build/img/4-min.webp");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right;
+
+        @include desktopPlus {
+            background-position: bottom;
+        }
+    }
+
+    .content-news2 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .news2-img1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20%;
+
+            @include tablet {
+                width: 60%;
+            }
+        }
+
+        .news2-content-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            .title-news2 {
+                width: 100vw;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+                background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/build/img/Tuttifrutti-cover-1000-comp.webp);
+                height: 45rem;
+                box-shadow: 0px -80px 43px -53px rgba(0, 0, 0, 0.75) inset;
+                z-index: 0;
+
+                h2 {
+                    //margin: 0;
+                    align-items: center;
+                    color: $blanco;
+                    display: flex;
+                    z-index: 2;
+                    text-transform: uppercase;
+                    justify-content: center;
+                    font-weight: bold;
+                    font-size: 7rem;
+
+                    @include tablet {
+                        font-size: 5rem;
+                        margin-top: 10rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.contenido-principal {
+    margin-top: -20rem;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+    }
+    .blog{
+        z-index: 1;
+    }
+
+    h3 {
+        color: $blanco;
+        text-align: start;
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .entrada {
+        display: block;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, auto));
+
+        @include desktop {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, auto));
+        }
+
+        .entrada-blog {
+
+            min-height: 50rem;
+            position: relative;
+            @include background;
+            box-shadow: -2px 1px 22px 0px rgba(0, 0, 0, 1.75);
+            backdrop-filter: blur(10px)  brightness(.6);
+            padding: 1rem;
+            border-radius: .5rem;
+            margin: 1rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+
+            .boton-entrada {
+                background-color: $blanco;
+                color: $negro;
+                font-size: 1.5rem;
+                font-weight: $bold;
+                margin: 2rem;
+                padding: .5rem;
+                border-radius: .5rem;
+                text-align: center;
+                //position: absolute;
+            }
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.5);
+                transform: skewY(345deg);
+                transition: 0.5s;
+            }
+
+            &:hover::before {
+                top: -70%;
+                transform: skewY(385deg);
+            }
+        }
+
+        .entrada-imagen {
+            position: relative;
+            margin: 1rem 0;
+            display: flex;
+            justify-content: center;
+
+            img {
+                max-width: 100%;
+                transition: max-width 0.5s;
+            }
+        }
+    }
+}
+
+.entrada-info {
+    position: relative;
+    color: $blanco;
+    font-size: 1.3rem;
+    height: 20rem;
+
+    .entrada-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.3rem;
+
+        .entrada-meta-izquierda {
+            color: $blanco;
+        }
+
+        .entrada-meta-derecha {
+            color: $gris;
+
+            .hot {
+                color: $blanco;
+            }
+        }
+    }
+
+    h4 {
+        font-size: 2.3rem;
+        margin: 0;
+    }
+
+    hr {
+        width: 60%;
+        background-color: $rosa;
+        margin: 0;
+        padding: 0;
+    }
+
+    p {
+        font-size: 1.3rem;
+        color: $gris;
+    }
+
+    .boton-entrada {
+        background-color: $rosa;
+        color: $negro;
+        font-size: 1.5rem;
+        font-weight: $bold;
+        padding: .5rem;
+        border-radius: .5rem;
+        right: 1rem;
+        bottom: 1rem;
+        //position: absolute;
+    }
+
+}
+
+.lineas_cont {
+    color: $blanco;
+    padding: 2rem;
+    margin: .5rem;
+    position: relative;
+    @include background;
+    box-shadow: -2px 1px 22px 0px rgba(0, 0, 0, 1.75);
+    border: .5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0rem;
+
+    @include lines(.5rem);
+
+
+    .widget-curso {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        align-items: center;
+
+        .widget-imagen {
+            width: 20rem;
+            position: relative;
+        }
+
+        .widget-info {
+            h4 {
+                font-size: 2rem;
+                margin: 0;
+                font-size: 1.5rem;
+                color: $blanco;
+            }
+
+            .widget-curso-label {
+                color: $blanco;
+                font-size: 2rem;
+                margin: 0;
+                font-size: 1.3rem;
+
+                .widget-curso-label-dificultad-facil {
+                    color: $negro;
+                    background-color: $verde;
+                    padding: 0 .5rem;
+                    font-weight: 600;
+                    border-radius: .5rem;
+                }
+
+                .widget-curso-label-dificultad-intermedio {
+                    color: $negro;
+                    background-color: $cafe;
+                    padding: 0 .5rem;
+                    font-weight: 600;
+                    border-radius: .5rem;
+                }
+
+                .widget-curso-label-dificultad-dificil {
+                    color: $negro;
+                    background-color: $rojo;
+                    padding: 0 .5rem;
+                    font-weight: 600;
+                    border-radius: .5rem;
+                }
+            }
+        }
+
+    }
+}
+.sidebar{
+    z-index: 1;
+    .download{
+        flex-direction: column;
+        gap: 2rem;
+        .container-contact-discography{
+            margin: 0!important;
+        }
+        
+    }
+}
+.caja {
+    @include background;
+    padding: 2rem;
+    
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    box-shadow: -2px 1px 22px 0px rgba(0, 0, 0, 1.75);
+    
+    .caja-info {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        
+        h3 {
+            margin: 0;
+            font-size: 1.7rem;
+        }
+
+        p {
+            margin: 0;
+            font-size: 1.3rem;
+            color: $blanco;
+        }
+    }
+
+    .caja-correo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        input {
+            background-color: $negro;
+            color: $blanco;
+            border: none;
+            border-radius: 2rem 0 0 2rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        button {
+            background-color: $negro;
+            color: $blanco;
+            border: none;
+            border-radius: 0rem 2rem 2rem 0rem;
+            padding: 1rem 2rem;
+        }
+    }
+
+    .boton-caja {
+        display: flex;
+        @include background;
+        color: $blanco;
+        font-size: 1.5rem;
+        font-weight: $bold;
+        padding: .7rem;
+        border-radius: .5rem;
+        margin-top: 2rem;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        transition: .2s ease-in-out;
+        &:hover{
+            transform: scale(1.05);
+        }
+        .kofi {
+            width: 3.5rem;
+            border-radius: 0;
+        }
+    }
+}

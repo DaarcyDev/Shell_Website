@@ -6,7 +6,7 @@
     padding: 20px;
     width: 100%;
     background-color: $azulChido;
-    background-image: url("/build/img/cms\ RC2.1.png");
+    background-image: url("/build/img//cms-RC2.1.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
@@ -41,12 +41,7 @@
     width: 100%;
     max-width: 1000px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    @include background;
     overflow: hidden;
     backdrop-filter: blur(25px);
     @include tablet{

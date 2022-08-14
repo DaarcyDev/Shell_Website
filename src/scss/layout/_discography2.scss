@@ -1,0 +1,256 @@
+.container {
+  display: inherit;
+
+  .discography2 {
+    background-color: $azulChido;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 70%;
+      z-index: 1;
+      background-image: url("/build/img/IFILC-1.webp");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right;
+
+      @include desktopPlus {
+        background-position: bottom;
+      }
+    }
+
+    .content-discography2 {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .discography2-img1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20%;
+
+        @include tablet {
+          width: 60%;
+        }
+      }
+
+      .discography2-content-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .title-discography2 {
+          width: 100vw;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+          background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/build/img/Dance-Cover-1000-comp.webp);
+          height: 45rem;
+          box-shadow: 0px -80px 43px -53px rgba(0, 0, 0, 0.75) inset;
+          z-index: 1;
+
+          h2 {
+            //margin: 0;
+            align-items: center;
+            color: $blanco;
+            display: flex;
+            z-index: 2;
+            text-transform: uppercase;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 7rem;
+
+            @include tablet {
+              font-size: 5rem;
+              margin-top: 10rem;
+            }
+          }
+        }
+
+        .text-discography2 {
+          text-align: center;
+          color: $blanco;
+          display: flex;
+          z-index: 1;
+          flex-direction: column;
+          justify-content: center;
+          width: 70%;
+          @include background;
+          backdrop-filter: blur(5px);
+          padding: 3rem;
+          border-radius: 3rem;
+          margin: 0;
+
+          @include tablet {
+            width: 90%;
+            padding: 1rem;
+          }
+
+          p {
+            z-index: 1;
+            font-size: 2rem;
+            margin: 1rem;
+
+            @include tablet {
+              font-size: 1.7rem;
+              margin: .5rem;
+            }
+          }
+        }
+      }
+
+      .container-all {
+        margin-top: -20rem;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .tab-areas {
+          @include background;
+          padding: 1rem;
+
+          .area-item {
+            @include background;
+            padding: 1rem;
+            font-size: 2rem;
+            align-items: center;
+            color: $blanco;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.0);
+          }
+
+          .active {
+            @include background;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            font-size: 2rem;
+            align-items: center;
+            border-radius: 1rem;
+
+          }
+        }
+      }
+      .show-info{
+        display: none !important;
+      }
+      .content-img-discography-singles,
+      .content-img-discography-album,
+      .content-img-discography-all {
+        //display: none !important;
+        display: block;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+        gap: 5rem;
+        justify-items: center;
+        justify-content: center;
+        padding: 5rem;
+        width: 95%;
+        @include background;
+        backdrop-filter: brightness(0.7) blur(20px);
+        margin: 5rem;
+        z-index: 2;
+
+        @include tablet {
+          width: 70%;
+        }
+        .lines{
+          @include lines(0.5rem);
+        }
+        .content-img {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          @include background;
+          background: rgba(255, 255, 255, 0.1);
+          transition: transform .2s ease-in-out;
+          transform: scale(1);
+          &:hover {
+            //@include lines(0.5rem);
+            transition: transform .2s ease-in-out;
+            transform: scale(1.03);
+          }
+          ul{
+            padding: 0;
+            position: relative;
+            @include lines(0.5rem);
+          }
+          
+          h3 {
+            color: $blanco;
+            margin: 0;
+            font-size: 2rem;
+          }
+
+          p {
+            text-align: center;
+            margin: 0;
+            margin-bottom: 2rem;
+          }
+
+          hr {
+            width: 100%;
+          }
+
+          .img-discography {
+            width: 95%;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+            margin: 1rem;
+            filter: brightness(1);
+            transition: filter .2s ease-in-out;
+
+            &:hover {
+              transition: filter .2s ease-in-out;
+              filter: brightness(0.6);
+            }
+          }
+
+        }
+
+      }
+
+      .button {
+        margin: 1rem;
+        font-size: 3rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 1rem;
+
+        &:hover .button_top {
+          transform: translateY(-0.33em);
+        }
+
+        &:active .button_top {
+          transform: translateY(0);
+        }
+      }
+
+      .button_top {
+        display: block;
+        box-sizing: border-box;
+        border: 2px solid $blanco;
+        border-radius: 1rem;
+        padding: 2rem 10rem;
+        backdrop-filter: blur(10px) brightness(.6);
+        backdrop-filter: blur(10px) brightness(.6);
+        transform: translateY(-0.2em);
+        transition: transform 0.1s ease;
+      }
+
+      .button-disc {
+        z-index: 1;
+      }
+    }
+
+  }
+}

@@ -1,4 +1,4 @@
-.container {
+.container{
     display: inherit;
 
     .merch2 {
@@ -6,6 +6,19 @@
         width: 100%;
         height: 100%;
         position: relative;
+        &::before{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 70%;
+            z-index: 1;
+            background-image: url("/build/img/cmsRC8.1.1-min.webp");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom ;
+          }
 
         .content-merch2 {
             width: 100%;
@@ -33,7 +46,7 @@
                     background-repeat: no-repeat;
                     background-position: center center;
                     background-size: cover;
-                    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/build/img/ITILC-cover-1000\ COMP.webp);
+                    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/build/img/ITILC-cover-1000-COMP.webp);
                     height: 45rem;
                     box-shadow: 0px -80px 43px -53px rgba(0,0,0,0.75) inset;
                     z-index: 1;
@@ -58,14 +71,7 @@
                     flex-direction: column;
                     justify-content: center;
                     width: 70%;
-                    background: rgba(255, 255, 255, 0.1);
-                    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-                    border: 1px solid rgba(255, 255, 255, 0.25);
-                    border-right: 1px solid rgba(255, 255, 255, 0.1);
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                    border-radius: 10px;
-                    backdrop-filter: blur(5px);
-                    padding: 3rem;
+                    @include background;
                     border-radius: 3rem;
                     margin: 0;
                     
@@ -93,14 +99,8 @@
                 justify-content: center;
                 padding: 5rem;
                 width: 70%;
-                background: rgba(255, 255, 255, 0.1);
-                box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.25);
-                border-right: 1px solid rgba(255, 255, 255, 0.1);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 10px;
-                backdrop-filter: blur(5px);
-                border-radius: 3rem;
+                @include background;
+                backdrop-filter: brightness(0.5) blur(7px);
                 margin: 5rem;
                 margin-top: -20rem;
                 z-index: 2;
@@ -111,13 +111,32 @@
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    background: rgba(255, 255, 255, 0.25);
-                    border: 1px solid rgba(255, 255, 255, 0.25);
-                    border-right: 1px solid rgba(255, 255, 255, 0.1);
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                    border-radius: 10px;
-                    transition: transform .2s ease-in-out;
-                    transform: scale(1);
+                    @include background;
+                    border-radius: 0rem;
+                    background: rgba(255, 255, 255, 0.1);
+                    backdrop-filter: brightness(0.6);
+                    overflow: hidden;
+                    z-index: 1;
+                    @include lines(0rem);
+                    .lineas_cont{
+                        padding: 0;
+                    }
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        top: -50%;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(255, 255, 255, 0.5);
+                        transform: skewY(345deg);
+                        transition: 0.5s;
+                    }
+        
+                    &:hover::before {
+                        top: -70%;
+                        transform: skewY(385deg);
+                    }
                     h3{
                         color: $blanco;
                         margin: 0;
@@ -125,9 +144,10 @@
                     .price{
                         display: grid;
                         grid-template-columns: 1fr 1fr;
-                        gap: .5rem;
+                        gap: 1rem;
                         align-items: center;
                         justify-items: center;
+                        margin: 1rem;
                         p{
                             font-weight: 300;
                             color: $blanco;
@@ -136,12 +156,14 @@
                             border-radius: 5px;
                             width: 100%;
                             text-align: center;
+                            margin: 0;
                         }
                         a{
                             font-size: 2rem;
-                            font-weight: 700;
-                            background: rgba(255, 255, 255, 0.4);
-                            padding: 0rem .5rem;
+                            font-weight: 500;
+                            color: $blanco;
+                            text-align: center;
+                            width: 100%;
                             border-radius: 5px;
                             border: 1px solid rgba(255, 255, 255, 1);
                             transform: scale(1);
@@ -156,44 +178,20 @@
                     }  
                     .img-merch{
                         width: 95%;
-                        background: rgba(255, 255, 255, 0.4);
+                        background: rgba(255, 255, 255, 1);
                         border-radius: 10px;
                         margin: 1rem;
+                        z-index: 1;
                     }
-                    &:hover{
-                        transform: scale(1.07);
-                        border: 2px solid rgba(255, 255, 255, 1);
-                        transition: border .2s ease-in-out, transform .2s ease-in-out;
+                    // &:hover{
+                    //     border: 2px solid rgba(255, 255, 255, 1);
+                    //     transition: border .2s ease-in-out;
 
-                    }
+                    // }
                 }
                 
             }
-            .button {
-                margin: 1rem;
-                font-size: 3rem;
-                font-weight: bold;
-                border: none;
-                border-radius: 1rem;
-                &:hover .button_top {
-                  transform: translateY(-0.33em);
-                }
-                &:active .button_top {
-                  transform: translateY(0);
-                }
-              }
-          
-              .button_top {
-              display: block;
-              box-sizing: border-box;
-              border: 2px solid $blanco;
-              border-radius: 1rem;
-              padding: 2rem 10rem;
-              backdrop-filter: blur(10px)  brightness(.6);
-              backdrop-filter: blur(10px)  brightness(.6);
-              transform: translateY(-0.2em);
-              transition: transform 0.1s ease;
-              }
+            
         }
 
     }

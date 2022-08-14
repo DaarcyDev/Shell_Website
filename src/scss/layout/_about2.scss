@@ -13,25 +13,32 @@
             flex-direction: column;
             align-items: center;
 
-            .about2-img1 {
+            &::before {
+                content: '';
+                background-image: url("/build/img/cmsRC7.05.(1).webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: top;
                 position: absolute;
-                top: 0;
-                left: 0;
-                width: 20%;
-                @include tablet{
-                    width: 60%;
-                }
+                top: 20%;
+                left: -15%;
+                width: 50%;
+                height: 100vh;
+                z-index: 1;
             }
 
-            .about2-img2 {
+            &::after {
+                content: '';
+                background-image: url("/build/img/cmsRC7.05.(2).webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: bottom;
                 position: absolute;
                 bottom: 0;
-                right: 0;
-                width: 20%;
-                @include tablet{
-                    width: 60%;
-                    bottom: 35rem;
-                }
+                right: -20%;
+                width: 50%;
+                height: 100vh;
+                z-index: 0;
             }
 
             .about2-content-text {
@@ -39,10 +46,19 @@
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                .title-about2{
-                    z-index: 1;
+
+                .title-about2 {
+                    width: 100vw;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: cover;
+                    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/build/img/Trying-Cover-1000-comp.webp);
+                    height: 45rem;
+                    box-shadow: 0px -80px 43px -53px rgba(0, 0, 0, 0.75) inset;
+                    z-index: 0;
+
                     h2 {
-                        margin: 0;
+                        //margin: 0;
                         align-items: center;
                         color: $blanco;
                         display: flex;
@@ -51,9 +67,14 @@
                         justify-content: center;
                         font-weight: bold;
                         font-size: 7rem;
+
+                        @include tablet {
+                            font-size: 5rem;
+                            margin-top: 10rem;
+                        }
                     }
                 }
-                
+
                 .text-about2 {
                     text-align: center;
                     color: $blanco;
@@ -62,83 +83,83 @@
                     flex-direction: column;
                     justify-content: center;
                     width: 70%;
-                    background: rgba(255, 255, 255, 0.1);
-                    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-                    border: 1px solid rgba(255, 255, 255, 0.25);
-                    border-right: 1px solid rgba(255, 255, 255, 0.1);
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                    border-radius: 10px;
-                    backdrop-filter: blur(5px);
+                    @include background;
+                    margin-top: -20rem;
                     padding: 3rem;
-                    border-radius: 3rem;
-                    margin: 0;
-                    @include tablet{
+
+                    @include tablet {
                         width: 90%;
                         padding: 1rem;
                     }
+
                     p {
                         z-index: 1;
                         font-size: 2rem;
                         margin: 1rem;
-                        @include tablet{
+
+                        @include tablet {
                             font-size: 1.7rem;
                             margin: .5rem;
                         }
                     }
                 }
             }
-            .content-img-concha{
+
+            .content-img-concha {
                 display: block;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 gap: 5rem;
                 justify-items: center;
                 padding: 5rem;
-                width: 70%;
-                background: rgba(255, 255, 255, 0.1);
-                box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.25);
-                border-right: 1px solid rgba(255, 255, 255, 0.1);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 10px;
-                backdrop-filter: blur(5px);
-                border-radius: 3rem;
+                width: 80%;
+                @include background;
                 margin: 5rem;
-                @include tablet{
+                z-index: 1;
+
+                @include tablet {
                     width: 80%;
                     grid-template-rows: 1fr 1fr;
                     grid-template-columns: 1fr;
                 }
-                
-                .img-concha{
+
+
+                .img-concha {
                     width: 100%;
                 }
+
+                .lineas_cont {
+                    padding: .5rem;
+                }
             }
+
             .button {
                 margin: 1rem;
                 font-size: 3rem;
                 font-weight: bold;
                 border: none;
                 border-radius: 1rem;
+
                 &:hover .button_top {
-                  transform: translateY(-0.33em);
+                    transform: translateY(-0.33em);
                 }
+
                 &:active .button_top {
-                  transform: translateY(0);
+                    transform: translateY(0);
                 }
-              }
-          
-              .button_top {
-              display: block;
-              box-sizing: border-box;
-              border: 2px solid $blanco;
-              border-radius: 1rem;
-              padding: 2rem 10rem;
-              backdrop-filter: blur(10px)  brightness(.6);
-              backdrop-filter: blur(10px)  brightness(.6);
-              transform: translateY(-0.2em);
-              transition: transform 0.1s ease;
-              }
+            }
+
+            .button_top {
+                display: block;
+                box-sizing: border-box;
+                border: 2px solid $blanco;
+                border-radius: 1rem;
+                padding: 2rem 10rem;
+                backdrop-filter: blur(10px) brightness(.6);
+                backdrop-filter: blur(10px) brightness(.6);
+                transform: translateY(-0.2em);
+                transition: transform 0.1s ease;
+            }
         }
 
     }

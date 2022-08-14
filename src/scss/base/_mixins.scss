@@ -26,3 +26,112 @@
     gap: $espaciado;
     grid-template-columns: repeat($columnas, 1fr);
 }
+@mixin background {
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 0.5px solid rgba(255, 255, 255, 0.50);
+    border-radius: 5px;
+    backdrop-filter: blur(20px);
+    //border-radius: 3rem;
+    
+}
+@mixin lines($margin){
+    .lineas_cont{
+        margin: $margin;
+    }
+    &:hover {
+        color: $blanco;
+        transition: color 0.5s;
+
+        .linea:nth-child(1) {
+            transform: scaleX(1);
+            transform-origin: left;
+            transition: transform 0.5s ease-in-out;
+        }
+    }
+    .linea:nth-child(1) {
+        display: block;
+        position: absolute;
+        background-color: $blanco;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    &:hover {
+        color: $blanco;
+        transition: color 0.5s;
+
+        .linea:nth-child(2) {
+            transform: scaleY(1);
+            transform-origin: bottom;
+            transition: transform 0.5s ease-in-out;
+        }
+    }
+
+    .linea:nth-child(2) {
+        display: block;
+        position: absolute;
+        background-color: $blanco;
+        left: 0;
+        bottom: 0;
+        width: 2px;
+        height: 100%;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    &:hover {
+        color: $blanco;
+        transition: color 0.5s;
+
+        .linea:nth-child(3) {
+            transform: scaleX(1);
+            transform-origin: right;
+            transition: transform 0.5s ease-in-out;
+        }
+    }
+
+    .linea:nth-child(3) {
+        display: block;
+        position: absolute;
+        background-color: $blanco;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 2px;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    &:hover {
+        color: $blanco;
+        transition: color 0.5s;
+
+        .linea:nth-child(4) {
+            transform: scaleY(1);
+            transform-origin: top;
+            transition: transform 0.5s ease-in-out;
+        }
+    }
+
+    .linea:nth-child(4) {
+        display: block;
+        position: absolute;
+        background-color: $blanco;
+        right: 0;
+        bottom: 0;
+        width: 2px;
+        height: 100%;
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.5s ease-in-out;
+    }
+    
+}
