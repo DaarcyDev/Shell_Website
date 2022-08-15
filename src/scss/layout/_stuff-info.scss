@@ -185,6 +185,9 @@
 
 .sidebar-news2 {
     z-index: 1;
+    a{
+        margin: 1rem
+    }
     .tittle-sidebar{
         @include background;
     }
