@@ -9,9 +9,57 @@ const overlay = document.createElement('DIV');
 const areaItem = document.querySelectorAll('.area-item');
 const active = document.querySelector('.active');
 const number = document.getElementById("number");
+
+
+function functions(){
+  discOptions()
+  functionOpen()
+  functionClose()
+  
+}
+functions();
+
+var swiper = new Swiper(".mySwiper", {
+  direction: getDirection(),
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: "auto",
+  // mousewheel: true,
+  autoplay: {
+    delay: 10000,
+    disableOnInteraction: false,
+  },
+  loop:true
+  
+});
+function getDirection() {
+  var windowWidth = window.innerWidth;
+  var direction = windowWidth <= 768 ? 'horizontal' : 'vertical';
+
+  return direction;
+}
+var swiper1 = new Swiper(".mySwiper1", {
+  direction: 'horizontal',
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: "auto",
+  loop:true,
+  // mousewheel: true,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+  coverflowEffect: {
+    rotate: 0,
+    stretch: 1000,
+    depth: 0,
+    modifier: 0,
+    slideShadows: false,
+  },
+});
+
 var counterVal = 1
-
-
 function incrementClick(){
   updateDisplay(++counterVal)
   
@@ -28,6 +76,7 @@ function updateDisplay(val){
   }
   
 }
+function discOptions(){
 let pagina=1;
 const singles = document.querySelector('.content-img-discography-singles')
 const album = document.querySelector('.content-img-discography-album')
@@ -60,6 +109,8 @@ areaItem.forEach(item => {
 
     })
 });
+}
+
 function removeActiveClasses(){
   areaItem.forEach(item =>{
     item.classList.remove('active');
@@ -69,87 +120,105 @@ function removeActiveClasses(){
 const seccionActual = document.querySelector(`#info-${pagina}`)
 
 
-body.appendChild(overlay);
+//body.appendChild(overlay);
 
-open.addEventListener('click',()=> {
+
+function functionOpen(){
+  //body.appendChild(overlay);
+  open.addEventListener('click',()=> {
     container.classList.add('show-nav');
     circle.classList.add('show-nav');
-    container.classList.add('overlay');
-    overlay.classList.add('overlay');
+    //container.classList.add('overlay');
+    //overlay.classList.add('overlay');
     nav.classList.add('active');
+    body.classList.add('fixed-body')
 
-    if(overlay.classList.contains('overlay')){
-        overlay.addEventListener('click',()=>{
-            container.classList.remove('show-nav');
-            circle.classList.remove('show-nav');
-            container.classList.remove('overlay');
-            overlay.classList.remove('overlay');
-            nav.classList.remove('active');
-        });
-    }
+    // if(overlay.classList.contains('overlay')){
+    //     overlay.addEventListener('click',()=>{
+    //         container.classList.remove('show-nav');
+    //         circle.classList.remove('show-nav');
+    //         //container.classList.remove('overlay');
+    //         overlay.classList.remove('overlay');
+    //         nav.classList.remove('active');
+    //         body.classList.remove('fixed-body')
+    //     });
+    // }
 });
-close.addEventListener('click',()=> {
+}
+
+function functionClose(){
+  close.addEventListener('click',()=> {
     container.classList.remove('show-nav');
     circle.classList.remove('show-nav');
-    container.classList.remove('overlay');
-    body.classList.remove('overlay');
-    overlay.classList.remove('overlay');
+    //container.classList.remove('overlay');
+    //body.classList.remove('overlay');
+    //overlay.classList.remove('overlay');
     nav.classList.remove('active');
+    body.classList.remove('fixed-body')
 });
 container.addEventListener('click',()=>{
     container.classList.remove('show-nav');
     circle.classList.remove('show-nav');
-    container.classList.remove('overlay');
-    body.classList.remove('overlay');
-    overlay.classList.remove('overlay');
+    //container.classList.remove('overlay');
+    //body.classList.remove('overlay');
+    //overlay.classList.remove('overlay');
     nav.classList.remove('active');
+    body.classList.remove('fixed-body')
 
 });
 lu.addEventListener('click',()=>{
     container.classList.remove('show-nav');
     circle.classList.remove('show-nav');
-    container.classList.remove('overlay');
-    body.classList.remove('overlay');
-    overlay.classList.remove('overlay');
+    //container.classList.remove('overlay');
+    //body.classList.remove('overlay');
+    //overlay.classList.remove('overlay');
     nav.classList.remove('active');
+    body.classList.remove('fixed-body')
 });
+}
 
 var swiper = new Swiper(".mySwiper", {
-    direction: getDirection(),
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: "auto",
-    // mousewheel: true,
-    autoplay: {
-      delay: 10000,
-      disableOnInteraction: false,
-    },
-    loop:true
-    
-  });
-  function getDirection() {
-    var windowWidth = window.innerWidth;
-    var direction = windowWidth <= 768 ? 'horizontal' : 'vertical';
+  direction: getDirection(),
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: "auto",
+  // mousewheel: true,
+  autoplay: {
+    delay: 10000,
+    disableOnInteraction: false,
+  },
+  loop:true
+  
+});
+function getDirection() {
+  var windowWidth = window.innerWidth;
+  var direction = windowWidth <= 768 ? 'horizontal' : 'vertical';
 
-    return direction;
-  }
-  var swiper1 = new Swiper(".mySwiper1", {
-    direction: 'horizontal',
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: "auto",
-    loop:true,
-    // mousewheel: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 1000,
-      depth: 0,
-      modifier: 0,
-      slideShadows: false,
-    },
-  });
+  return direction;
+}
+var swiper1 = new Swiper(".mySwiper1", {
+  direction: 'horizontal',
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: "auto",
+  loop:true,
+  // mousewheel: true,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+  coverflowEffect: {
+    rotate: 0,
+    stretch: 1000,
+    depth: 0,
+    modifier: 0,
+    slideShadows: false,
+  },
+});
+
+
+
+
+
+  

@@ -3,9 +3,11 @@
     transform-origin: top left;
     transition: transform .4s linear;
     width: 100vw;
-    height: auto;
+    min-height: 100vh;
     //padding: 50px;
     position: relative;
+    transform: translateX(0px);
+    width: 100vw !important;
 }
 .container.show-nav{
     transform: translate(175px);
@@ -23,8 +25,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100%;
+    z-index: 3;
 }
 .circle-container{
     position: fixed;

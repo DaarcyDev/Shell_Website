@@ -125,7 +125,7 @@
               padding: 5rem;
               width: 95%;
               @include background;
-              margin: 5rem;
+              margin: 5rem 0;
               z-index: 2;
               @include tablet{
                   width: 85%;

@@ -51,7 +51,7 @@
     scroll-snap-type: y mandatory;
     scroll-snap-type: y proximity;
     @include tablet{
-        scroll-snap-type: y proximity;
+        scroll-snap-type: none;
     }
 }
 ::-webkit-scrollbar{
