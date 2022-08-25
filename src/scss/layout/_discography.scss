@@ -83,7 +83,7 @@
       }
       .album-content{
         // position: relative;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(205, 205, 205, 0.1);
         margin: 0;
         width: auto;
         border: 1px solid rgba($blanco, $alpha: .1);
@@ -93,7 +93,7 @@
         transform: scale(1);
         transition: border .3s ease-in-out, transform  .2s ease-in-out;
         &:hover{
-          border: 1px solid rgba($blanco, $alpha: 1);
+          border: 1px solid rgba(205,205,205,1);;
           transform: scale(1.07);
         }
         .image{

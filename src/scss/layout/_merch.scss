@@ -63,7 +63,7 @@
       backdrop-filter: blur(10px)  brightness(.6);
       transition: backdrop-filter .8s ease-in  !important;
       .image{
-        background-color: rgba($blanco, $alpha: 1) !important;
+        background-color: rgba(205,205,205,1);
         max-width: 100%;
       }
       .boton-merch{
@@ -72,8 +72,8 @@
         width: auto;
         border-radius: .5rem;
         font-weight: 700;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.50);
+        background: rgba(205, 205, 205, 0.1);
+        border: 1px solid rgba(205, 205, 205, 0.50);
         cursor: pointer;
         padding: .5rem 2rem;
         text-align: center;
@@ -89,7 +89,7 @@
       max-width: 50%;
       padding: 0;
       .image{
-        background-color: rgba($blanco, $alpha: .1);
+        background-color: rgb(205,205,205);
         max-width: 100%;
         border-radius: 10px;
         margin: 0;

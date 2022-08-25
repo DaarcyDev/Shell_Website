@@ -29,7 +29,7 @@
 @mixin background {
     background: rgba(0, 0, 0, 0.1);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-    border: 0.5px solid rgba(200, 200, 200, 0.5);
+    border: 0.5px solid rgba(205, 205, 205, 0.5);
     border-radius: 5px;
     backdrop-filter: blur(20px);
     //border-radius: 3rem;
@@ -40,7 +40,7 @@
         margin: $margin;
     }
     &:hover {
-        color: $blanco;
+        color: rgba(205,205,205,1);;
         transition: color 0.5s;
 
         .linea:nth-child(1) {
@@ -52,7 +52,7 @@
     .linea:nth-child(1) {
         display: block;
         position: absolute;
-        background-color: $blanco;
+        background-color: rgba(205,205,205,1);;
         left: 0;
         bottom: 0;
         width: 100%;
@@ -63,7 +63,7 @@
     }
 
     &:hover {
-        color: $blanco;
+        color: rgba(205,205,205,1);;
         transition: color 0.5s;
 
         .linea:nth-child(2) {
@@ -76,7 +76,7 @@
     .linea:nth-child(2) {
         display: block;
         position: absolute;
-        background-color: $blanco;
+        background-color: rgba(205,205,205,1);;
         left: 0;
         bottom: 0;
         width: 2px;
@@ -87,7 +87,7 @@
     }
 
     &:hover {
-        color: $blanco;
+        color: rgba(205,205,205,1);;
         transition: color 0.5s;
 
         .linea:nth-child(3) {
@@ -100,7 +100,7 @@
     .linea:nth-child(3) {
         display: block;
         position: absolute;
-        background-color: $blanco;
+        background-color: rgba(205,205,205,1);;
         left: 0;
         top: 0;
         width: 100%;
@@ -111,7 +111,7 @@
     }
 
     &:hover {
-        color: $blanco;
+        color: rgba(205,205,205,1);;
         transition: color 0.5s;
 
         .linea:nth-child(4) {
@@ -124,7 +124,7 @@
     .linea:nth-child(4) {
         display: block;
         position: absolute;
-        background-color: $blanco;
+        background-color: rgba(205,205,205,1);;
         right: 0;
         bottom: 0;
         width: 2px;

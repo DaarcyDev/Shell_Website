@@ -71,7 +71,7 @@
                 }
 
                 .img-product {
-                    background: rgba(255, 255, 255, 0.8);
+                    background: rgba(205, 205, 205, 1);
                     margin: 2rem;
                     border-radius: 2rem;
                     display: flex;
@@ -107,13 +107,13 @@
                                     align-items: center;
                                     margin: 2rem 0;
                                     @include background;
-                                    background: rgba(255, 255, 255, 0.1);
-                                    //border: 1px solid $blanco;
+                                    background: rgba(205, 205, 205, 0.1);
+                                    border: 1px solid rgba(205,205,205,1);
                                     padding: 1rem;
 
                                     label {
                                         align-items: center;
-                                        color: $blanco;
+                                        color: rgba(205,205,205,1);;
                                         display: flex;
                                         z-index: 2;
                                         text-transform: uppercase;
@@ -130,7 +130,7 @@
                                         .sizes {
                                             width: 100%;
                                             background-color: $grisOscuro;
-                                            color: $blanco;
+                                            color: rgba(205,205,205,1);
                                             padding: .7rem;
                                         }
                                     }
@@ -154,11 +154,11 @@
                             .quantity {
                                 display: grid;
                                 grid-template-columns: 1fr 1fr 1fr;
-                                border: 1px solid hsla(0,0%,100%,.25);
+                                border: 1px solid rgba(205,205,205,1);;
                                 justify-items: center;
                                 align-items: center;
                                 width: 100%;
-                                background: rgba(255, 255, 255, 0.1);
+                                background: rgba(205, 205, 205, 0.1);
 
                                 h2 {
                                     margin: 0;
@@ -183,7 +183,7 @@
 
                         .button-add {
                             background: $rojo;
-                            border: 1px solid rgba(255, 255, 255, 0.25);
+                            border: 1px solid rgba(205, 205, 205, 0.25);
                             color: $blanco;
                             font-size: 2rem;
                             text-transform: uppercase;
@@ -200,32 +200,7 @@
                 }
             }
 
-            .button {
-                margin: 1rem;
-                font-size: 3rem;
-                font-weight: bold;
-                border: none;
-                border-radius: 1rem;
-
-                &:hover .button_top {
-                    transform: translateY(-0.33em);
-                }
-
-                &:active .button_top {
-                    transform: translateY(0);
-                }
-            }
-
-            .button_top {
-                display: block;
-                box-sizing: border-box;
-                border: 2px solid $blanco;
-                border-radius: 1rem;
-                padding: 2rem 10rem;
-                backdrop-filter: blur(10px) brightness(.6);
-                transform: translateY(-0.2em);
-                transition: transform 0.1s ease;
-            }
+            // .
         }
 
     }
