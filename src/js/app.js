@@ -3,6 +3,7 @@ const close = document.getElementById('close');
 const container = document.querySelector('.container');
 const circle = document.querySelector('.circle');
 const body = document.querySelector('body');
+const html = document.querySelector('HTML');
 const lu = document.querySelector('.lu');
 const nav = document.querySelector('.nav');
 const overlay = document.createElement('DIV');
@@ -124,10 +125,11 @@ const seccionActual = document.querySelector(`#info-${pagina}`)
 
 
 function functionOpen(){
-  //body.appendChild(overlay);
+  body.appendChild(overlay);
   open.addEventListener('click',()=> {
     container.classList.add('show-nav');
     circle.classList.add('show-nav');
+    html.setAttribute("style", "overflow:unset;");
     //container.classList.add('overlay');
     //overlay.classList.add('overlay');
     nav.classList.add('active');
@@ -150,6 +152,7 @@ function functionClose(){
   close.addEventListener('click',()=> {
     container.classList.remove('show-nav');
     circle.classList.remove('show-nav');
+    html.setAttribute("style", "overflow-x:hidden;");
     //container.classList.remove('overlay');
     //body.classList.remove('overlay');
     //overlay.classList.remove('overlay');
@@ -159,6 +162,7 @@ function functionClose(){
 container.addEventListener('click',()=>{
     container.classList.remove('show-nav');
     circle.classList.remove('show-nav');
+    html.setAttribute("style", "overflow-x:hidden;");
     //container.classList.remove('overlay');
     //body.classList.remove('overlay');
     //overlay.classList.remove('overlay');
@@ -169,6 +173,7 @@ container.addEventListener('click',()=>{
 lu.addEventListener('click',()=>{
     container.classList.remove('show-nav');
     circle.classList.remove('show-nav');
+    html.setAttribute("style", "overflow-x:hidden;");
     //container.classList.remove('overlay');
     //body.classList.remove('overlay');
     //overlay.classList.remove('overlay');
