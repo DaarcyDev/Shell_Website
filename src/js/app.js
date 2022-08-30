@@ -1,3 +1,4 @@
+
 const open = document.getElementById('open');
 const close = document.getElementById('close');
 const container = document.querySelector('.container');
@@ -10,13 +11,12 @@ const overlay = document.createElement('DIV');
 const areaItem = document.querySelectorAll('.area-item');
 const active = document.querySelector('.active');
 const number = document.getElementById("number");
-
+//const btn = document.querySelector('.btn-register');
 
 function functions(){
   discOptions()
   functionOpen()
   functionClose()
-  
 }
 functions();
 

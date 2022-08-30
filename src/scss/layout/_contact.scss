@@ -1,7 +1,9 @@
 .section-contact{
-    display: flex;
-    justify-content: center;
+    display: grid;
+    justify-items: center;
     align-items: center;
+    gap: 5rem;
+    row-gap: 0;
     min-height: 100vh;
     padding: 20px;
     width: 100%;
@@ -12,9 +14,12 @@
     background-position: right;
     
     @include tablet{
+        display: flex;
         background-size: cover;
         background-position: top;
         flex-direction: column;
+        gap: 0;
+        justify-content: space-evenly
     }
     &::after{
         content: "";
@@ -32,6 +37,81 @@
             content: none;
         }
     }
+    .container-singin{
+        z-index: 1;
+        grid-row: 2;
+        grid-column: 1 / 3;
+        @include background;
+        padding: 0rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2{
+            font-size: 36px;
+            text-transform: uppercase;
+            margin: 0;
+            font-weight: bold;
+            @include tablet{
+                font-size: 2rem;
+            }
+        }
+
+    }
+    .main_div {
+        position: relative;
+        width: auto;
+        z-index: 1;
+        margin: 1rem;
+       }
+       
+       .main_div::before {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: transparent;
+        top: -7px;
+        left: -7px;
+        z-index: -5;
+        border-top: 3px solid $newblanco;
+        border-left: 3px solid $newblanco;
+        transition: 0.5s;
+       }
+       
+       .main_div::after {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: transparent;
+        bottom: -7px;
+        right: -7px;
+        z-index: -5;
+        border-right: 3px solid $newblanco;
+        border-bottom: 3px solid $newblanco;
+        transition: 0.5s;
+       }
+       
+       .main_div:hover::before {
+        width: 100%;
+        height: 100%;
+       }
+       
+       .main_div:hover::after {
+        width: 100%;
+        height: 100%;
+       }
+       
+       .main_div button {
+        padding: 2rem 4rem;
+        font-size: 2rem;
+        @include background;
+        background: rgba(0, 0, 0, 0.4);
+        color: #fff;
+        border-radius: 0;
+        cursor: pointer;
+        font-family: inherit;
+       }
 
 }
 .container-contact{
@@ -101,7 +181,8 @@
     height:  40px;
     color: #fff;
 }
-.container-contact .row100 .col .inputBox input{
+.container-contact .row100 .col .inputBox input,
+.container-contact .row100 .col .inputBox textarea{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -127,7 +208,9 @@
 }
 
 .container-contact .row100 .col .inputBox input:focus + .text-contact,
-.container-contact .row100 .col .inputBox input:valid + .text-contact{
+.container-contact .row100 .col .inputBox input:valid + .text-contact,
+.container-contact .row100 .col .inputBox textarea:focus + .text-contact,
+.container-contact .row100 .col .inputBox textarea:valid + .text-contact{
     top: -35px;
     left: -10px;
 }
@@ -151,6 +234,10 @@
     width: 100%;
     height: 100px;
     padding: 10px 0;
+}
+.container-contact .row100 .col .inputBox textarea:focus ~ .line-contact,
+.container-contact .row100 .col .inputBox textarea:valid ~ .line-contact{
+    height: 100%;
 }
 
 .container-contact .row100 .col input[type="submit"]{
