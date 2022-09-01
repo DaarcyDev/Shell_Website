@@ -1,4 +1,10 @@
-<?php include "includes/templates/circleMenu.php" ?>
+<?php
+
+  require 'includes/funciones.php';
+
+  incluirTemplate('circleMenu');
+
+?>
 
 <div class="container">
   <!-- <img class="disc-img1" src="build/img/IFILC-1.webp" /> -->
@@ -108,12 +114,12 @@
 
         </div>
       </div>
-      <?php include "includes/templates/download.php" ?>
+      <?php incluirTemplate('download'); ?>
       <div class="button-cont">
         <a href="news.php" class="button"><span class="button_top"> Back</span></a>
       </div>
     </div>
   </div>
 </div>
-<?php include "includes/templates/nav.php" ?>
-<?php include "includes/templates/footer.php" ?>
+<?php incluirTemplate('nav'); ?>
+<?php incluirTemplate('footer'); ?>

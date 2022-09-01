@@ -1,4 +1,10 @@
-<?php include "includes/templates/circleMenu.php" ?>
+<?php
+
+  require 'includes/funciones.php';
+
+  incluirTemplate('circleMenu');
+
+?>
 <div class="container">
   <div id="about" class="about2">
     <div class="content-about2">
@@ -32,11 +38,11 @@
       </div>
       <div class="content-img-concha">
       </div>
-      <?php include "includes/templates/download.php" ?>
-      <?php include "includes/templates/button-back.php" ?>
+      <?php incluirTemplate('download'); ?>
+      <?php incluirTemplate('button-back'); ?>
     </div>
   </div>
 </div>
-<?php include "includes/templates/nav.php" ?>
+<?php incluirTemplate('nav'); ?>
 <script src="build/js/gallery.js"></script>
-<?php include "includes/templates/footer.php" ?>
+<?php incluirTemplate('footer'); ?>

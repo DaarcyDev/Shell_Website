@@ -1,4 +1,10 @@
-<?php include "includes/templates/circleMenu.php" ?>
+<?php
+
+  require 'includes/funciones.php';
+
+  incluirTemplate('circleMenu');
+
+?>
 
 
 <div class="container">
@@ -304,5 +310,5 @@
   </div>
 </div>
 
-<?php include "includes/templates/nav.php" ?>
-<?php include "includes/templates/footer.php" ?>
+<?php incluirTemplate('nav'); ?>
+<?php incluirTemplate('footer'); ?>
