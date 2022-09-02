@@ -1,0 +1,93 @@
+.container {
+    display: inherit;
+    
+    .crud {
+        background-color: $azulChido;
+        width: 100%;
+        height: 100vh;
+        position: relative;
+
+        .content-crud {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &::before {
+                content: '';
+                background-image: url("/build/img/DP-1-min.webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: bottom;
+                position: absolute;
+                bottom: 0%;
+                left: -15%;
+                width: 50%;
+                height: 100vh;
+                z-index: 1;
+            }
+            .crud-content-text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+                .title-crud {
+                    width: 100vw;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: cover;
+                    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/build/img/el-5to-cover-1000-comp.webp);
+                    height: 45rem;
+                    box-shadow: 0px -80px 43px -53px rgba(0, 0, 0, 0.75) inset;
+                    z-index: 0;
+
+                    h2 {
+                        //margin: 0;
+                        align-items: center;
+                        color: $blanco;
+                        display: flex;
+                        z-index: 2;
+                        text-transform: uppercase;
+                        justify-content: center;
+                        font-weight: bold;
+                        font-size: 7rem;
+
+                        @include tablet {
+                            font-size: 5rem;
+                            margin-top: 10rem;
+                        }
+                    }
+                }
+
+                .buttons-crud {
+                    text-align: center;
+                    color: $blanco;
+                    display: flex;
+                    z-index: 1;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 70%;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill ,minmax(50rem, 1fr));
+                    @include background;
+                    gap: 5rem;
+                    margin-top: -20rem;
+                    padding: 3rem;
+
+                    @include tablet {
+                        width: 90%;
+                        padding: 1rem;
+                    }
+                    .lineas_cont{
+                        background: rgba(255, 255, 255, 0.1);
+                        .widget-curso{
+                            justify-content: center;
+                        }  
+                    }
+                    
+                }
+            }
+        }
+    }
+}
