@@ -1,19 +1,18 @@
 <?php
-
   require '../../includes/funciones.php';
 
   incluirTemplate('circleMenu');
 
 ?>
 <div class="container">
-  <div id="about" class="create">
-    <div class="content-create">
-      <div class="create-content-text">
-        <div class="title-create">
-          <h2>create</h2>
+  <div id="about" class="crud">
+    <div class="content-crud discAdmin">
+      <div class="crud-content-text">
+        <div class="title-crud">
+          <h2>Discography Admin</h2>
         </div>
-        <div class="buttons-create">
-          <a href="newsInfo.php">
+        <div class="buttons-crud">
+          <a href="/admin/properties/discAdminCrud/create.php">
               <ul class="lineas_cont">
                 <span class="linea"></span>
                 <span class="linea"></span>
@@ -24,7 +23,7 @@
                 </li>
               </ul>
             </a>
-            <a href="newsInfo.php">
+            <a href="/admin/properties/discAdminCrud/read.php">
               <ul class="lineas_cont">
                 <span class="linea"></span>
                 <span class="linea"></span>
@@ -35,7 +34,7 @@
                 </li>
               </ul>
             </a>
-            <a href="newsInfo.php">
+            <a href="/admin/properties/discAdminCrud/update.php">
               <ul class="lineas_cont">
                 <span class="linea"></span>
                 <span class="linea"></span>
@@ -46,7 +45,7 @@
                 </li>
               </ul>
             </a>
-            <a href="newsInfo.php">
+            <a href="/admin/properties/discAdminCrud/delete.php">
               <ul class="lineas_cont">
                 <span class="linea"></span>
                 <span class="linea"></span>
@@ -59,10 +58,11 @@
             </a>
         </div>
       </div>
-      <?php incluirTemplate('button-back'); ?>
+      <div class="button-cont">
+        <a href="/admin/indexAdmin.php" class="button"><span class="button_top"> Back</span></a>
+      </div>
     </div>
   </div>
 </div>
 <?php incluirTemplate('nav'); ?>
-<script src="build/js/gallery.js"></script>
 <?php incluirTemplate('footer'); ?>

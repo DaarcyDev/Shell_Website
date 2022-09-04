@@ -4,15 +4,12 @@
     .crud {
         background-color: $azulChido;
         width: 100%;
-        height: 100vh;
+        height: 100%;
         position: relative;
-
-        .content-crud {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
+        @include tablet{
+            height: 100%;
+        }
+        .crud{
             &::before {
                 content: '';
                 background-image: url("/build/img/DP-1-min.webp");
@@ -21,11 +18,97 @@
                 background-position: bottom;
                 position: absolute;
                 bottom: 0%;
+                left: 0%;
+                width: 50%;
+                height: 100vh;
+                z-index: 1;
+            }
+        }
+
+        .merchAdmin{
+            &::before {
+                content: '';
+                background-image: url("/build/img/cmsRC8.1.1-min.webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: bottom;
+                position: absolute;
+                bottom: 0%;
+                left: 0%;
+                width: 50%;
+                height: 100vh;
+                z-index: 1;
+            }
+        }
+        .newsAdmin{
+            &::before {
+                content: '';
+                background-image: url("/build/img/4-min.webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: bottom;
+                position: absolute;
+                bottom: 0%;
+                left: 0%;
+                width: 50%;
+                height: 100vh;
+                z-index: 1;
+            }
+        }
+        .aboutAdmin{
+            
+            &::before {
+                content: '';
+                background-image: url("/build/img/cmsRC7.05.(1).webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: top;
+                position: absolute;
+                bottom: 0%;
                 left: -15%;
                 width: 50%;
                 height: 100vh;
                 z-index: 1;
             }
+
+            &::after {
+                content: '';
+                background-image: url("/build/img/cmsRC7.05.(2).webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: bottom;
+                position: absolute;
+                bottom: 0;
+                right: -15%;
+                width: 50%;
+                height: 100vh;
+                z-index: 0;
+            }
+        }
+        .discAdmin{
+            &::before {
+                content: '';
+                background-image: url("/build/img/IFILC-1.webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: bottom;
+                position: absolute;
+                bottom: 0%;
+                left: -10%;
+                width: 50%;
+                height: 100vh;
+                z-index: 1;
+            }
+        }
+
+        .content-crud {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+
+            
             .crud-content-text {
                 display: flex;
                 flex-direction: column;
@@ -69,15 +152,17 @@
                     justify-content: center;
                     width: 70%;
                     display: grid;
-                    grid-template-columns: repeat(auto-fill ,minmax(50rem, 1fr));
+                    grid-template-columns: 1fr 1fr;
                     @include background;
                     gap: 5rem;
                     margin-top: -20rem;
                     padding: 3rem;
-
+                    height: 60rem;
+                    align-items: center;
                     @include tablet {
                         width: 90%;
                         padding: 1rem;
+                        grid-template-columns: 1fr ;
                     }
                     .lineas_cont{
                         background: rgba(255, 255, 255, 0.1);
@@ -86,6 +171,64 @@
                         }  
                     }
                     
+                }
+                .form-create{
+                    @include background;
+                    margin: 5rem;
+                    margin-top: -20rem;
+                    width: 80%;
+                    max-width: 100rem;
+                    z-index: 1;
+                    padding: 5rem;
+                    text-align: start;
+                    .radio{
+                        display: flex;
+                        label{
+                            margin:0 1rem;
+                        }
+                    }
+                    fieldset{
+                        margin: 2rem 0;
+                    }
+                    p{
+                        font-size: 1.4rem;
+                        color: $grisOscuro;
+                        margin: 2rem 0 0 0;
+                    }
+                    legend{
+                        font-size: 2rem;
+                        color: $blanco ;
+                    }
+                    label{
+                        font-weight: $bold;
+                        text-transform: uppercase;
+                        display: block;
+                        color: $blanco;
+                    }
+                    input:not([type="submit"]),
+                    textarea,
+                    select{
+                        padding: 1rem;
+                        display: block;
+                        width: 100%;
+                        background-color: $blanco;
+                        border: 1px solid $gris;
+                        border-radius: 1rem;
+                        margin-bottom: 2rem;
+                    }
+                    textarea{
+                        height: 20rem;
+                    }
+                    .forma-contacto{
+                        max-width: 40rem;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+                    input[type="radio"]{
+                        margin: 0;
+                        width: auto ;
+                    }
                 }
             }
         }
