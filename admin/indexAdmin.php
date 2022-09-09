@@ -1,6 +1,8 @@
 <?php
+  //Data Base
+  require '../includes/config/database.php';
+  $db = conectarDB();
   require '../includes/funciones.php';
-
   incluirTemplate('circleMenu');
 
 ?>

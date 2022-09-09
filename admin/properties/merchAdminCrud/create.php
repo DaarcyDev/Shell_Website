@@ -20,31 +20,9 @@ incluirTemplate('circleMenu');
                             <label for="image">Image</label>
                             <input type="file" id="image" accept="image/jpeg, image/png ">
                             <label for="price">Price</label>
-                            <input type="text" id="price" placeholder="Price">
+                            <input type="number" id="price" placeholder="Price" min="1">
                         </fieldset>
-                        <fieldset>
-                            <legend>Specific Information</legend>
-                            <label for="color">Colors</label>
-                            <input type="text" id="color" placeholder="Color">
-                            <label for="size">Sizes</label>
-                            <div class="radio">
-                                <input type="radio" id="s"  value="s">
-                                <label for="s">S</label>
-                            </div>
-                            <div class="radio">
-                                <input type="radio" id="m"  value="m">
-                                <label for="m">M</label>
-                            </div>
-                            <div class="radio">
-                                <input type="radio" id="l"  value="l">
-                                <label for="l">L</label>
-                            </div>
-                            <div class="radio">
-                                <input type="radio" id="xl"  value="xl">
-                                <label for="xl">XL</label>
-                            </div>
-                        </fieldset>
-
+                        <input type="submit" value="Crear Propiedad"  class="button_accept">
                     </form>
                 </div>
             </div>

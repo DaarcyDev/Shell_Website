@@ -40,9 +40,8 @@ incluirTemplate('circleMenu');
                             <textarea id="lyric" placeholder="Lyric"></textarea>
                             <label for="explain">Explain</label>
                             <textarea id="explain" placeholder="Explain"></textarea>
-                            
-                            
                         </fieldset>
+                        <input type="submit" value="Crear Propiedad"  class="button_accept">
                     </form>
                 </div>
             </div>

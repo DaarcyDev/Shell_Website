@@ -24,18 +24,17 @@ incluirTemplate('circleMenu');
                             <label for="date">Date</label>
                             <input type="date" id="date" >
                             <label for="fire">Fire</label>
-                            <input type="number" id="fire" placeholder="Fire">
+                            <input type="number" id="fire" placeholder="Fire" min="1">
                             <label for="messages">Number of Messages</label>
-                            <input type="number" id="messages" placeholder="Number of Messages">
+                            <input type="number" id="messages" placeholder="Number of Messages" min="1">
                             
                         </fieldset>
                         <fieldset>
                             <legend>Specific Information</legend>
                             <label for="descriptionComplete">Description Complete</label>
                             <textarea id="descriptionComplete" placeholder="Description Complete"></textarea>
-                            
-                            
                         </fieldset>
+                        <input type="submit" value="Crear Propiedad"  class="button_accept">
                     </form>
                 </div>
             </div>
