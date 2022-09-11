@@ -1,6 +1,5 @@
 .container {
     display: inherit;
-    
     .crud {
         background-color: $azulChido;
         width: 100%;
@@ -100,6 +99,22 @@
                 z-index: 1;
             }
         }
+        .userAdmin{
+            &::before {
+                content: '';
+                background-image: url("/build/img/cmsRC11.2.webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: bottom;
+                position: absolute;
+                bottom: 0%;
+                right: 0%;
+                width: 60%;
+                height: 100vh;
+                z-index: 1;
+            }
+        }
+
 
         .content-crud {
             width: 100%;
@@ -187,6 +202,23 @@
                             margin:0 1rem;
                         }
                     }
+                    .alert{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        .errorAlert{
+                            border-radius: .5rem;
+                            font-weight: $bold;
+                            font-size: 2rem;
+                            border: 0.5px solid rgba(205, 205, 205, 0.5);;
+                            background: $rojo;
+                            margin: 1rem;
+                            text-align: center;
+                            width: 50%;
+                            color: $blanco;
+                        }
+                    }
+                    
                     fieldset{
                         margin: 2rem 0;
                     }
@@ -239,5 +271,8 @@
                 }
             }
         }
+    }
+    .user{
+        height: 100vh;
     }
 }
