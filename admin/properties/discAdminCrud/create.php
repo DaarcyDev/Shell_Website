@@ -102,7 +102,7 @@ incluirTemplate('circleMenu');
                         <fieldset>
                             <legend>General Information</legend>
                             <label for="Title">Title</label>
-                            <input type="text" id="Title" placeholder="Title" name="title"  value="<?php $title ?>">
+                            <input type="text" id="Title" placeholder="Title" name="title"  value="<?php echo $title ?>">
                             <label for="image">Image</label>
                             <input type="file" id="image" accept="image/jpeg, image/png ">
                             <label for="image">Select a Option</label>

@@ -76,11 +76,11 @@ incluirTemplate('circleMenu');
                         <fieldset>
                             <legend>General Information</legend>
                             <label for="Title">Title</label>
-                            <input type="text" id="Title" placeholder="Title" name="title">
+                            <input type="text" id="Title" placeholder="Title" name="title" value="<?php echo $title ?>">
                             <label for="image">Image</label>
                             <input type="file" id="image" accept="image/jpeg, image/png" name="image">
                             <label for="price">Price</label>
-                            <input type="number" id="price" placeholder="Price" min="1" name="price">
+                            <input type="number" id="price" placeholder="Price" min="1" name="price" value="<?php echo $price ?>">
                         </fieldset>
                         <fieldset>
                             <legend>Admin</legend>
