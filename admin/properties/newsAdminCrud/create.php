@@ -19,18 +19,18 @@ $fire = "";
 $messages = "";
 $descriptionComplete = "";
 $admin = "";
-
+ 
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-
-    $title = $_POST['title'];
-    //$image = $_POST['image'];
-    $description = $_POST['description'];
-    $fire = $_POST['fire'];
-    $messages = $_POST['messages'];
-    $descriptionComplete = $_POST['descriptionComplete'];
-    $admin = $_POST['admin'];
+    //mysqli_real_escape_string es para sanitizar datos y validar datos
+    $title = mysqli_real_escape_string($db, $_POST['title']);
+    //$image = mysqli_real_escape_string($db, $_POST['image']);
+    $description = mysqli_real_escape_string($db, $_POST['description']);
+    $fire = mysqli_real_escape_string($db, $_POST['fire']);
+    $messages = mysqli_real_escape_string($db, $_POST['messages']);
+    $descriptionComplete = mysqli_real_escape_string($db, $_POST['descriptionComplete']);
+    $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
     if (!$title) {
         $errores[] = "Debes añadir un titulo";
