@@ -1,4 +1,82 @@
 <?php
+require '../../../includes/config/database.php';
+$db = conectarDB();
+
+$query1 = "SELECT * FROM register";
+$result1 = mysqli_query($db, $query1);
+
+$errores = [];
+
+$title = "";
+$image = "";
+$singleAlbum = "";
+$date = date("Y/m/d");
+$ytlink = "";
+$spotifylink = "";
+$lyric = "";
+$explain = "";
+$admin = "";
+
+//ejecutar e, codigo despues de que el usuario envia el formulario 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+
+    $title = $_POST['title'];
+    //$image = $_POST['image'];
+    $singleAlbum = $_POST['option'];
+    //$date = $_POST['date'];
+    $ytlink = $_POST['ytlink'];
+    $spotifylink = $_POST['spotifylink'];
+    $lyric = $_POST['lyric'];
+    $explain = $_POST['explain'];
+    $admin = $_POST['admin'];
+
+    if (!$title) {
+        $errores[] = "Debes añadir un titulo";
+    }
+    // if (!$image) {
+    //     $errores[] = "Debes añadir una imagen";
+    // }
+    if (!$singleAlbum) {
+        $errores[] = "Debes seleccionar una opcion";
+    }
+    if (!$ytlink) {
+        $errores[] = "Debes añadir un enlace de Youtube";
+    } 
+    if (!$spotifylink) {
+        $errores[] = "Debes añadir un enlace de spotify";
+    } 
+    if ($lyric) {
+        if (strlen($lyric) < 50) {
+            $errores[] = "Debes añadir una letra de mas de 50 caracteres";
+        }
+    } else {
+        $errores[] = "Debes añadir la letra de la cancion";
+    }
+    if ($explain) {
+        if (strlen($explain) < 50) {
+            $errores[] = "Debes añadir una explicacion de mas de 50 carcteres";
+        }
+    } else {
+        $errores[] = "Debes añadir una explicacion de la cancion";
+    }
+    if (!$admin) {
+        $errores[] = "Debes seleccionar un administrador";
+    }
+    if (empty($errores)) {
+        $query = "INSERT INTO discography (`Title`, `Image`, `SingleAlbum`, `Date`, `YtLink`, `SpotifyLink`, `Lyric`, `Explain`, `admin_idadmin`) 
+                    VALUES ('$title','', '$singleAlbum', '$date', '$ytlink', '$spotifylink', '$lyric', '$explain', '$admin')";
+        echo $query;
+        $result = mysqli_query($db, $query);
+        
+        if($result){
+            //redireeccionar
+            header("Location:/admin/properties/discAdmin.php");
+        }
+    }
+
+}
+
 require '../../../includes/funciones.php';
 
 incluirTemplate('circleMenu');
@@ -12,36 +90,50 @@ incluirTemplate('circleMenu');
                     <h2>Discography Create</h2>
                 </div>
                 <div class="form-create">
-                    <form action="" class="formulario ">
+                    <?php foreach ($errores as $error) : ?>
+                        <div class="alert">
+                            <div class="errorAlert">
+                                <?php echo $error; ?>
+                            </div>
+                        </div>
+
+                    <?php endforeach; ?>
+                    <form action="/admin/properties/discAdminCrud/create.php" class="formulario" method="POST">
                         <fieldset>
                             <legend>General Information</legend>
                             <label for="Title">Title</label>
-                            <input type="text" id="Title" placeholder="Title">
+                            <input type="text" id="Title" placeholder="Title" name="title"  value="<?php $title ?>">
                             <label for="image">Image</label>
                             <input type="file" id="image" accept="image/jpeg, image/png ">
-                            <div class="radio">
-                                <input type="radio" id="single" name="option" value="single">
-                                <label for="single">single</label>
-                            </div>
-                            <div class="radio">
-                                <input type="radio" id="album" name="option" value="album">
-                                <label for="album">album</label>
-                            </div>
+                            <label for="image">Select a Option</label>
+                            <select name="option">
+                                <option value="value">Single</option>
+                                <option value="album">Album</option>
+                            </select>
                         </fieldset>
                         <fieldset>
                             <legend>Specific Information</legend>
                             <label for="date">Date</label>
-                            <input type="date" id="date">
+                            <input type="text" id="date" value="<?php echo $date; ?>" disabled>
                             <label for="ytlink">Youtube Link</label>
-                            <textarea id="ytlink" placeholder="Youtube Link"></textarea>
+                            <textarea id="ytlink" placeholder="Youtube Link" name="ytlink"> <?php echo $ytlink ?></textarea>
                             <label for="spotilink">Spotify Link</label>
-                            <textarea id="spotilink" placeholder="Spotify Link"></textarea>
+                            <textarea id="spotilink" placeholder="Spotify Link" name="spotifylink"> <?php echo $spotifylink ?></textarea>
                             <label for="lyric">Lyric</label>
-                            <textarea id="lyric" placeholder="Lyric"></textarea>
+                            <textarea id="lyric" placeholder="Lyric" name="lyric"><?php echo $lyric ?></textarea>
                             <label for="explain">Explain</label>
-                            <textarea id="explain" placeholder="Explain"></textarea>
+                            <textarea id="explain" placeholder="Explain" name="explain"><?php echo $explain ?></textarea>
                         </fieldset>
-                        <input type="submit" value="Crear Propiedad"  class="button_accept">
+                        <fieldset>
+                            <legend>Admin</legend>
+                            <select name="admin">
+                                <option value="">-- SELECT --</option>
+                                <?php while($row = mysqli_fetch_assoc($result1)): ?>
+                                    <option <?php echo $admin === $row['idRegister'] ? 'selected' : ''; ?> value="<?php echo $row["idRegister"] ?>"><?php echo $row["UserName"] ?></option>
+                                <?php endwhile; ?>
+                            </select>
+                        </fieldset>
+                        <input type="submit" value="Crear Propiedad" class="button_accept">
                     </form>
                 </div>
             </div>
