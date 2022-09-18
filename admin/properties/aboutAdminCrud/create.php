@@ -65,7 +65,7 @@ incluirTemplate('circleMenu');
         <div class="content-crud aboutAdmin">
             <div class="crud-content-text">
                 <div class="title-crud">
-                    <h2>About Crear</h2>
+                    <h2>About Create</h2>
                 </div>
                 <div class="form-create">
                     <?php foreach ($errores as $error) : ?>

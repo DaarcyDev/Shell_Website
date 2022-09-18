@@ -8,7 +8,9 @@ $result1 = mysqli_query($db, $query1);
 //arreglo con mensajes de errores
 $errores = [];
 
-
+// echo "<pre>";
+// var_dump($_FILES);
+// echo "</pre>";
 $title = "";
 $image = "";
 $price = "";
@@ -18,18 +20,24 @@ $admin = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    $title = $_POST['title'];
-    $image = $_POST['image'];
-    $price = $_POST['price'];
-    $admin = $_POST['admin'];
+    $title = mysqli_real_escape_string($db,  $_POST['title'] );
+    //usamos el $_FILES para poder ver archivos que vienen del formuario
+    $image = $_FILES['image'];
+    $price = mysqli_real_escape_string($db, $_POST['price']);
+    $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
 
     if (!$title) {
         $errores[] = "Debes añadir un titulo";
     }
-    // if (!$image) {
-    //     $errores[] = "Debes seleccionar un administrador";
-    // }
+    if (!$image['name'] || $image['error']) {
+        $errores[] = "Debes añadir una imagen";
+    }
+    //validar imagen por tamaño
+    $size = 1000*1000;
+    if($image['size']> $size){
+        $errores[] = "La imagen es muy pesada";
+    }
     if (!$price) {
         $errores[] = "Debes añadir un precio";
     }
@@ -40,7 +48,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //revisar que el arreglo este vacio
     if (empty($errores)) {
-        $query = "INSERT INTO merch (`Title`, `Image`, `Price`, `admin_idadmin`) VALUES ('$title', '', '$price', '$admin')";
+
+        //crear carpeta 
+        $imageFolder = "../../../images/";
+        //is_dir se utiliza para comprobar si el archivo especificado es un directorio o no.
+        if(!is_dir($imageFolder)){
+            //mkdir es para crear carpetas
+            mkdir($imageFolder);
+        }
+
+        //generamos un nombre al archivo
+        $imageName = md5(uniqid(rand(),true)).".jpg";
+
+        //subir la imagen a la carpeta
+        move_uploaded_file($image['tmp_name'],$imageFolder . $imageName);
+        
+        $query = "INSERT INTO merch (`Title`, `Image`, `Price`, `admin_idadmin`) 
+                    VALUES ('$title', '$imageName', '$price', '$admin')";
 
         $result = mysqli_query($db, $query);
 
@@ -72,13 +96,14 @@ incluirTemplate('circleMenu');
                         </div>
 
                     <?php endforeach; ?>
-                    <form action="/admin/properties/merchAdminCrud/create.php" class="formulario" method="POST">
+                    <!-- es necesario poner enctype="multipart/form-data al formulario parar poner imagenes -->
+                    <form action="/admin/properties/merchAdminCrud/create.php" class="formulario" method="POST" enctype="multipart/form-data">
                         <fieldset>
                             <legend>General Information</legend>
                             <label for="Title">Title</label>
                             <input type="text" id="Title" placeholder="Title" name="title" value="<?php echo $title ?>">
                             <label for="image">Image</label>
-                            <input type="file" id="image" accept="image/jpeg, image/png" name="image">
+                            <input type="file" id="image" accept="image/jpeg, image/png " name="image">
                             <label for="price">Price</label>
                             <input type="number" id="price" placeholder="Price" min="1" name="price" value="<?php echo $price ?>">
                         </fieldset>

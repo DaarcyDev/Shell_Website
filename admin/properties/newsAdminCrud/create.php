@@ -28,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // echo "</pre>";
 
 
-    echo "<pre>";
-    var_dump($_FILES);
-    echo "</pre>";
+    // echo "<pre>";
+    // var_dump($_FILES);
+    // echo "</pre>";
 
     //mysqli_real_escape_string es para sanitizar datos y validar datos
     $title = mysqli_real_escape_string($db, $_POST['title']);

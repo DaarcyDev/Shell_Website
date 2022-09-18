@@ -6,7 +6,9 @@ $query1 = "SELECT * FROM register";
 $result1 = mysqli_query($db, $query1);
 
 $errores = [];
-
+// echo "<pre>";
+// var_dump($_POST);
+// echo "</pre>";
 $title = "";
 $image = "";
 $singleAlbum = "";
@@ -17,12 +19,13 @@ $lyric = "";
 $explain = "";
 $admin = "";
 
+
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     $title = $_POST['title'];
-    //$image = $_POST['image'];
+    $image = $_FILES['image'];
     $singleAlbum = $_POST['option'];
     //$date = $_POST['date'];
     $ytlink = $_POST['ytlink'];
@@ -34,9 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$title) {
         $errores[] = "Debes añadir un titulo";
     }
-    // if (!$image) {
-    //     $errores[] = "Debes añadir una imagen";
-    // }
+    if (!$image['name'] || $image['error']) {
+        $errores[] = "Debes añadir una imagen";
+    }
+    //validar imagen por tamaño
+    $size = 1000*1000;
+    if($image['size']> $size){
+        $errores[] = "La imagen es muy pesada";
+    }
     if (!$singleAlbum) {
         $errores[] = "Debes seleccionar una opcion";
     }
@@ -64,8 +72,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errores[] = "Debes seleccionar un administrador";
     }
     if (empty($errores)) {
+
+        //crear carpeta 
+        $imageFolder = "../../../images/";
+        //is_dir se utiliza para comprobar si el archivo especificado es un directorio o no.
+        if(!is_dir($imageFolder)){
+            //mkdir es para crear carpetas
+            mkdir($imageFolder);
+        }
+        
+        //generamos un nombre al archivo
+        $imageName = md5(uniqid(rand(),true)).".jpg";
+        
+        //subir la imagen a la carpeta
+        move_uploaded_file($image['tmp_name'],$imageFolder . $imageName);
+        
         $query = "INSERT INTO discography (`Title`, `Image`, `SingleAlbum`, `Date`, `YtLink`, `SpotifyLink`, `Lyric`, `Explain`, `admin_idadmin`) 
-                    VALUES ('$title','', '$singleAlbum', '$date', '$ytlink', '$spotifylink', '$lyric', '$explain', '$admin')";
+                    VALUES ('$title','$imageName', '$singleAlbum', '$date', '$ytlink', '$spotifylink', '$lyric', '$explain', '$admin')";
         echo $query;
         $result = mysqli_query($db, $query);
         
@@ -98,16 +121,16 @@ incluirTemplate('circleMenu');
                         </div>
 
                     <?php endforeach; ?>
-                    <form action="/admin/properties/discAdminCrud/create.php" class="formulario" method="POST">
+                    <form action="/admin/properties/discAdminCrud/create.php" class="formulario" method="POST" enctype="multipart/form-data">
                         <fieldset>
                             <legend>General Information</legend>
                             <label for="Title">Title</label>
                             <input type="text" id="Title" placeholder="Title" name="title"  value="<?php echo $title ?>">
                             <label for="image">Image</label>
-                            <input type="file" id="image" accept="image/jpeg, image/png ">
+                            <input type="file" id="image" accept="image/jpeg, image/png " name="image">
                             <label for="image">Select a Option</label>
                             <select name="option">
-                                <option value="value">Single</option>
+                                <option value="sigle">Single</option>
                                 <option value="album">Album</option>
                             </select>
                         </fieldset>
