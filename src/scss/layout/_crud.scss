@@ -209,22 +209,7 @@
                             margin:0 1rem;
                         }
                     }
-                    .alert{
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        .errorAlert{
-                            border-radius: .5rem;
-                            font-weight: $bold;
-                            font-size: 2rem;
-                            border: 0.5px solid rgba(205, 205, 205, 0.5);;
-                            background: $rojo;
-                            margin: 1rem;
-                            text-align: center;
-                            width: 50%;
-                            color: $blanco;
-                        }
-                    }
+                    
                     
                     fieldset{
                         margin: 2rem 0;
@@ -279,4 +264,248 @@
             }
         }
     }
+}
+.alert{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    .errorAlert{
+        border-radius: .5rem;
+        font-weight: $bold;
+        font-size: 2rem;
+        border: 0.5px solid rgba(205, 205, 205, 0.5);;
+        background: $rojo;
+        margin: 1rem;
+        text-align: center;
+        width: 50%;
+        color: $blanco;
+    }
+    .fineAlert{
+        border-radius: .5rem;
+        font-weight: $bold;
+        font-size: 2rem;
+        border: 0.5px solid rgba(205, 205, 205, 0.5);;
+        background: $verde;
+        margin: 1rem;
+        text-align: center;
+        width: 100%;
+        padding: 0 1rem;
+        color: $blanco;
+    }
+}
+.news2-crud {
+    background-color: $azulChido;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 70%;
+        z-index: 0;
+        background-image: url("/build/img/4-min.webp");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right;
+
+        @include desktopPlus {
+            background-position: bottom;
+        }
+    }
+
+    .content-news2-crud {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .news2-img1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20%;
+
+            @include tablet {
+                width: 60%;
+            }
+        }
+
+        .news2-content-text-crud {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            .title-news2-crud {
+                width: 100vw;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+                background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/build/img/el-5to-cover-1000-comp.webp);
+                height: 45rem;
+                box-shadow: 0px -80px 43px -53px rgba(0, 0, 0, 0.75) inset;
+                z-index: 0;
+
+                h2 {
+                    //margin: 0;
+                    align-items: center;
+                    color: $blanco;
+                    display: flex;
+                    z-index: 2;
+                    text-transform: uppercase;
+                    justify-content: center;
+                    font-weight: bold;
+                    font-size: 7rem;
+
+                    @include tablet {
+                        font-size: 5rem;
+                        margin-top: 10rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.contenido-principal-crud {
+    margin-top: -20rem;
+    @include background;
+
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+    }
+    .blog{
+        z-index: 1;
+    }
+
+    h3 {
+        color: $blanco;
+        text-align: start;
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .entrada-crud {
+        display: block;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+
+        .entrada-blog-crud {
+
+            min-height: 50rem;
+            position: relative;
+            @include background;
+            box-shadow: -2px 1px 22px 0px rgba(0, 0, 0, 1.75);
+            backdrop-filter: blur(10px)  brightness(.6);
+            padding: 1rem;
+            border-radius: .5rem;
+            margin: 1rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-width: 30rem;
+            .boton-entrada {
+                background-color: $blanco;
+                border: 1px solid rgba(205, 205, 205, 0.25);
+                color: $negro;
+                font-size: 1.5rem;
+                font-weight: $bold;
+                margin: 2rem;
+                padding: .5rem;
+                border-radius: .5rem;
+                text-align: center;
+                //position: absolute;
+            }
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(205, 205, 205, 0.5);
+                transform: skewY(345deg);
+                transition: 0.5s;
+            }
+
+            &:hover::before {
+                top: -70%;
+                transform: skewY(385deg);
+            }
+        }
+
+        .entrada-imagen-crud {
+            position: relative;
+            margin: 1rem 0;
+            display: flex;
+            justify-content: center;
+
+            img {
+                max-width: 100%;
+                transition: max-width 0.5s;
+            }
+        }
+    }
+}
+
+.entrada-info-crud {
+    position: relative;
+    color: $blanco;
+    font-size: 1.3rem;
+    height: 20rem;
+
+    .entrada-meta-crud {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.3rem;
+
+        .entrada-meta-izquierda-crud {
+            color: $blanco;
+        }
+
+        .entrada-meta-derecha-crud {
+            color: $gris;
+
+            .hot {
+                color: $blanco;
+            }
+        }
+    }
+
+    h4 {
+        font-size: 2.3rem;
+        margin: 0;
+    }
+
+    hr {
+        width: 60%;
+        background-color: $rosa;
+        margin: 0;
+        padding: 0;
+    }
+
+    p {
+        font-size: 1.3rem;
+        color: $gris;
+    }
+
+    .boton-entrada {
+        background-color: $rosa;
+        color: $negro;
+        font-size: 1.5rem;
+        font-weight: $bold;
+        padding: .5rem;
+        border-radius: .5rem;
+        right: 1rem;
+        bottom: 1rem;
+        //position: absolute;
+    }
+
 }

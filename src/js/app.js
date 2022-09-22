@@ -33,6 +33,8 @@ var swiper = new Swiper(".mySwiper", {
   loop:true
   
 });
+// function 
+
 function getDirection() {
   var windowWidth = window.innerWidth;
   var direction = windowWidth <= 768 ? 'horizontal' : 'vertical';
