@@ -24,15 +24,15 @@ $admin = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    $title = $_POST['title'];
-    $image = $_FILES['image'];
-    $singleAlbum = $_POST['option'];
-    //$date = $_POST['date'];
-    $ytlink = $_POST['ytlink'];
-    $spotifylink = $_POST['spotifylink'];
-    $lyric = $_POST['lyric'];
-    $explain = $_POST['explain'];
-    $admin = $_POST['admin'];
+    $title = mysqli_real_escape_string($db, $_POST['title']);
+    $image = mysqli_real_escape_string($db, $_FILES['image']);
+    $singleAlbum = mysqli_real_escape_string($db, $_POST['option']);
+    //$date = mysqli_real_escape_string($db, $_POST['date']);
+    $ytlink = mysqli_real_escape_string($db, $_POST['ytlink']);
+    $spotifylink = mysqli_real_escape_string($db, $_POST['spotifylink']);
+    $lyric = mysqli_real_escape_string($db, $_POST['lyric']);
+    $explain = mysqli_real_escape_string($db, $_POST['explain']);
+    $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
     if (!$title) {
         $errores[] = "Debes añadir un titulo";

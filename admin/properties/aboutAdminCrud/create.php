@@ -21,8 +21,8 @@ $admin ="";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    $description = $_POST['description'];
-    $admin = $_POST['admin'];
+    $description = mysqli_real_escape_string($db, $_POST['description']);
+    $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
     if ($description) {
         if (strlen($description) < 50) {
