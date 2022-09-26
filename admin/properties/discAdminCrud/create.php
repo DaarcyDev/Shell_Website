@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     $title = mysqli_real_escape_string($db, $_POST['title']);
-    $image = mysqli_real_escape_string($db, $_FILES['image']);
+    $image =  $_FILES['image'];
     $singleAlbum = mysqli_real_escape_string($db, $_POST['option']);
     //$date = mysqli_real_escape_string($db, $_POST['date']);
     $ytlink = mysqli_real_escape_string($db, $_POST['ytlink']);

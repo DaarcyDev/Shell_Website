@@ -21,7 +21,7 @@ incluirTemplate('circleMenu');
         <div class="content-discography2">
             <div class="discography2-content-text">
                 <div class="title-discography2">
-                    <h2>discography</h2>
+                    <h2>Discography Read</h2>
                 </div>
             </div>
 
@@ -29,7 +29,7 @@ incluirTemplate('circleMenu');
                 <div class="content-img-discography-singles " id="1">
                     <?php while ($propertys = mysqli_fetch_assoc($result)) : ?>
                         <div class="content-img lines lines">
-                            <a href="discographyProduct.php">
+                            <a href="#">
                                 <img class="img-discography" src="../../../images/<?php echo $propertys['Image'] ?>" />
                                 <ul>
                                     <span class="linea"></span>

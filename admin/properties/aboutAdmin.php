@@ -23,7 +23,7 @@
                 </li>
               </ul>
             </a>
-            <a href="/admin/properties/aboutAdmin.php">
+            <a href="/admin/properties/aboutAdminCrud/read.php">
               <ul class="lineas_cont">
                 <span class="linea"></span>
                 <span class="linea"></span>
@@ -34,7 +34,7 @@
                 </li>
               </ul>
             </a>
-            <a href="/admin/properties/discAdmin.php">
+            <a href="/admin/properties/aboutAdminCrud/update.php">
               <ul class="lineas_cont">
                 <span class="linea"></span>
                 <span class="linea"></span>
@@ -45,7 +45,7 @@
                 </li>
               </ul>
             </a>
-            <a href="/admin/properties/merchAdmin.php">
+            <a href="/admin/properties/aboutAdminCrud/delete.php">
               <ul class="lineas_cont">
                 <span class="linea"></span>
                 <span class="linea"></span>

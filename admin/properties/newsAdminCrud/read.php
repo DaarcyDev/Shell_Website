@@ -49,7 +49,7 @@ incluirTemplate('circleMenu');
                                          <?php echo $propertys['Description'] ?>
                                     </p>
                                 </div>
-                                <a href="newsInfo.php" class="boton-entrada">Leer Entrada</a>
+                                <a href="#" class="boton-entrada">Leer Entrada</a>
                             </div>
                             <?php endwhile; ?>
                         </article>
