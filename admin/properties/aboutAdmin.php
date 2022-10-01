@@ -1,65 +1,48 @@
 <?php
-  require '../../includes/funciones.php';
+//importar conexion de la base de dato
+require '../../includes/config/database.php';
+$db = conectarDB();
+//escribir el query
+$query = "SELECT * FROM about";
+// echo $query;
+$result = mysqli_query($db, $query);
+//consular la base de datos
 
-  incluirTemplate('circleMenu');
+require '../../includes/funciones.php';
+
+incluirTemplate('circleMenu');
 
 ?>
 <div class="container">
-  <div id="about" class="crud">
-    <div class="content-crud aboutAdmin">
-      <div class="crud-content-text">
-        <div class="title-crud">
-          <h2>About Admin</h2>
+  <div id="about" class="about2">
+    <div class="content-about2">
+      <div class="about2-content-text">
+        <div class="title-about2">
+          <h2>About Read</h2>
         </div>
-        <div class="buttons-crud">
-          <a href="/admin/properties/aboutAdminCrud/create.php">
-              <ul class="lineas_cont">
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <li class="widget-curso">
-                    <h2>Create</h2>
-                </li>
-              </ul>
-            </a>
-            <a href="/admin/properties/aboutAdminCrud/read.php">
-              <ul class="lineas_cont">
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <li class="widget-curso">
-                    <h2>Read</h2>
-                </li>
-              </ul>
-            </a>
-            <a href="/admin/properties/aboutAdminCrud/update.php">
-              <ul class="lineas_cont">
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <li class="widget-curso">
-                    <h2>Update</h2>
-                </li>
-              </ul>
-            </a>
-            <a href="/admin/properties/aboutAdminCrud/delete.php">
-              <ul class="lineas_cont">
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <li class="widget-curso">
-                    <h2>Delete</h2>
-                </li>
-              </ul>
-            </a>
+        <div class="container-all-crud">
+          <div class="button-cont create">
+            <a href="/admin/properties/aboutAdminCrud/creaate.php" class="button"><span class="button_top">Create</span></a>
+          </div>
+          <div class="content-about-info">
+            <?php while ($propertys = mysqli_fetch_assoc($result)) : ?>
+
+              <div class="text-about2">
+                <div class="button-cont create">
+                  <a href="/admin/properties/aboutAdminCrud/update.php" class="button"><span class="button_top">Update</span></a>
+                </div>
+                <p>
+                  <?php echo nl2br($propertys['Description']) ?>
+                </p>
+
+              </div>
+            <?php endwhile; ?>
+          </div>
+
         </div>
-      </div>
-      <div class="button-cont">
-        <a href="/admin/indexAdmin.php" class="button"><span class="button_top"> Back</span></a>
+        <div class="button-cont">
+          <a href="/admin/indexAdmin.php" class="button"><span class="button_top"> Back</span></a>
+        </div>
       </div>
     </div>
   </div>

@@ -1,68 +1,63 @@
 <?php
-  require '../../includes/funciones.php';
+//importar conexion de la base de dato
+require '../../includes/config/database.php';
+$db = conectarDB();
+//escribir el query
+$query = "SELECT * FROM discography";
+// echo $query;
+$result = mysqli_query($db, $query);
+//consular la base de datos
 
-  incluirTemplate('circleMenu');
+
+require '../../includes/funciones.php';
+
+incluirTemplate('circleMenu');
 
 ?>
 <div class="container">
-  <div id="about" class="crud">
-    <div class="content-crud discAdmin">
-      <div class="crud-content-text">
-        <div class="title-crud">
-          <h2>Discography Admin</h2>
+  <!-- <img class="disc-img1" src="build/img/IFILC-1.webp" /> -->
+
+  <div id="discography" class="discography2">
+    <div class="content-discography2">
+      <div class="discography2-content-text">
+        <div class="title-discography2">
+          <h2>Discography Read</h2>
         </div>
-        <div class="buttons-crud">
-          <a href="/admin/properties/discAdminCrud/create.php">
-              <ul class="lineas_cont">
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <li class="widget-curso">
-                    <h2>Create</h2>
-                </li>
-              </ul>
-            </a>
-            <a href="/admin/properties/discAdminCrud/read.php">
-              <ul class="lineas_cont">
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <li class="widget-curso">
-                    <h2>Read</h2>
-                </li>
-              </ul>
-            </a>
-            <a href="/admin/properties/discAdminCrud/update.php">
-              <ul class="lineas_cont">
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <li class="widget-curso">
-                    <h2>Update</h2>
-                </li>
-              </ul>
-            </a>
-            <a href="/admin/properties/discAdminCrud/delete.php">
-              <ul class="lineas_cont">
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <li class="widget-curso">
-                    <h2>Delete</h2>
-                </li>
-              </ul>
-            </a>
+      </div>
+
+      <div class="container-all-crud">
+        
+        <div class="button-cont">
+          <a href="/admin/properties/newsAdminCrud/create.php" class="button"><span class="button_top">Create</span></a>
         </div>
+        <div class="content-img-discography-singles " id="1">
+          <?php while ($propertys = mysqli_fetch_assoc($result)) : ?>
+            <div class="content-img lines lines">
+              <a href="#">
+                <img class="img-discography" src="../../../images/<?php echo $propertys['Image'] ?>" />
+                <ul>
+                  <span class="linea"></span>
+                  <span class="linea"></span>
+                  <span class="linea"></span>
+                  <span class="linea"></span>
+                  <h3><?php echo $propertys['Title'] ?></h3>
+                  <hr>
+                  <p>Digital <?php echo $propertys['SingleAlbum'] ?></p>
+                </ul>
+                <!-- <p>Digital single</p> -->
+              </a>
+            </div>
+          <?php endwhile; ?>
+        </div>
+        
       </div>
       <div class="button-cont">
-        <a href="/admin/indexAdmin.php" class="button"><span class="button_top"> Back</span></a>
-      </div>
+          <a href="/admin/indexAdmin.php" class="button"><span class="button_top"> Back</span></a>
+        </div>
     </div>
   </div>
 </div>
+<!-- cerramos conexion -->
+<?php mysqli_close($db) ?>
 <?php incluirTemplate('nav'); ?>
 <?php incluirTemplate('footer'); ?>

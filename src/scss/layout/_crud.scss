@@ -1,14 +1,17 @@
 .container {
     display: inherit;
+
     .crud {
         background-color: $azulChido;
         width: 100%;
         height: 100%;
         position: relative;
-        @include tablet{
+
+        @include tablet {
             height: 100%;
         }
-        .crud{
+
+        .crud {
             &::before {
                 content: '';
                 background-image: url("/build/img/DP-1-min.webp");
@@ -24,7 +27,7 @@
             }
         }
 
-        .merchAdmin{
+        .merchAdmin {
             &::before {
                 content: '';
                 background-image: url("/build/img/cmsRC8.1.1-min.webp");
@@ -39,7 +42,8 @@
                 z-index: 1;
             }
         }
-        .newsAdmin{
+
+        .newsAdmin {
             &::before {
                 content: '';
                 background-image: url("/build/img/4-min.webp");
@@ -54,8 +58,9 @@
                 z-index: 1;
             }
         }
-        .aboutAdmin{
-            
+
+        .aboutAdmin {
+
             &::before {
                 content: '';
                 background-image: url("/build/img/cmsRC7.05.(1).webp");
@@ -84,7 +89,8 @@
                 z-index: 0;
             }
         }
-        .discAdmin{
+
+        .discAdmin {
             &::before {
                 content: '';
                 background-image: url("/build/img/IFILC-1.webp");
@@ -99,7 +105,8 @@
                 z-index: 1;
             }
         }
-        .userAdmin{
+
+        .userAdmin {
             &::before {
                 content: '';
                 background-image: url("/build/img/cmsRC11.2.webp");
@@ -121,9 +128,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            
 
-            
+
+
             .crud-content-text {
                 display: flex;
                 flex-direction: column;
@@ -151,6 +158,7 @@
                         font-weight: bold;
                         font-size: 7rem;
                         z-index: 2;
+
                         @include tablet {
                             font-size: 5rem;
                             margin-top: 10rem;
@@ -175,20 +183,24 @@
                     height: auto;
                     min-height: 60rem;
                     align-items: center;
+
                     @include tablet {
                         width: 90%;
                         padding: 1rem;
-                        grid-template-columns: 1fr ;
+                        grid-template-columns: 1fr;
                     }
-                    .lineas_cont{
+
+                    .lineas_cont {
                         background: rgba(255, 255, 255, 0.1);
-                        .widget-curso{
+
+                        .widget-curso {
                             justify-content: center;
-                        }  
+                        }
                     }
-                    
+
                 }
-                .form-create{
+
+                .form-create {
                     @include background;
                     margin: 5rem;
                     margin-top: -20rem;
@@ -197,41 +209,48 @@
                     z-index: 1;
                     padding: 5rem;
                     text-align: start;
+
                     @include tablet {
                         margin: 1rem;
                         margin-top: -20rem;
                         width: 95%;
                         padding: 1rem;
                     }
-                    .radio{
+
+                    .radio {
                         display: flex;
-                        label{
-                            margin:0 1rem;
+
+                        label {
+                            margin: 0 1rem;
                         }
                     }
-                    
-                    
-                    fieldset{
+
+
+                    fieldset {
                         margin: 2rem 0;
                     }
-                    p{
+
+                    p {
                         font-size: 1.4rem;
                         color: $grisOscuro;
                         margin: 2rem 0 0 0;
                     }
-                    legend{
+
+                    legend {
                         font-size: 2rem;
                         color: $blanco ;
                     }
-                    label{
+
+                    label {
                         font-weight: $bold;
                         text-transform: uppercase;
                         display: block;
                         color: $blanco;
                     }
+
                     input:not([type="submit"]),
                     textarea,
-                    select{
+                    select {
                         padding: 1rem;
                         display: block;
                         width: 100%;
@@ -240,52 +259,61 @@
                         border-radius: 1rem;
                         margin-bottom: 2rem;
                     }
-                    textarea{
+
+                    textarea {
                         height: 20rem;
                     }
-                    .button_accept{
+
+                    .button_accept {
                         @include background;
                         color: $blanco;
                         padding: 2rem;
                         font-size: 2rem;
-                        cursor: pointer;   
+                        cursor: pointer;
                         margin-top: 2rem;
                         transition: background .2s ease-in-out;
-                        &:hover{
+
+                        &:hover {
                             transition: background .2s ease-in-out;
                             background: rgba(0, 0, 0, 0.5);
                         }
                     }
-                    input[type="radio"]{
+
+                    input[type="radio"] {
                         margin: 0;
-                        width: auto ;
+                        width: auto;
                     }
                 }
             }
         }
     }
 }
-.alert{
+
+.alert {
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
-    .errorAlert{
+
+    .errorAlert {
         border-radius: .5rem;
         font-weight: $bold;
         font-size: 2rem;
-        border: 0.5px solid rgba(205, 205, 205, 0.5);;
+        border: 0.5px solid rgba(205, 205, 205, 0.5);
+        ;
         background: $rojo;
         margin: 1rem;
         text-align: center;
         width: 50%;
         color: $blanco;
     }
-    .fineAlert{
+
+    .fineAlert {
         border-radius: .5rem;
         font-weight: $bold;
         font-size: 2rem;
-        border: 0.5px solid rgba(205, 205, 205, 0.5);;
+        border: 0.5px solid rgba(205, 205, 205, 0.5);
+        ;
         background: $verde;
         margin: 1rem;
         text-align: center;
@@ -294,6 +322,7 @@
         color: $blanco;
     }
 }
+
 .news2-crud {
     background-color: $azulChido;
     width: 100%;
@@ -372,15 +401,42 @@
     }
 }
 
+.container-all-crud {
+    z-index: 1;
+    width: 80%;
+    .content-img-discography-singles {
+        margin: 0rem auto !important;
+        z-index: 2;
+    }
+
+    .content-img-merch {
+        margin: 0rem auto !important;
+        z-index: 2;
+    }
+    .content-about-info{
+        margin: 0rem auto !important;
+        z-index: 2;
+        width: 80%;
+        .text-about2{
+            width: 100% !important;
+            margin: 0rem auto !important;
+        }
+    }
+}
+
+
 .contenido-principal-crud {
-    margin-top: -20rem;
+    margin-top: 0rem;
+    z-index: 1;
+
     @include background;
 
     @include tablet {
         display: flex;
         flex-direction: column;
     }
-    .blog{
+
+    .blog {
         z-index: 1;
     }
 
@@ -402,7 +458,7 @@
             position: relative;
             @include background;
             box-shadow: -2px 1px 22px 0px rgba(0, 0, 0, 1.75);
-            backdrop-filter: blur(10px)  brightness(.6);
+            backdrop-filter: blur(10px) brightness(.6);
             padding: 1rem;
             border-radius: .5rem;
             margin: 1rem;
@@ -410,18 +466,6 @@
             display: flex;
             flex-direction: column;
             min-width: 30rem;
-            .boton-entrada {
-                background-color: $blanco;
-                border: 1px solid rgba(205, 205, 205, 0.25);
-                color: $negro;
-                font-size: 1.5rem;
-                font-weight: $bold;
-                margin: 2rem;
-                padding: .5rem;
-                border-radius: .5rem;
-                text-align: center;
-                //position: absolute;
-            }
 
             &:before {
                 content: '';
@@ -453,6 +497,11 @@
             }
         }
     }
+}
+
+.optionsCrud {
+    display: flex;
+    flex-direction: column;
 }
 
 .entrada-info-crud {

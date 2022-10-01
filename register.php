@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
             <div class="button-cont">
-                <a href="user.php" class="button"><span class="button_top">Back</span></a>
+                <a href="/#contact" class="button"><span class="button_top">Back</span></a>
             </div>
         </div>
     </div>

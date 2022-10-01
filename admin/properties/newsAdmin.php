@@ -1,84 +1,76 @@
 <?php
-// lo que hace "?? null" es para asignarle un valor nulo
-$resultado = $_GET['resultado']?? null;
+//importar conexion de la base de dato
+require '../../includes/config/database.php';
+$db = conectarDB();
+//escribir el query
+$query = "SELECT * FROM news";
+// echo $query;
+$result = mysqli_query($db, $query);
+//consular la base de datos
+
 
 require '../../includes/funciones.php';
 
 incluirTemplate('circleMenu');
 
 ?>
+
 <div class="container">
-  <div id="about" class="crud">
-    <div class="content-crud newsAdmin">
-      <div class="crud-content-text">
-        <div class="title-crud">
-
-          <h2>News Admin</h2>
-
+  <div id="news" class="news2-crud">
+    <div class="content-news2-crud">
+      <div class="news2-content-text-crud">
+        <div class="title-news2-crud">
+          <h2>News Crud</h2>
         </div>
-
-
-        <div class="buttons-crud">
-          <a href="/admin/properties/newsAdminCrud/create.php">
-            <ul class="lineas_cont">
-              <span class="linea"></span>
-              <span class="linea"></span>
-              <span class="linea"></span>
-              <span class="linea"></span>
-              <li class="widget-curso">
-                <h2>Create</h2>
-              </li>
-            </ul>
-          </a>
-          <a href="/admin/properties/newsAdminCrud/read.php">
-            <ul class="lineas_cont">
-              <span class="linea"></span>
-              <span class="linea"></span>
-              <span class="linea"></span>
-              <span class="linea"></span>
-              <li class="widget-curso">
-                <h2>Read</h2>
-              </li>
-            </ul>
-          </a>
-          <a href="/admin/properties/newsAdminCrud/update.php">
-            <ul class="lineas_cont">
-              <span class="linea"></span>
-              <span class="linea"></span>
-              <span class="linea"></span>
-              <span class="linea"></span>
-              <li class="widget-curso">
-                <h2>Update</h2>
-              </li>
-            </ul>
-          </a>
-          <a href="/admin/properties/newsAdminCrud/delete.php">
-            <ul class="lineas_cont">
-              <span class="linea"></span>
-              <span class="linea"></span>
-              <span class="linea"></span>
-              <span class="linea"></span>
-              <li class="widget-curso">
-                <h2>Delete</h2>
-              </li>
-            </ul>
-          </a>
-
+      </div>
+      <div class="container-all-crud">
+      <div class="button-cont">
+          <a href="/admin/properties/newsAdminCrud/create.php" class="button"><span class="button_top">Create</span></a>
         </div>
+        <div class="contenedor contenido-principal-crud">
+          
+          <main class="blog-crud">
+            
+            <article class="entrada-crud">
 
-        <?php if ($resultado) : ?>
-          <div class="alert">
-            <div class="fineAlert">
-            <p> Anuncio Creado Correctamente </p>
-            </div>
-          </div>
-        <?php endif; ?>
+              <?php while ($propertys = mysqli_fetch_assoc($result)) : ?>
+                <div class="entrada-blog-crud">
+                  <div class="entrada-imagen-crud">
+                    <img src="../../../images/<?php echo $propertys['Image'] ?>">
+                  </div>
+                  <div class="entrada-info-crud">
+                    <div class="entrada-meta-crud">
+                      <div class="entrada-meta-izquierda-crud">
+                        <i class="far fa-user-circle" aria-hidden="true"></i><span> Shell </span>
+                        <i class="far fa-clock" aria-hidden="true"></i><span> <?php echo $propertys['Date'] ?> </span>
+                      </div>
+                      <div class="entrada-meta-derecha-crud">
+                        <i class="fas fa-comments" aria-hidden="true"></i><span> <?php echo $propertys['Message'] ?></span>
+                        <span class="hot"><i class="fas fa-fire-alt" aria-hidden="true"></i> <?php echo $propertys['Fire'] ?> </span>
+                      </div>
+                    </div>
+                    <h4> <?php echo $propertys['Title'] ?></h4>
+                    <hr />
+                    <p>
+                      <?php echo $propertys['Description'] ?>
+                    </p>
+                  </div>
+                  <a href="#" class="boton-entrada-Update">Update</a>
+                  <a href="#" class="boton-entrada-Delete">Delete</a>
+                </div>
+              <?php endwhile; ?>
+            </article>
+          </main>
+        </div>
       </div>
       <div class="button-cont">
         <a href="/admin/indexAdmin.php" class="button"><span class="button_top"> Back</span></a>
       </div>
     </div>
   </div>
+
 </div>
+<!-- cerramos conexion -->
+<?php mysqli_close($db) ?>
 <?php incluirTemplate('nav'); ?>
 <?php incluirTemplate('footer'); ?>

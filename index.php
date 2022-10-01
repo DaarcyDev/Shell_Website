@@ -243,7 +243,7 @@
       <div id="contact" class="slide contact">
         <section class="section-contact">
           <div class="container-contact">
-            <h2>Contact</h2>
+            <h2>Send Me a Message</h2>
             <div class="row100">
               <div class="col">
                 <div class="inputBox">
@@ -299,7 +299,8 @@
           <div class="container-singin">
             <h2>You are not registered?</h2>
             <div class="main_div">
-              <button>Sign In</button>
+              <!-- <button>Sign In</button> -->
+              <a href="register.php">Sing In</a>
             </div>
           </div>
         </section>

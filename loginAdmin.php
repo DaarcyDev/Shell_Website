@@ -79,7 +79,7 @@ incluirTemplate('circleMenu');
                         </fieldset>
 
                         <input type="submit" value="Crear Propiedad" class="button_accept">
-                        <a href="/register.php" class="button_accept">registro</a>
+                        <!-- <a href="/register.php" class="button_accept">registro</a> -->
                     </form>
                 </div>
             </div>

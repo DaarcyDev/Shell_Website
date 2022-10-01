@@ -26,6 +26,7 @@
   box-sizing: border-box;
   border: 2px solid rgb(205,205,205);
   border-radius: .5rem;
+  text-align: center;
   padding: 1rem 5rem;
   backdrop-filter: blur(10px)  brightness(.6);
   backdrop-filter: blur(10px)  brightness(.6);
@@ -69,4 +70,28 @@
     display: block;
     max-width: 60rem;
   }
+}
+.boton-entrada-Update {
+  background-color: $amarillo;
+  border: 1px solid rgba(205, 205, 205, 0.25);
+  color: $blanco;
+  font-size: 1.5rem;
+  font-weight: $bold;
+  margin: 2rem;
+  padding: .5rem;
+  border-radius: .5rem;
+  text-align: center;
+  //position: absolute;
+}
+.boton-entrada-Delete {
+  background-color: $rojo;
+  border: 1px solid rgba(205, 205, 205, 0.25);
+  color: $blanco;
+  font-size: 1.5rem;
+  font-weight: $bold;
+  margin: 2rem;
+  padding: .5rem;
+  border-radius: .5rem;
+  text-align: center;
+  //position: absolute;
 }
