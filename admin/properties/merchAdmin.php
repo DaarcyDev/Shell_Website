@@ -2,6 +2,8 @@
 //importar conexion de la base de dato
 require '../../includes/config/database.php';
 $db = conectarDB();
+
+$result2 = $_GET['resultado'] ?? null;
 //escribir el query
 $query = "SELECT * FROM merch";
 // echo $query;
@@ -23,8 +25,15 @@ incluirTemplate('circleMenu');
         </div>
       </div>
       <div class="container-all-crud">
+      <div class="alert">
+          <?php if (intval($result2) === 1) : ?>
+            <p class="fineAlert">Anuncio Creado Correctamente</p>
+          <?php elseif (intval($result2) === 2) : ?>
+            <p class="fineAlert">Anuncio Actualizado Correctamente</p>
+          <?php endif ?>
+        </div>
         <div class="button-cont create">
-          <a href="/admin/properties/newsAdminCrud/create.php" class="button"><span class="button_top">Create</span></a>
+          <a href="/admin/properties/merchAdminCrud/create.php" class="button"><span class="button_top">Create</span></a>
         </div>
 
         <div class="content-img-merch">
@@ -45,7 +54,7 @@ incluirTemplate('circleMenu');
                   <a href="#">Select Option</a>
                 </div>
                 <div class="optionsCrud">
-                  <a href="#" class="boton-entrada-Update">Update</a>
+                  <a href="/admin/properties/merchAdminCrud/update.php?id=<?php echo $propertys['idmerch'] ?>" class="boton-entrada-Update">Update</a>
                   <a href="#" class="boton-entrada-Delete">Delete</a>
                 </div>
 

@@ -8,6 +8,7 @@ $query = "SELECT * FROM discography";
 $result = mysqli_query($db, $query);
 //consular la base de datos
 
+$result2 = $_GET['resultado'] ?? null;
 
 require '../../includes/funciones.php';
 
@@ -26,9 +27,16 @@ incluirTemplate('circleMenu');
       </div>
 
       <div class="container-all-crud">
+        <div class="alert">
+          <?php if(intval($result2) === 1): ?>
+            <p class="fineAlert">Anuncio Creado Correctamente</p>
+          <?php elseif(intval($result2) === 2):?>
+            <p class="fineAlert">Anuncio Actualizado Correctamente</p>
+          <?php endif ?>
+        </div>
         
         <div class="button-cont">
-          <a href="/admin/properties/newsAdminCrud/create.php" class="button"><span class="button_top">Create</span></a>
+          <a href="/admin/properties/discAdminCrud/create.php" class="button"><span class="button_top">Create</span></a>
         </div>
         <div class="content-img-discography-singles " id="1">
           <?php while ($propertys = mysqli_fetch_assoc($result)) : ?>
@@ -45,7 +53,12 @@ incluirTemplate('circleMenu');
                   <p>Digital <?php echo $propertys['SingleAlbum'] ?></p>
                 </ul>
                 <!-- <p>Digital single</p> -->
+                <div class="optionsCrud">
+                  <a href="/admin/properties/discAdminCrud/update.php?id=<?php echo $propertys['iddiscography']?>" class="boton-entrada-Update">Update</a>
+                  <a href="#" class="boton-entrada-Delete">Delete</a>
+                </div>
               </a>
+              
             </div>
           <?php endwhile; ?>
         </div>

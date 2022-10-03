@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($result) {
             //redireeccionar
-            header("Location:/admin/properties/merchAdmin.php");
+            header("Location:/admin/properties/merchAdmin.php?resultado=1");
         }
     }
 }

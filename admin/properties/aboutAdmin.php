@@ -1,4 +1,5 @@
 <?php
+
 //importar conexion de la base de dato
 require '../../includes/config/database.php';
 $db = conectarDB();
@@ -7,6 +8,7 @@ $query = "SELECT * FROM about";
 // echo $query;
 $result = mysqli_query($db, $query);
 //consular la base de datos
+$result2 = $_GET['resultado'] ?? null;
 
 require '../../includes/funciones.php';
 
@@ -21,15 +23,19 @@ incluirTemplate('circleMenu');
           <h2>About Read</h2>
         </div>
         <div class="container-all-crud">
-          <div class="button-cont create">
-            <a href="/admin/properties/aboutAdminCrud/creaate.php" class="button"><span class="button_top">Create</span></a>
+          <div class="alert">
+            <?php if (intval($result2) === 1) : ?>
+              <p class="fineAlert">Anuncio Creado Correctamente</p>
+            <?php elseif (intval($result2) === 2) : ?>
+              <p class="fineAlert">Anuncio Actualizado Correctamente</p>
+            <?php endif ?>
           </div>
           <div class="content-about-info">
             <?php while ($propertys = mysqli_fetch_assoc($result)) : ?>
 
               <div class="text-about2">
                 <div class="button-cont create">
-                  <a href="/admin/properties/aboutAdminCrud/update.php" class="button"><span class="button_top">Update</span></a>
+                  <a href="/admin/properties/aboutAdminCrud/update.php?id=<?php echo $propertys['idabout'] ?>" class="button"><span class="button_top">Update</span></a>
                 </div>
                 <p>
                   <?php echo nl2br($propertys['Description']) ?>

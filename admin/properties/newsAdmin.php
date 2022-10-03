@@ -7,6 +7,7 @@ $query = "SELECT * FROM news";
 // echo $query;
 $result = mysqli_query($db, $query);
 //consular la base de datos
+$result2 = $_GET['resultado'] ?? null;
 
 
 require '../../includes/funciones.php';
@@ -24,13 +25,21 @@ incluirTemplate('circleMenu');
         </div>
       </div>
       <div class="container-all-crud">
-      <div class="button-cont">
+        <div class="alert">
+          <?php if (intval($result2) === 1) : ?>
+            <p class="fineAlert">Anuncio Creado Correctamente</p>
+          <?php elseif (intval($result2) === 2) : ?>
+            <p class="fineAlert">Anuncio Actualizado Correctamente</p>
+          <?php endif ?>
+        </div>
+        <div class="button-cont">
           <a href="/admin/properties/newsAdminCrud/create.php" class="button"><span class="button_top">Create</span></a>
         </div>
+
         <div class="contenedor contenido-principal-crud">
-          
+
           <main class="blog-crud">
-            
+
             <article class="entrada-crud">
 
               <?php while ($propertys = mysqli_fetch_assoc($result)) : ?>
@@ -55,8 +64,10 @@ incluirTemplate('circleMenu');
                       <?php echo $propertys['Description'] ?>
                     </p>
                   </div>
-                  <a href="#" class="boton-entrada-Update">Update</a>
-                  <a href="#" class="boton-entrada-Delete">Delete</a>
+                  <div class="optionsCrud">
+                    <a href="/admin/properties/newsAdminCrud/update.php?id=<?php echo $propertys['idnews'] ?>" class="boton-entrada-Update">Update</a>
+                    <a href="/admin/properties/newsAdminCrud/delete.php?id=<?php echo $propertys['idnews'] ?>" class="boton-entrada-Delete">Delete</a>
+                  </div>
                 </div>
               <?php endwhile; ?>
             </article>
