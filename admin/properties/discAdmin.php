@@ -28,10 +28,12 @@ incluirTemplate('circleMenu');
 
       <div class="container-all-crud">
         <div class="alert">
-          <?php if(intval($result2) === 1): ?>
+          <?php if (intval($result2) === 1) : ?>
             <p class="fineAlert">Anuncio Creado Correctamente</p>
-          <?php elseif(intval($result2) === 2):?>
+          <?php elseif (intval($result2) === 2) : ?>
             <p class="fineAlert">Anuncio Actualizado Correctamente</p>
+          <?php elseif (intval($result2) === 3) : ?>
+            <p class="fineAlert">Anuncio Eliminado Correctamente</p>
           <?php endif ?>
         </div>
         
@@ -55,7 +57,7 @@ incluirTemplate('circleMenu');
                 <!-- <p>Digital single</p> -->
                 <div class="optionsCrud">
                   <a href="/admin/properties/discAdminCrud/update.php?id=<?php echo $propertys['iddiscography']?>" class="boton-entrada-Update">Update</a>
-                  <a href="#" class="boton-entrada-Delete">Delete</a>
+                  <a href="/admin/properties/discAdminCrud/delete.php?id=<?php echo $propertys['iddiscography']?>" class="boton-entrada-Delete">Delete</a>
                 </div>
               </a>
               

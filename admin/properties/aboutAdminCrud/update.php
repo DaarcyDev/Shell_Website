@@ -10,7 +10,7 @@ if(!$id){
 require '../../../includes/config/database.php';
 $db = conectarDB();
 
-$query1 = "SELECT * FROM register";
+$query1 = "SELECT * FROM admin";
 $result1 = mysqli_query($db, $query1);
 
 //*obtener los datos de la BD
@@ -28,18 +28,27 @@ $property = mysqli_fetch_assoc($result);
 $errores = [];
 
 
-$description = $property['Description'];
+$descriptionShort = $property['DescriptionShort'];
+$descriptionComplete = $property['DescriptionComplete'];
 $admin =$property['admin_idadmin'];
 
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    $description = mysqli_real_escape_string($db, $_POST['description']);
+    $descriptionShort = mysqli_real_escape_string($db, $_POST['descriptionShort']);
+    $descriptionComplete = mysqli_real_escape_string($db, $_POST['descriptionComplete']);
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
-    if ($description) {
-        if (strlen($description) < 50) {
+    if ($descriptionShort) {
+        if (strlen($descriptionShort) < 50) {
+            $errores[] = "Debes añadir una descripcion de mas de 50 carcteres";
+        }
+    } else {
+        $errores[] = "Debes añadir una descripcion";
+    }
+    if ($descriptionComplete) {
+        if (strlen($descriptionComplete) < 50) {
             $errores[] = "Debes añadir una descripcion de mas de 50 carcteres";
         }
     } else {
@@ -56,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //revisar que el arreglo este vacio
     if (empty($errores)) {
         // $query = "INSERT INTO about (`Description`, `admin_idadmin`) VALUES ('$description', '$admin')";
-        $query = "UPDATE about SET `Description` = '${description}',`admin_idadmin` = $admin WHERE `idabout` = $id";
+        $query = "UPDATE about SET `DescriptionShort` = '${descriptionShort}',`DescriptionComplete` = '${descriptionComplete}',`admin_idadmin` = $admin WHERE `idabout` = $id";
         //INSERT INTO `shell`.`about` (`Description`, `admin_idadmin`) VALUES ('asd', '2');
         //INSERT INTO about (Description, admin_idadmin) VALUES ('123456789123456789123456789123456789123456789123456', '1')
         //echo $query;
@@ -94,14 +103,19 @@ incluirTemplate('circleMenu');
                         <fieldset>
                             <legend>Informacion General</legend>
                             <label for="description">Description</label>
-                            <textarea id="description" placeholder="Description" name="description"><?php echo $description ?></textarea>
+                            <textarea id="description" placeholder="Description" name="descriptionShort"><?php echo $descriptionShort ?></textarea>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Informacion General</legend>
+                            <label for="description">Description</label>
+                            <textarea id="description" placeholder="Description" name="descriptionComplete"><?php echo $descriptionComplete ?></textarea>
                         </fieldset>
                         <fieldset>
                             <legend>Admin</legend>
                             <select name="admin">
                                 <option value="">-- SELECT --</option>
                                 <?php while($row = mysqli_fetch_assoc($result1)): ?>
-                                    <option <?php echo $admin === $row['idRegister'] ? 'selected' : ''; ?> value="<?php echo $row["idRegister"] ?>"><?php echo $row["UserName"] ?></option>
+                                    <option <?php echo $admin === $row['idadmin'] ? 'selected' : ''; ?> value="<?php echo $row["idadmin"] ?>"><?php echo $row["UserName"] ?></option>
                                 <?php endwhile; ?>
                             </select>
                         </fieldset>

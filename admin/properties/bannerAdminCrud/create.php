@@ -14,27 +14,18 @@ $result1 = mysqli_query($db, $query1);
 $errores = [];
 
 
-$descriptionShort = "";
-$descriptionComplete = "";
+$description = "";
 $admin ="";
 
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    $descriptionShort = mysqli_real_escape_string($db, $_POST['descriptionShort']);
-    $descriptionComplete = mysqli_real_escape_string($db, $_POST['descriptionComplete']);
+    $description = mysqli_real_escape_string($db, $_POST['description']);
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
-    if ($descriptionShort) {
-        if (strlen($descriptionShort) < 50) {
-            $errores[] = "Debes añadir una descripcion de mas de 50 carcteres";
-        }
-    } else {
-        $errores[] = "Debes añadir una descripcion";
-    }
-    if ($descriptionComplete) {
-        if (strlen($descriptionComplete) < 50) {
+    if ($description) {
+        if (strlen($description) < 50) {
             $errores[] = "Debes añadir una descripcion de mas de 50 carcteres";
         }
     } else {
@@ -50,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //revisar que el arreglo este vacio
     if (empty($errores)) {
-        $query = "INSERT INTO about (`DescriptionShort`,`DescriptionComplete`, `admin_idadmin`) VALUES ('$descriptionShort', '$descriptionComplete', '$admin')";
+        $query = "INSERT INTO banner (`Description`, `admin_idadmin`) VALUES ('$description', '$admin')";
 
         //INSERT INTO `shell`.`about` (`Description`, `admin_idadmin`) VALUES ('asd', '2');
         //INSERT INTO about (Description, admin_idadmin) VALUES ('123456789123456789123456789123456789123456789123456', '1')
@@ -59,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if($result){
             //redireeccionar
-            header("Location:/admin/properties/aboutAdmin.php");
+            header("Location:/admin/properties/bannerAdmin.php");
         }
     }
 }
@@ -74,7 +65,7 @@ incluirTemplate('circleMenu');
         <div class="content-crud aboutAdmin">
             <div class="crud-content-text">
                 <div class="title-crud">
-                    <h2>About Create</h2>
+                    <h2>Banner Create</h2>
                 </div>
                 <div class="form-create">
                     <?php foreach ($errores as $error) : ?>
@@ -85,16 +76,11 @@ incluirTemplate('circleMenu');
                         </div>
 
                     <?php endforeach; ?>
-                    <form action="/admin/properties/aboutAdminCrud/create.php" class="formulario" method="POST">
+                    <form action="/admin/properties/bannerAdminCrud/create.php" class="formulario" method="POST">
                         <fieldset>
                             <legend>Informacion General</legend>
-                            <label for="description">Description Short</label>
-                            <textarea id="description" placeholder="Description" name="descriptionShort"><?php echo $descriptionShort ?></textarea>
-                        </fieldset>
-                        <fieldset>
-                            <legend>Informacion General</legend>
-                            <label for="description">Description Complete</label>
-                            <textarea id="description" placeholder="Description" name="descriptionComplete"><?php echo $descriptionComplete ?></textarea>
+                            <label for="description">Description</label>
+                            <textarea id="description" placeholder="Description" name="description"><?php echo $description ?></textarea>
                         </fieldset>
                         <fieldset>
                             <legend>Admin</legend>
@@ -110,7 +96,7 @@ incluirTemplate('circleMenu');
                 </div>
             </div>
             <div class="button-cont">
-                <a href="../aboutAdmin.php" class="button"><span class="button_top"> Back</span></a>
+                <a href="../bannerAdmin.php" class="button"><span class="button_top"> Back</span></a>
             </div>
         </div>
     </div>

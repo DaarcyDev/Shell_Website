@@ -11,7 +11,7 @@ if(!$id){
 require '../../../includes/config/database.php';
 $db = conectarDB();
 
-$query1 = "SELECT * FROM register";
+$query1 = "SELECT * FROM admin";
 $result1 = mysqli_query($db, $query1);
 
 //*obtener los datos de la BD
@@ -101,6 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $imageName = md5(uniqid(rand(),true)). ".jpg";
             //var_dump($imageName);
             //subir la imagen
+            
             move_uploaded_file($image['tmp_name'], $imageFolder . $imageName );
         }else{
             $imageName = $property["Image"];
@@ -109,8 +110,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
         // $query = "INSERT INTO discography (`Title`, `Image`, `SingleAlbum`, `Date`, `YtLink`, `SpotifyLink`, `Lyric`, `Explain`, `admin_idadmin`) 
         //             VALUES ('$title','$imageName', '$singleAlbum', '$date', '$ytlink', '$spotifylink', '$lyric', '$explain', '$admin')";
-
-        $query = "UPDATE discography SET `Title` = '${title}', `Image` = '${imageName}', `SingleAlbum` = '${singleAlbum}', `Date` = ${date}, `YtLink` = '${ytlink}', 
+        
+        $query = "UPDATE discography SET `Title` = '${title}', `Image` = '${imageName}', `SingleAlbum` = '${singleAlbum}', `Date` = '${date}', `YtLink` = '${ytlink}', 
         `SpotifyLink` = '${spotifylink}', `Lyric` = '${lyric}', `Explain` = '${explain}', `admin_idadmin` = $admin WHERE `iddiscography` = $id";
         echo $query;
         // exit;
@@ -177,7 +178,7 @@ incluirTemplate('circleMenu');
                             <select name="admin">
                                 <option value="">-- SELECT --</option>
                                 <?php while($row = mysqli_fetch_assoc($result1)): ?>
-                                    <option <?php echo $admin === $row['idRegister'] ? 'selected' : ''; ?> value="<?php echo $row["idRegister"] ?>"><?php echo $row["UserName"] ?></option>
+                                    <option <?php echo $admin === $row['idadmin'] ? 'selected' : ''; ?> value="<?php echo $row["idadmin"] ?>"><?php echo $row["UserName"] ?></option>
                                 <?php endwhile; ?>
                             </select>
                         </fieldset>

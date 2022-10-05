@@ -30,6 +30,8 @@ incluirTemplate('circleMenu');
             <p class="fineAlert">Anuncio Creado Correctamente</p>
           <?php elseif (intval($result2) === 2) : ?>
             <p class="fineAlert">Anuncio Actualizado Correctamente</p>
+          <?php elseif (intval($result2) === 3) : ?>
+            <p class="fineAlert">Anuncio Eliminado Correctamente</p>
           <?php endif ?>
         </div>
         <div class="button-cont">

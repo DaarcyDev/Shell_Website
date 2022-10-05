@@ -12,7 +12,7 @@ if(!$id){
 require '../../../includes/config/database.php';
 $db = conectarDB();
 
-$query1 = "SELECT * FROM register ";
+$query1 = "SELECT * FROM admin";
 $result1 = mysqli_query($db, $query1);
 
 //*obtener los datos de la BD
@@ -186,7 +186,7 @@ incluirTemplate('circleMenu');
                             <select name="admin">
                                 <option value="">-- SELECT --</option>
                                 <?php while ($row = mysqli_fetch_assoc($result1)) : ?>
-                                    <option <?php echo $admin === $row['idRegister'] ? 'selected' : ''; ?> value="<?php echo $row["idRegister"] ?>"><?php echo $row["UserName"] ?></option>
+                                    <option <?php echo $admin === $row['idadmin'] ? 'selected' : ''; ?> value="<?php echo $row["idadmin"] ?>"><?php echo $row["UserName"] ?></option>
                                 <?php endwhile; ?>
                             </select>
                         </fieldset>

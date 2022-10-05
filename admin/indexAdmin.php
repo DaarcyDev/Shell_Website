@@ -55,6 +55,28 @@
                 </li>
               </ul>
             </a>
+            <a href="/admin/properties/bannerAdmin.php">
+              <ul class="lineas_cont">
+                <span class="linea"></span>
+                <span class="linea"></span>
+                <span class="linea"></span>
+                <span class="linea"></span>
+                <li class="widget-curso">
+                    <h2>Banner</h2>
+                </li>
+              </ul>
+            </a>
+            <a href="/admin/properties/usersAdmin.php">
+              <ul class="lineas_cont">
+                <span class="linea"></span>
+                <span class="linea"></span>
+                <span class="linea"></span>
+                <span class="linea"></span>
+                <li class="widget-curso">
+                    <h2>Users</h2>
+                </li>
+              </ul>
+            </a>
         </div>
       </div>
       <?php incluirTemplate('button-back'); ?>

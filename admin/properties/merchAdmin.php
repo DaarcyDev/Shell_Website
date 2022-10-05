@@ -25,11 +25,13 @@ incluirTemplate('circleMenu');
         </div>
       </div>
       <div class="container-all-crud">
-      <div class="alert">
+        <div class="alert">
           <?php if (intval($result2) === 1) : ?>
             <p class="fineAlert">Anuncio Creado Correctamente</p>
           <?php elseif (intval($result2) === 2) : ?>
             <p class="fineAlert">Anuncio Actualizado Correctamente</p>
+          <?php elseif (intval($result2) === 3) : ?>
+            <p class="fineAlert">Anuncio Eliminado Correctamente</p>
           <?php endif ?>
         </div>
         <div class="button-cont create">
@@ -55,7 +57,7 @@ incluirTemplate('circleMenu');
                 </div>
                 <div class="optionsCrud">
                   <a href="/admin/properties/merchAdminCrud/update.php?id=<?php echo $propertys['idmerch'] ?>" class="boton-entrada-Update">Update</a>
-                  <a href="#" class="boton-entrada-Delete">Delete</a>
+                  <a href="/admin/properties/merchAdminCrud/delete.php?id=<?php echo $propertys['idmerch'] ?>" class="boton-entrada-Delete">Delete</a>
                 </div>
 
               </ul>

@@ -1,10 +1,24 @@
 <?php
+//*validar id 
+$id = $_GET["id"];
+$id = filter_var($id, FILTER_VALIDATE_INT); 
+
+if(!$id){
+    header('Location: /admin/indexAdmin.php');
+}
+
 require '../../../includes/config/database.php';
 $db = conectarDB();
 
 $query1 = "SELECT * FROM admin";
 $result1 = mysqli_query($db, $query1);
 
+//*obtener los datos de la BD
+$query = "SELECT * FROM banner WHERE idbanner = $id";
+
+$result = mysqli_query($db, $query);
+$property = mysqli_fetch_assoc($result);
+//var_dump($property['Title']);
 
 // echo "<pre>";
 // var_dump($_SERVER['REQUEST_METHOD']);
@@ -14,27 +28,18 @@ $result1 = mysqli_query($db, $query1);
 $errores = [];
 
 
-$descriptionShort = "";
-$descriptionComplete = "";
-$admin ="";
+$description = $property['Description'];
+$admin =$property['admin_idadmin'];
 
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    $descriptionShort = mysqli_real_escape_string($db, $_POST['descriptionShort']);
-    $descriptionComplete = mysqli_real_escape_string($db, $_POST['descriptionComplete']);
+    $description = mysqli_real_escape_string($db, $_POST['description']);
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
-    if ($descriptionShort) {
-        if (strlen($descriptionShort) < 50) {
-            $errores[] = "Debes añadir una descripcion de mas de 50 carcteres";
-        }
-    } else {
-        $errores[] = "Debes añadir una descripcion";
-    }
-    if ($descriptionComplete) {
-        if (strlen($descriptionComplete) < 50) {
+    if ($description) {
+        if (strlen($description) < 50) {
             $errores[] = "Debes añadir una descripcion de mas de 50 carcteres";
         }
     } else {
@@ -50,8 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //revisar que el arreglo este vacio
     if (empty($errores)) {
-        $query = "INSERT INTO about (`DescriptionShort`,`DescriptionComplete`, `admin_idadmin`) VALUES ('$descriptionShort', '$descriptionComplete', '$admin')";
-
+        // $query = "INSERT INTO about (`Description`, `admin_idadmin`) VALUES ('$description', '$admin')";
+        $query = "UPDATE banner SET `Description` = '${description}',`admin_idadmin` = $admin WHERE `idbanner` = $id";
         //INSERT INTO `shell`.`about` (`Description`, `admin_idadmin`) VALUES ('asd', '2');
         //INSERT INTO about (Description, admin_idadmin) VALUES ('123456789123456789123456789123456789123456789123456', '1')
         //echo $query;
@@ -59,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if($result){
             //redireeccionar
-            header("Location:/admin/properties/aboutAdmin.php");
+            header("Location:/admin/properties/bannerAdmin.php?resultado=2");
         }
     }
 }
@@ -74,7 +79,7 @@ incluirTemplate('circleMenu');
         <div class="content-crud aboutAdmin">
             <div class="crud-content-text">
                 <div class="title-crud">
-                    <h2>About Create</h2>
+                    <h2>About Update</h2>
                 </div>
                 <div class="form-create">
                     <?php foreach ($errores as $error) : ?>
@@ -85,16 +90,11 @@ incluirTemplate('circleMenu');
                         </div>
 
                     <?php endforeach; ?>
-                    <form action="/admin/properties/aboutAdminCrud/create.php" class="formulario" method="POST">
+                    <form class="formulario" method="POST">
                         <fieldset>
                             <legend>Informacion General</legend>
-                            <label for="description">Description Short</label>
-                            <textarea id="description" placeholder="Description" name="descriptionShort"><?php echo $descriptionShort ?></textarea>
-                        </fieldset>
-                        <fieldset>
-                            <legend>Informacion General</legend>
-                            <label for="description">Description Complete</label>
-                            <textarea id="description" placeholder="Description" name="descriptionComplete"><?php echo $descriptionComplete ?></textarea>
+                            <label for="description">Description</label>
+                            <textarea id="description" placeholder="Description" name="description"><?php echo $description ?></textarea>
                         </fieldset>
                         <fieldset>
                             <legend>Admin</legend>
@@ -105,7 +105,7 @@ incluirTemplate('circleMenu');
                                 <?php endwhile; ?>
                             </select>
                         </fieldset>
-                        <input type="submit" value="Crear Propiedad" class="button_accept">
+                        <input type="submit" value="Actualizar Propiedad" class="button_accept">
                     </form>
                 </div>
             </div>
