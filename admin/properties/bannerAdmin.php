@@ -7,6 +7,8 @@ $db = conectarDB();
 $query = "SELECT * FROM banner";
 // echo $query;
 $result = mysqli_query($db, $query);
+$property = mysqli_fetch_assoc($result);
+$result = mysqli_query($db, $query);
 //consular la base de datos
 $result2 = $_GET['resultado'] ?? null;
 
@@ -28,9 +30,11 @@ incluirTemplate('circleMenu');
               <p class="fineAlert">Anuncio Actualizado Correctamente</p>
             <?php endif ?>
           </div>
+          <?php if (!$property) : ?>
           <div class="button-cont">
-          <a href="/admin/properties/bannerAdminCrud/create.php" class="button"><span class="button_top">Create</span></a>
-        </div>
+            <a href="/admin/properties/bannerAdminCrud/create.php" class="button"><span class="button_top">Create</span></a>
+          </div>
+          <?php endif ?>
           <div class="content-about-info">
             <?php while ($propertys = mysqli_fetch_assoc($result)) : ?>
 

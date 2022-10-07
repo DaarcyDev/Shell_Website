@@ -60,8 +60,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errores[] = "La imagen es muy pesada";
     }
     if ($description) {
-        if (strlen($description) > 190 && strlen($description) < 50) {
-            $errores[] = "Debes añadir una descripcion de menos de 200 caracteres y mas de 50 caracteres";
+        if (strlen($description) > 200 ) {
+            $errores[] = "Debes añadir una descripcion de menos de 200 caracteres";
+        }
+        if (strlen($description) < 50 ) {
+            $errores[] = "Debes añadir una descripcion de mas de 50 caracteres";
         }
     } else {
         $errores[] = "Debes añadir una descripcion";

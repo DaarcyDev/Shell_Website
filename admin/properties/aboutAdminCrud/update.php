@@ -41,8 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
     if ($descriptionShort) {
-        if (strlen($descriptionShort) < 50) {
-            $errores[] = "Debes añadir una descripcion de mas de 50 carcteres";
+        if (strlen($descriptionShort) > 190 ) {
+            $errores[] = "Debes añadir una descripcion de menos de 200 caracteres";
+        }
+        if (strlen($descriptionShort) < 50 ) {
+            $errores[] = "Debes añadir una descripcion de mas de 50 caracteres";
         }
     } else {
         $errores[] = "Debes añadir una descripcion";

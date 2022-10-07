@@ -7,6 +7,10 @@ $db = conectarDB();
 $query = "SELECT * FROM about";
 // echo $query;
 $result = mysqli_query($db, $query);
+$property = mysqli_fetch_assoc($result);
+$result = mysqli_query($db, $query);
+// $property = mysqli_fetch_assoc($result);
+// var_dump ($result);
 //consular la base de datos
 $result2 = $_GET['resultado'] ?? null;
 
@@ -27,11 +31,13 @@ incluirTemplate('circleMenu');
             <?php if (intval($result2) === 2) : ?>
               <p class="fineAlert">Anuncio Actualizado Correctamente</p>
             <?php endif ?>
-            
+
           </div>
-          <div class="button-cont">
-          <a href="/admin/properties/aboutAdminCrud/create.php" class="button"><span class="button_top">Create</span></a>
-        </div>
+          <?php if (!$property) : ?>
+            <div class="button-cont">
+              <a href="/admin/properties/aboutAdminCrud/create.php" class="button"><span class="button_top">Create</span></a>
+            </div>
+          <?php endif ?>
           <div class="content-about-info">
             <?php while ($propertys = mysqli_fetch_assoc($result)) : ?>
 
@@ -45,7 +51,7 @@ incluirTemplate('circleMenu');
                 </p>
 
               </div>
-              
+
               <div class="text-about2">
                 <div class="button-cont create">
                   <a href="/admin/properties/aboutAdminCrud/update.php?id=<?php echo $propertys['idabout'] ?>" class="button"><span class="button_top">Update</span></a>

@@ -1,37 +1,37 @@
 <?php
-require 'includes/config/database.php';
+$id = $_GET["id"];
+$id = filter_var($id, FILTER_VALIDATE_INT); 
+
+if(!$id){
+    header('Location: /admin/indexAdmin.php');
+}
+require '../../../includes/config/database.php';
+
 $db = conectarDB();
 
-
-
-require 'includes/funciones.php';
-
-incluirTemplate('circleMenu');
-
-// echo "<pre>";
-// var_dump($_SERVER['REQUEST_METHOD']);
-// echo "</pre>";
-
+$query = "SELECT * FROM register WHERE idregister = $id";
+$result = mysqli_query($db, $query);
+$property = mysqli_fetch_assoc($result);
 //arreglo con mensajes de errores
 $errores = [];
 
-$UserName = "";
-$FirstName = "";
-$LastName = "";
-$BirthDate = "";
-$Email = "";
-$Password = "";
+$UserName = $property['UserName'];
+$FirstName = $property['FirstName'];
+$LastName = $property['LastName'];
+$BirthDate = $property['BirthDate'];
+$Email = $property['Email'];
+$Password = $property['Password'];
 
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    $UserName = $_POST['UserName'];
-    $FirstName = $_POST['FirstName'];
-    $LastName = $_POST['LastName'];
-    $BirthDate = $_POST['BirthDate'];
-    $Email = $_POST['Email'];
-    $Password = $_POST['Password'];
+    $UserName =mysqli_real_escape_string($db,  $_POST['UserName']);
+    $FirstName = mysqli_real_escape_string($db, $_POST['FirstName']);
+    $LastName = mysqli_real_escape_string($db, $_POST['LastName']);
+    $BirthDate = mysqli_real_escape_string($db, $_POST['BirthDate']);
+    $Email = mysqli_real_escape_string($db, $_POST['Email']);
+    $Password = mysqli_real_escape_string($db, $_POST['Password']);
 
     if (!$UserName) {
         $errores[] = "Debes añadir un titulo";
@@ -57,17 +57,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errores[] = "Debes añadir una contraseña";
     }
     if (empty($errores)) {
-        $query = "INSERT INTO register ( UserName, FirstName, LastName, BirthDate, Email, Password) 
-                VALUES ('$UserName', '$FirstName', '$LastName', '$BirthDate', '$Email', '$Password')";
+        $query = "UPDATE register SET `UserName` = '${UserName}', `FirstName` = '${FirstName}', `LastName` = '${LastName}', `BirthDate` = '${BirthDate}', `Email` = '${Email}', `Password` = '${Password}' WHERE `idregister` = $id";
+        echo $query;
         $result = mysqli_query($db, $query);
         //echo $query;
         if($result){
             //redireeccionar
-            header("Location:/#contact");
+            header("Location:/admin/properties/usersAdmin.php?resultado=2");
         }
     }
 }
+require '../../../includes/funciones.php';
 
+incluirTemplate('circleMenu');
 ?>
 <div class="container">
     <div id="about" class="crud">
@@ -85,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
 
                     <?php endforeach; ?>
-                    <form action="/register.php" class="formulario " method="POST">
+                    <form class="formulario " method="POST">
                         <fieldset>
                             <legend>General Information</legend>
 
@@ -108,12 +110,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input type="password" id="password" name="Password" placeholder="Password" value="<?php echo $Password ?>">
                         </fieldset>
                         
-                        <input type="submit" value="Create" class="button_accept">
+                        <input type="submit" value="Actualizar" class="button_accept">
                     </form>
                 </div>
             </div>
             <div class="button-cont">
-                <a href="/#contact" class="button"><span class="button_top">Back</span></a>
+                <a href="/admin/properties/usersAdmin.php" class="button"><span class="button_top">Back</span></a>
             </div>
         </div>
     </div>
