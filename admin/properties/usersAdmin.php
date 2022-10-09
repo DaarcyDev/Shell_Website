@@ -17,7 +17,7 @@ incluirTemplate('circleMenu');
 ?>
 <div class="container">
     <div id="about" class="about2">
-        <div class="content-about2">
+        <div class="content-about2-admin">
             <div class="about2-content-text">
                 <div class="title-about2">
                     <h2>Users Read</h2>
@@ -31,7 +31,7 @@ incluirTemplate('circleMenu');
                         <?php endif ?>
 
                     </div>
-                    <div class="content-about-info">
+                    <div class="content-user-info">
                         <table class="property">
                             <thead>
                                 <tr>
@@ -41,7 +41,7 @@ incluirTemplate('circleMenu');
                                     <th>Last Name</th>
                                     <th>Birtdate</th>
                                     <th>Email</th>
-                                    <th>Password</th>
+                                    
                                     <th>Options</th>
                                 </tr>
                             </thead>
@@ -55,7 +55,7 @@ incluirTemplate('circleMenu');
                                         <td><?php echo $propertys['LastName'] ?></td>
                                         <td><?php echo $propertys['BirthDate'] ?></td>
                                         <td><?php echo $propertys['Email'] ?></td>
-                                        <td><?php echo $propertys['Password'] ?></td>
+                                        
                                         <td>
                                             <a href="/admin/properties/usersAdminCrud/update.php?id=<?php echo $propertys['idregister'] ?>" class="boton-entrada-Update">Update</a>
                                             <a href="/admin/properties/usersAdminCrud/delete.php?id=<?php echo $propertys['idregister'] ?>" class="boton-entrada-Delete">Delete</a>

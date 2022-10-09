@@ -15,7 +15,7 @@ $title = "";
 $image = "";
 $price = "";
 $admin = "";
-
+$date = date("Y/m/d");
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -63,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         //subir la imagen a la carpeta
         move_uploaded_file($image['tmp_name'],$imageFolder . $imageName);
         
-        $query = "INSERT INTO merch (`Title`, `Image`, `Price`, `admin_idadmin`) 
-                    VALUES ('$title', '$imageName', '$price', '$admin')";
+        $query = "INSERT INTO merch (`Title`, `Image`, `Price`, `admin_idadmin`, `Date`) 
+                    VALUES ('$title', '$imageName', '$price', '$admin', '$date')";
 
         $result = mysqli_query($db, $query);
 
@@ -106,6 +106,8 @@ incluirTemplate('circleMenu');
                             <input type="file" id="image" accept="image/jpeg, image/png " name="image">
                             <label for="price">Price</label>
                             <input type="number" id="price" placeholder="Price" min="1" name="price" value="<?php echo $price ?>">
+                            <label for="date">Date</label>
+                            <input type="text" id="date" value="<?php echo $date; ?>" disabled>
                         </fieldset>
                         <fieldset>
                             <legend>Admin</legend>

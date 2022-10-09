@@ -32,7 +32,7 @@ $title = $property['Title'];
 $image = $property['Image'];
 $price = $property['Price'];
 $admin = $property['admin_idadmin'];
-
+$date = date("Y/m/d");
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         $query = "UPDATE merch SET `Title` = '${title}', `Image` = '${imageName}', `Price` = ${price},
-                     `admin_idadmin` = $admin WHERE `idmerch` = $id";
+                     `admin_idadmin` = $admin, `Date` = '${date}' WHERE `idmerch` = $id";
         echo $query;
 
 
@@ -133,6 +133,8 @@ incluirTemplate('circleMenu');
                             <img src="/images/<?php echo $image ?>" class="image-small">
                             <label for="price">Price</label>
                             <input type="number" id="price" placeholder="Price" min="1" name="price" value="<?php echo $price ?>">
+                            <label for="date">Date</label>
+                            <input type="text" id="date" value="<?php echo $date; ?>" disabled>
                         </fieldset>
                         <fieldset>
                             <legend>Admin</legend>

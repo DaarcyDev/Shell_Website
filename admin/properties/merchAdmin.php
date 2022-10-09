@@ -53,7 +53,7 @@ incluirTemplate('circleMenu');
                 <hr>
                 <div class="price">
                   <p>$<?php echo $propertys['Price'] ?></p>
-                  <a href="#">Select Option</a>
+                  <a href="/admin/properties/merchAdminCrud/info.php?id=<?php echo $propertys['idmerch'] ?>">Select Option</a>
                 </div>
                 <div class="optionsCrud">
                   <a href="/admin/properties/merchAdminCrud/update.php?id=<?php echo $propertys['idmerch'] ?>" class="boton-entrada-Update">Update</a>

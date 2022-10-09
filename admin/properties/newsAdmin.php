@@ -66,6 +66,7 @@ incluirTemplate('circleMenu');
                       <?php echo $propertys['Description'] ?>
                     </p>
                   </div>
+                  <a href="/admin/properties/newsAdminCrud/info.php?id=<?php echo $propertys['idnews'] ?>" class="boton-entrada">Leer Entrada</a>
                   <div class="optionsCrud">
                     <a href="/admin/properties/newsAdminCrud/update.php?id=<?php echo $propertys['idnews'] ?>" class="boton-entrada-Update">Update</a>
                     <a href="/admin/properties/newsAdminCrud/delete.php?id=<?php echo $propertys['idnews'] ?>" class="boton-entrada-Delete">Delete</a>

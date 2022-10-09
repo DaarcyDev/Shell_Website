@@ -4,6 +4,7 @@
     .merch2 {
         background-color: $azulChido;
         width: 100%;
+        min-height: 100vh;
         height: 100%;
         position: relative;
 
@@ -38,7 +39,7 @@
                     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/build/img/ITILC-cover-1000-COMP.webp);
                     height: 45rem;
                     box-shadow: 0px -80px 43px -53px rgba(0, 0, 0, 0.75) inset;
-                    z-index: 1;
+                    z-index: 0;
 
                     h2 {
                         align-items: center;

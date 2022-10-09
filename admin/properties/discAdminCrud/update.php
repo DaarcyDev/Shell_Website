@@ -34,7 +34,7 @@ $spotifylink = $property['SpotifyLink'];
 $lyric = $property['Lyric'];
 $explain = $property['Explain'];
 $admin = $property['admin_idadmin'];
-
+$date = date("Y/m/d");
 
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -112,8 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         //             VALUES ('$title','$imageName', '$singleAlbum', '$date', '$ytlink', '$spotifylink', '$lyric', '$explain', '$admin')";
         
         $query = "UPDATE discography SET `Title` = '${title}', `Image` = '${imageName}', `SingleAlbum` = '${singleAlbum}', `Date` = '${date}', `YtLink` = '${ytlink}', 
-        `SpotifyLink` = '${spotifylink}', `Lyric` = '${lyric}', `Explain` = '${explain}', `admin_idadmin` = $admin WHERE `iddiscography` = $id";
-        echo $query;
+        `SpotifyLink` = '${spotifylink}', `Lyric` = '${lyric}', `Explain` = '${explain}', `admin_idadmin` = $admin, `Date`='${date}' WHERE `iddiscography` = $id";
+        //echo $query;
         // exit;
         $result = mysqli_query($db, $query);
         

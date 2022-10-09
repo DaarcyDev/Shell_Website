@@ -1,6 +1,6 @@
 .container {
     display: inherit;
-
+    
     .crud {
         background-color: $azulChido;
         width: 100%;
@@ -341,7 +341,7 @@
         background-size: contain;
         background-repeat: no-repeat;
         background-position: right;
-
+        z-index: 1;
         @include desktopPlus {
             background-position: bottom;
         }
@@ -352,7 +352,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        min-height: 100vh;
+        height: 100%;
         .news2-img1 {
             position: absolute;
             top: 0;
@@ -404,26 +405,48 @@
 .container-all-crud {
     z-index: 1;
     width: 80%;
-    
+    .contenedor{
+        margin: 0 auto;
+        max-width: 120rem;
+        width: 100%;
+    }
     .content-img-discography-singles {
         margin: 0rem auto !important;
         z-index: 2;
         padding: 5rem !important;
+        @include tablet{
+            width: 100% !important;
+            padding: 0 !important;
+        }
     }
 
     .content-img-merch {
         margin: 0rem auto !important;
         z-index: 2;
+        @include tablet{
+            width: 100% !important;
+            //padding: 1rem !important;
+        }
     }
     .content-about-info{
         margin: 0rem auto !important;
         z-index: 2;
         width: 80%;
+        @include tablet{
+            width: 100%;
+        }
         .text-about2{
             width: 100% !important;
             margin: 0rem auto !important;
             margin-bottom: 5rem !important;
         }
+    }
+    .content-user-info{
+        margin: 0rem auto !important;
+        z-index: 2;
+        width: 100%;
+        overflow-x: auto;
+        
     }
 }
 
@@ -438,6 +461,7 @@
     @include tablet {
         display: flex;
         flex-direction: column;
+        padding: 0rem;
     }
 
     .blog {
@@ -452,8 +476,8 @@
     }
 
     .entrada-crud {
-        display: block;
         display: grid;
+        justify-items: center; 
         grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
 
         .entrada-blog-crud {
@@ -468,6 +492,7 @@
             margin: 1rem;
             overflow: hidden;
             display: flex;
+            align-items: center;
             flex-direction: column;
             min-width: 30rem;
 
@@ -486,6 +511,17 @@
             &:hover::before {
                 top: -70%;
                 transform: skewY(385deg);
+            }
+            .boton-entrada {
+                background-color: $blanco;
+                color: $negro;
+                font-size: 1.5rem;
+                font-weight: $bold;
+                padding: .5rem;
+                border-radius: .5rem;
+                right: 1rem;
+                bottom: 1rem;
+                width: 90%;
             }
         }
 
@@ -540,7 +576,7 @@
 
     hr {
         width: 60%;
-        background-color: $rosa;
+        //background-color: $rosa;
         margin: 0;
         padding: 0;
     }
@@ -550,17 +586,7 @@
         color: $gris;
     }
 
-    .boton-entrada {
-        background-color: $rosa;
-        color: $negro;
-        font-size: 1.5rem;
-        font-weight: $bold;
-        padding: .5rem;
-        border-radius: .5rem;
-        right: 1rem;
-        bottom: 1rem;
-        //position: absolute;
-    }
+    
 
 }
 .property{
@@ -588,4 +614,80 @@
             }
         }
     }
+}
+.content-about2-admin {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    min-height: 100vh;
+    .about2-content-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+        height: 100%;
+        width: 100%;
+        .title-about2 {
+            width: 100vw;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/build/img/Trying-Cover-1000-comp.webp);
+            height: 45rem;
+            box-shadow: 0px -80px 43px -53px rgba(0, 0, 0, 0.75) inset;
+            z-index: 0;
+
+            h2 {
+                //margin: 0;
+                align-items: center;
+                color: $blanco;
+                display: flex;
+                z-index: 2;
+                text-transform: uppercase;
+                justify-content: center;
+                font-weight: bold;
+                font-size: 7rem;
+
+                @include tablet {
+                    font-size: 5rem;
+                    margin-top: 10rem;
+                }
+            }
+        }
+
+        .text-about2 {
+            text-align: center;
+            color: $blanco;
+            display: flex;
+            z-index: 1;
+            flex-direction: column;
+            justify-content: center;
+            width: 70%;
+            @include background;
+            margin-top: -20rem;
+            padding: 3rem;
+
+            @include tablet {
+                width: 90%;
+                padding: 1rem;
+            }
+
+            p {
+                z-index: 1;
+                font-size: 2rem;
+                margin: 1rem;
+
+                @include tablet {
+                    font-size: 1.7rem;
+                    margin: .5rem;
+                }
+            }
+        }
+    }
+
+
+    
 }

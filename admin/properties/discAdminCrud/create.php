@@ -17,6 +17,8 @@ $ytlink = "";
 $spotifylink = "";
 $lyric = "";
 $explain = "";
+$streamLink = "";
+$suportLink = "";
 $admin = "";
 
 
@@ -32,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $spotifylink = mysqli_real_escape_string($db, $_POST['spotifylink']);
     $lyric = mysqli_real_escape_string($db, $_POST['lyric']);
     $explain = mysqli_real_escape_string($db, $_POST['explain']);
+    $streamLink = mysqli_real_escape_string($db, $_POST['streamLink']);
+    $suportLink = mysqli_real_escape_string($db, $_POST['suportLink']);
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
     if (!$title) {
@@ -41,8 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errores[] = "Debes añadir una imagen";
     }
     //validar imagen por tamaño
-    $size = 1000*1000;
-    if($image['size']> $size){
+    $size = 1000 * 1000;
+    if ($image['size'] > $size) {
         $errores[] = "La imagen es muy pesada";
     }
     if (!$singleAlbum) {
@@ -50,10 +54,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if (!$ytlink) {
         $errores[] = "Debes añadir un enlace de Youtube";
-    } 
+    }
     if (!$spotifylink) {
         $errores[] = "Debes añadir un enlace de spotify";
-    } 
+    }
     if ($lyric) {
         if (strlen($lyric) < 50) {
             $errores[] = "Debes añadir una letra de mas de 50 caracteres";
@@ -68,6 +72,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $errores[] = "Debes añadir una explicacion de la cancion";
     }
+    if (!$streamLink) {
+        $errores[] = "Debes añadir un enlace";
+    }
+    if (!$suportLink) {
+        $errores[] = "Debes añadir un enlace";
+    }
     if (!$admin) {
         $errores[] = "Debes seleccionar un administrador";
     }
@@ -76,28 +86,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         //crear carpeta 
         $imageFolder = "../../../images/";
         //is_dir se utiliza para comprobar si el archivo especificado es un directorio o no.
-        if(!is_dir($imageFolder)){
+        if (!is_dir($imageFolder)) {
             //mkdir es para crear carpetas
             mkdir($imageFolder);
         }
-        
+
         //generamos un nombre al archivo
-        $imageName = md5(uniqid(rand(),true)).".jpg";
-        
+        $imageName = md5(uniqid(rand(), true)) . ".jpg";
+
         //subir la imagen a la carpeta
-        move_uploaded_file($image['tmp_name'],$imageFolder . $imageName);
-        
-        $query = "INSERT INTO discography (`Title`, `Image`, `SingleAlbum`, `Date`, `YtLink`, `SpotifyLink`, `Lyric`, `Explain`, `admin_idadmin`) 
-                    VALUES ('$title','$imageName', '$singleAlbum', '$date', '$ytlink', '$spotifylink', '$lyric', '$explain', '$admin')";
-        echo $query;
+        move_uploaded_file($image['tmp_name'], $imageFolder . $imageName);
+
+        $query = "INSERT INTO discography (`Title`, `Image`, `SingleAlbum`, `Date`, `YtLink`, `SpotifyLink`, `Lyric`, `Explain`, `admin_idadmin`, `StreamLink`, `SuportLink`) 
+                    VALUES ('$title','$imageName', '$singleAlbum', '$date', '$ytlink', '$spotifylink', '$lyric', '$explain', '$admin', '$streamLink', '$suportLink')";
+        //echo $query;
         $result = mysqli_query($db, $query);
-        
-        if($result){
+
+        if ($result) {
             //redireeccionar
             header("Location:/admin/properties/discAdmin.php");
         }
     }
-
 }
 
 require '../../../includes/funciones.php';
@@ -125,7 +134,7 @@ incluirTemplate('circleMenu');
                         <fieldset>
                             <legend>General Information</legend>
                             <label for="Title">Title</label>
-                            <input type="text" id="Title" placeholder="Title" name="title"  value="<?php echo $title ?>">
+                            <input type="text" id="Title" placeholder="Title" name="title" value="<?php echo $title ?>">
                             <label for="image">Image</label>
                             <input type="file" id="image" accept="image/jpeg, image/png " name="image">
                             <label for="image">Select a Option</label>
@@ -146,12 +155,16 @@ incluirTemplate('circleMenu');
                             <textarea id="lyric" placeholder="Lyric" name="lyric"><?php echo $lyric ?></textarea>
                             <label for="explain">Explain</label>
                             <textarea id="explain" placeholder="Explain" name="explain"><?php echo $explain ?></textarea>
+                            <label for="Stream Link">Stream Link</label>
+                            <input type="text" id="Stream Link" placeholder="Stream Link" name="streamLink"  value="<?php echo $streamLink ?>">
+                            <label for="Suport Link">Suport Link</label>
+                            <input type="text" id="Suport Link" placeholder="Suport Link" name="suportLink"  value="<?php echo $suportLink ?>">
                         </fieldset>
                         <fieldset>
                             <legend>Admin</legend>
                             <select name="admin">
                                 <option value="">-- SELECT --</option>
-                                <?php while($row = mysqli_fetch_assoc($result1)): ?>
+                                <?php while ($row = mysqli_fetch_assoc($result1)) : ?>
                                     <option <?php echo $admin === $row['idadmin'] ? 'selected' : ''; ?> value="<?php echo $row["idadmin"] ?>"><?php echo $row["UserName"] ?></option>
                                 <?php endwhile; ?>
                             </select>

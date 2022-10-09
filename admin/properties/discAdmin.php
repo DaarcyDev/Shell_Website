@@ -43,7 +43,7 @@ incluirTemplate('circleMenu');
         <div class="content-img-discography-singles " id="1">
           <?php while ($propertys = mysqli_fetch_assoc($result)) : ?>
             <div class="content-img lines lines">
-              <a href="#">
+              <a href="/admin/properties/discAdminCrud/info.php?id=<?php echo $propertys['iddiscography'] ?>">
                 <img class="img-discography" src="../../../images/<?php echo $propertys['Image'] ?>" />
                 <ul>
                   <span class="linea"></span>
