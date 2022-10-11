@@ -35,13 +35,14 @@ $fire = $property['Fire'];
 $messages = $property['Message'];
 $descriptionComplete = $property['DescriptionComplete'];
 $admin = $property['admin_idadmin'];
- 
+
+$descriptionComplete = str_replace('\r\n\r\n', "\r\n\r\n", $descriptionComplete);
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
+    // echo "<pre>";
+    // var_dump($_POST);
+    // echo "</pre>";
 
 
     // echo "<pre>";
@@ -55,6 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fire = mysqli_real_escape_string($db, $_POST['fire']);
     $messages = mysqli_real_escape_string($db, $_POST['messages']);
     $descriptionComplete = mysqli_real_escape_string($db, $_POST['descriptionComplete']);
+    $descriptionComplete = str_replace('\r\n\r\n', "\r\n\r\n", $descriptionComplete);
+
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
     //asignar imagenes hacia una variable
@@ -130,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $query = "UPDATE news SET `Title` = '${title}', `Image` = '${imageName}', `Description` = '${description}', `Fire` = ${fire}, `Message` = ${messages}, 
                     `DescriptionComplete` = '${descriptionComplete}', `admin_idadmin` = $admin WHERE `idnews` = $id";
-        echo $query;
+        //echo $query;
         $result = mysqli_query($db, $query);
 
         if ($result) {

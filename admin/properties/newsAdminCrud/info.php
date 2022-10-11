@@ -62,9 +62,9 @@ require '../../../includes/funciones.php';
             </article>
           </main>
           <aside class="sidebar-news2">
-          <h3 class="title-sidebar">more news</h3>
+          <h3 class="title-sidebar">More News</h3>
           <?php while ($propertys = mysqli_fetch_assoc($result2)): ?>
-            <a href="newsInfo.php">
+            <a href="/admin/properties/newsAdminCrud/info.php?id=<?php echo $propertys['idnews'] ?>">
               <ul class="lineas_cont">
                 <span class="linea"></span>
                 <span class="linea"></span>

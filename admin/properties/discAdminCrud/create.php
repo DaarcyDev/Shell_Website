@@ -38,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $suportLink = mysqli_real_escape_string($db, $_POST['suportLink']);
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
+    // $ytlink =  str_replace('\r\n','',$ytlink);
+
     if (!$title) {
         $errores[] = "Debes añadir un titulo";
     }
@@ -148,9 +150,9 @@ incluirTemplate('circleMenu');
                             <label for="date">Date</label>
                             <input type="text" id="date" value="<?php echo $date; ?>" disabled>
                             <label for="ytlink">Youtube Link</label>
-                            <textarea id="ytlink" placeholder="Youtube Link" name="ytlink"> <?php echo $ytlink ?></textarea>
+                            <textarea id="ytlink" placeholder="Youtube Link" name="ytlink"><?php echo $ytlink ?></textarea>
                             <label for="spotilink">Spotify Link</label>
-                            <textarea id="spotilink" placeholder="Spotify Link" name="spotifylink"> <?php echo $spotifylink ?></textarea>
+                            <textarea id="spotilink" placeholder="Spotify Link" name="spotifylink"><?php echo $spotifylink ?></textarea>
                             <label for="lyric">Lyric</label>
                             <textarea id="lyric" placeholder="Lyric" name="lyric"><?php echo $lyric ?></textarea>
                             <label for="explain">Explain</label>

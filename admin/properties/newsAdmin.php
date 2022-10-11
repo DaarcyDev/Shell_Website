@@ -53,11 +53,11 @@ incluirTemplate('circleMenu');
                     <div class="entrada-meta-crud">
                       <div class="entrada-meta-izquierda-crud">
                         <i class="far fa-user-circle" aria-hidden="true"></i><span> Shell </span>
-                        <i class="far fa-clock" aria-hidden="true"></i><span> <?php echo $propertys['Date'] ?> </span>
+                        <i class="far fa-clock" aria-hidden="true"></i><span><?php echo $propertys['Date'] ?></span>
                       </div>
                       <div class="entrada-meta-derecha-crud">
-                        <i class="fas fa-comments" aria-hidden="true"></i><span> <?php echo $propertys['Message'] ?></span>
-                        <span class="hot"><i class="fas fa-fire-alt" aria-hidden="true"></i> <?php echo $propertys['Fire'] ?> </span>
+                        <i class="fas fa-comments" aria-hidden="true"></i><span><?php echo $propertys['Message'] ?></span>
+                        <span class="hot"><i class="fas fa-fire-alt" aria-hidden="true"></i><?php echo $propertys['Fire'] ?></span>
                       </div>
                     </div>
                     <h4> <?php echo $propertys['Title'] ?></h4>

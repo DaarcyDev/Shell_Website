@@ -16,6 +16,7 @@ $errores = [];
 
 $description = "";
 $admin ="";
+$date = date("Y/m/d");
 
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -25,8 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
     if ($description) {
-        if (strlen($description) > 200 ) {
-            $errores[] = "Debes añadir una descripcion de menos de 200 caracteres";
+        if (strlen($description) > 250 ) {
+            $errores[] = "Debes añadir una descripcion de menos de 250 caracteres";
         }
         if (strlen($description) < 50 ) {
             $errores[] = "Debes añadir una descripcion de mas de 50 caracteres";
@@ -44,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //revisar que el arreglo este vacio
     if (empty($errores)) {
-        $query = "INSERT INTO banner (`Description`, `admin_idadmin`) VALUES ('$description', '$admin')";
+        $query = "INSERT INTO banner (`Description`, `admin_idadmin`, `Date`) VALUES ('$description', '$admin', '$date')";
 
         //INSERT INTO `shell`.`about` (`Description`, `admin_idadmin`) VALUES ('asd', '2');
         //INSERT INTO about (Description, admin_idadmin) VALUES ('123456789123456789123456789123456789123456789123456', '1')

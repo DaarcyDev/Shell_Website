@@ -549,7 +549,8 @@
     position: relative;
     color: $blanco;
     font-size: 1.3rem;
-    height: 20rem;
+    height: auto;
+    min-height: 20rem;
 
     .entrada-meta-crud {
         display: flex;

@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $query = "INSERT INTO news (`Title`, `Image`, `Description`, `Date`, `Fire`, `Message`, `DescriptionComplete`, `admin_idadmin`) 
                     VALUES ('$title','$imageName', '$description', '$date', '$fire', '$messages', '$descriptionComplete', '$admin')";
-        echo $query;
+        //echo $query;
         $result = mysqli_query($db, $query);
 
         if ($result) {

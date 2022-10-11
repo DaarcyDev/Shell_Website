@@ -31,7 +31,7 @@ $errores = [];
 $descriptionShort = $property['DescriptionShort'];
 $descriptionComplete = $property['DescriptionComplete'];
 $admin =$property['admin_idadmin'];
-
+$date = date("Y/m/d");
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -39,9 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descriptionShort = mysqli_real_escape_string($db, $_POST['descriptionShort']);
     $descriptionComplete = mysqli_real_escape_string($db, $_POST['descriptionComplete']);
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
+    $descriptionShort = str_replace('\r\n\r\n', "\r\n\r\n", $descriptionShort);
+    $descriptionComplete = str_replace('\r\n\r\n', "\r\n\r\n", $descriptionComplete);
 
     if ($descriptionShort) {
-        if (strlen($descriptionShort) > 190 ) {
+        if (strlen($descriptionShort) > 600 ) {
             $errores[] = "Debes añadir una descripcion de menos de 200 caracteres";
         }
         if (strlen($descriptionShort) < 50 ) {
@@ -68,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //revisar que el arreglo este vacio
     if (empty($errores)) {
         // $query = "INSERT INTO about (`Description`, `admin_idadmin`) VALUES ('$description', '$admin')";
-        $query = "UPDATE about SET `DescriptionShort` = '${descriptionShort}',`DescriptionComplete` = '${descriptionComplete}',`admin_idadmin` = $admin WHERE `idabout` = $id";
+        $query = "UPDATE about SET `DescriptionShort` = '${descriptionShort}',`DescriptionComplete` = '${descriptionComplete}',`admin_idadmin` = $admin, `Date` = '${date}' WHERE `idabout` = $id";
         //INSERT INTO `shell`.`about` (`Description`, `admin_idadmin`) VALUES ('asd', '2');
         //INSERT INTO about (Description, admin_idadmin) VALUES ('123456789123456789123456789123456789123456789123456', '1')
         //echo $query;

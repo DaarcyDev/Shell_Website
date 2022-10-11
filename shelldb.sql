@@ -9,6 +9,12 @@ SET
     @OLD_SQL_MODE = @@SQL_MODE,
     SQL_MODE = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
     -- -----------------------------------------------------
+    -- Schema mydb
+    -- -----------------------------------------------------
+    -- -----------------------------------------------------
+    -- Schema shell
+    -- -----------------------------------------------------
+    -- -----------------------------------------------------
     -- Schema shell
     -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `shell` DEFAULT CHARACTER SET utf8mb4; USE
@@ -20,58 +26,34 @@ CREATE TABLE IF NOT EXISTS `shell`.`admin`(
     `idadmin` INT(11) NOT NULL AUTO_INCREMENT,
     `UserName` VARCHAR(45) NOT NULL,
     `Email` VARCHAR(45) NOT NULL,
-    `Password` VARCHAR(150) NOT NULL,
+    `Password` CHAR(60) NOT NULL,
     PRIMARY KEY(`idadmin`)
-) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARACTER SET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 DEFAULT CHARACTER SET = utf8mb4;
 -- -----------------------------------------------------
--- Table `mydb`.`Banner`
+-- Table `shell`.`about`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `shell`.`banner`(
-    `idbanner` INT NOT NULL,
-    `Description` VARCHAR(250) NOT NULL,
-    `admin_idadmin` INT(11) NOT NULL,
-    PRIMARY KEY(`idbanner`),
-    INDEX `fk_banner_admin_idx`(`admin_idadmin` ASC),
-    CONSTRAINT `fk_banner_admin` FOREIGN KEY(`admin_idadmin`) REFERENCES `shell`.`admin`(`idadmin`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE = InnoDB;
--- -----------------------------------------------------
--- Table `shell`.`register`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `shell`.`register`(
-    `idregister` INT(11) NOT NULL AUTO_INCREMENT,
-    `UserName` VARCHAR(45) NOT NULL,
-    `FirstName` VARCHAR(45) NOT NULL,
-    `LastName` VARCHAR(45) NOT NULL,
-    `BirthDate` DATE NOT NULL,
-    `Email` VARCHAR(45) NOT NULL,
-    `Password` VARCHAR(150) NOT NULL,
-    PRIMARY KEY(`idregister`)
-) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARACTER SET = utf8mb4;
--- -----------------------------------------------------
--- Table `mydb`.`User`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `shell`.`user`(
-    `iduser` INT NOT NULL,
-    `Email` VARCHAR(45) NOT NULL,
-    `Password` VARCHAR(45) NOT NULL,
-    `register_idregister` INT(11) NOT NULL,
-    PRIMARY KEY(`iduser`),
-    INDEX `fk_user_register1_idx`(`register_idregister` ASC),
-    CONSTRAINT `fk_user_register1` FOREIGN KEY(`register_idregister`) REFERENCES `shell`.`register`(`idregister`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE = InnoDB; USE
-    `shell`;
-    -- -----------------------------------------------------
-    -- Table `shell`.`about`
-    -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `shell`.`about`(
     `idabout` INT(11) NOT NULL AUTO_INCREMENT,
     `DescriptionShort` LONGTEXT NOT NULL,
     `DescriptionComplete` LONGTEXT NOT NULL,
     `admin_idadmin` INT(11) NOT NULL,
+    `Date` DATE NOT NULL,
     PRIMARY KEY(`idabout`),
     INDEX `fk_about_admin1_idx`(`admin_idadmin` ASC),
     CONSTRAINT `fk_about_admin1` FOREIGN KEY(`admin_idadmin`) REFERENCES `shell`.`admin`(`idadmin`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE = InnoDB AUTO_INCREMENT = 4 DEFAULT CHARACTER SET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 DEFAULT CHARACTER SET = utf8mb4;
+-- -----------------------------------------------------
+-- Table `shell`.`banner`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `shell`.`banner`(
+    `idbanner` INT(11) NOT NULL AUTO_INCREMENT,
+    `Description` LONGTEXT NOT NULL,
+    `admin_idadmin` INT(11) NOT NULL,
+    `Date` DATE NOT NULL,
+    PRIMARY KEY(`idbanner`),
+    INDEX `fk_banner_admin_idx`(`admin_idadmin` ASC),
+    CONSTRAINT `fk_banner_admin` FOREIGN KEY(`admin_idadmin`) REFERENCES `shell`.`admin`(`idadmin`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB AUTO_INCREMENT = 3 DEFAULT CHARACTER SET = utf8mb4;
 -- -----------------------------------------------------
 -- Table `shell`.`discography`
 -- -----------------------------------------------------
@@ -86,10 +68,12 @@ CREATE TABLE IF NOT EXISTS `shell`.`discography`(
     `Lyric` LONGTEXT NOT NULL,
     `Explain` LONGTEXT NOT NULL,
     `admin_idadmin` INT(11) NOT NULL,
+    `StreamLink` VARCHAR(45) NOT NULL,
+    `SuportLink` VARCHAR(45) NOT NULL,
     PRIMARY KEY(`iddiscography`),
     INDEX `fk_discography_admin1_idx`(`admin_idadmin` ASC),
     CONSTRAINT `fk_discography_admin1` FOREIGN KEY(`admin_idadmin`) REFERENCES `shell`.`admin`(`idadmin`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARACTER SET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 DEFAULT CHARACTER SET = utf8mb4;
 -- -----------------------------------------------------
 -- Table `shell`.`merch`
 -- -----------------------------------------------------
@@ -99,10 +83,11 @@ CREATE TABLE IF NOT EXISTS `shell`.`merch`(
     `Image` VARCHAR(100) NOT NULL,
     `Price` INT(11) NOT NULL,
     `admin_idadmin` INT(11) NOT NULL,
+    `Date` DATE NOT NULL,
     PRIMARY KEY(`idmerch`),
     INDEX `fk_merch_admin_idx`(`admin_idadmin` ASC),
     CONSTRAINT `fk_merch_admin` FOREIGN KEY(`admin_idadmin`) REFERENCES `shell`.`admin`(`idadmin`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE = InnoDB AUTO_INCREMENT = 10 DEFAULT CHARACTER SET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 DEFAULT CHARACTER SET = utf8mb4;
 -- -----------------------------------------------------
 -- Table `shell`.`news`
 -- -----------------------------------------------------
@@ -119,7 +104,32 @@ CREATE TABLE IF NOT EXISTS `shell`.`news`(
     PRIMARY KEY(`idnews`),
     INDEX `fk_news_admin1_idx`(`admin_idadmin` ASC),
     CONSTRAINT `fk_news_admin1` FOREIGN KEY(`admin_idadmin`) REFERENCES `shell`.`admin`(`idadmin`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE = InnoDB AUTO_INCREMENT = 10 DEFAULT CHARACTER SET = utf8mb4; SET
+) ENGINE = InnoDB AUTO_INCREMENT = 14 DEFAULT CHARACTER SET = utf8mb4;
+-- -----------------------------------------------------
+-- Table `shell`.`register`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `shell`.`register`(
+    `idregister` INT(11) NOT NULL AUTO_INCREMENT,
+    `UserName` VARCHAR(45) NOT NULL,
+    `FirstName` VARCHAR(45) NOT NULL,
+    `LastName` VARCHAR(45) NOT NULL,
+    `BirthDate` DATE NOT NULL,
+    `Email` VARCHAR(45) NOT NULL,
+    `Password` CHAR(60) NOT NULL,
+    PRIMARY KEY(`idregister`)
+) ENGINE = InnoDB AUTO_INCREMENT = 5 DEFAULT CHARACTER SET = utf8mb4;
+-- -----------------------------------------------------
+-- Table `shell`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `shell`.`user`(
+    `iduser` INT(11) NOT NULL,
+    `Email` VARCHAR(45) NOT NULL,
+    `Password` CHAR(60) NOT NULL,
+    `register_idregister` INT(11) NOT NULL,
+    PRIMARY KEY(`iduser`),
+    INDEX `fk_user_register1_idx`(`register_idregister` ASC),
+    CONSTRAINT `fk_user_register1` FOREIGN KEY(`register_idregister`) REFERENCES `shell`.`register`(`idregister`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4; SET
     SQL_MODE = @OLD_SQL_MODE;
 SET
     FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;

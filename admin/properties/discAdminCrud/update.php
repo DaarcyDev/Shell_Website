@@ -34,7 +34,9 @@ $spotifylink = $property['SpotifyLink'];
 $lyric = $property['Lyric'];
 $explain = $property['Explain'];
 $admin = $property['admin_idadmin'];
-$date = date("Y/m/d");
+$streamLink = $property['StreamLink'];
+$suportLink = $property['SuportLink'];
+
 
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -48,7 +50,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $spotifylink = mysqli_real_escape_string($db, $_POST['spotifylink']);
     $lyric = mysqli_real_escape_string($db, $_POST['lyric']);
     $explain = mysqli_real_escape_string($db, $_POST['explain']);
+    $streamLink = mysqli_real_escape_string($db, $_POST['streamLink']);
+    $suportLink = mysqli_real_escape_string($db, $_POST['suportLink']);
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
+    //$lyric =  str_replace('\r\n','',$lyric);
+    $ytlink = str_replace('\"', '"', $ytlink);
+    $spotifylink = str_replace('\"', '"', $spotifylink);
+    $lyric = str_replace('\r\n', "\r\n", $lyric);
+    $explain = str_replace('\r\n', "\r\n", $explain);
 
     if (!$title) {
         $errores[] = "Debes añadir un titulo";
@@ -84,6 +93,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$admin) {
         $errores[] = "Debes seleccionar un administrador";
     }
+    if (!$streamLink) {
+        $errores[] = "Debes añadir un enlace";
+    }
+    if (!$suportLink) {
+        $errores[] = "Debes añadir un enlace";
+    }
     if (empty($errores)) {
 
         //crear carpeta 
@@ -112,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         //             VALUES ('$title','$imageName', '$singleAlbum', '$date', '$ytlink', '$spotifylink', '$lyric', '$explain', '$admin')";
         
         $query = "UPDATE discography SET `Title` = '${title}', `Image` = '${imageName}', `SingleAlbum` = '${singleAlbum}', `Date` = '${date}', `YtLink` = '${ytlink}', 
-        `SpotifyLink` = '${spotifylink}', `Lyric` = '${lyric}', `Explain` = '${explain}', `admin_idadmin` = $admin, `Date`='${date}' WHERE `iddiscography` = $id";
+        `SpotifyLink` = '${spotifylink}', `Lyric` = '${lyric}', `Explain` = '${explain}', `admin_idadmin` = $admin, `Date`='${date}', `StreamLink` = '${streamLink}', `SuportLink` = '${suportLink}' WHERE `iddiscography` = $id";
         //echo $query;
         // exit;
         $result = mysqli_query($db, $query);
@@ -165,13 +180,17 @@ incluirTemplate('circleMenu');
                             <label for="date">Date</label>
                             <input type="text" id="date" value="<?php echo $date; ?>" disabled>
                             <label for="ytlink">Youtube Link</label>
-                            <textarea id="ytlink" placeholder="Youtube Link" name="ytlink"> <?php echo $ytlink ?></textarea>
+                            <textarea id="ytlink" placeholder="Youtube Link" name="ytlink"><?php echo $ytlink ?></textarea>
                             <label for="spotilink">Spotify Link</label>
-                            <textarea id="spotilink" placeholder="Spotify Link" name="spotifylink"> <?php echo $spotifylink ?></textarea>
+                            <textarea id="spotilink" placeholder="Spotify Link" name="spotifylink"><?php echo $spotifylink ?></textarea>
                             <label for="lyric">Lyric</label>
                             <textarea id="lyric" placeholder="Lyric" name="lyric"><?php echo $lyric ?></textarea>
                             <label for="explain">Explain</label>
                             <textarea id="explain" placeholder="Explain" name="explain"><?php echo $explain ?></textarea>
+                            <label for="Stream Link">Stream Link</label>
+                            <input type="text" id="Stream Link" placeholder="Stream Link" name="streamLink"  value="<?php echo $streamLink ?>">
+                            <label for="Suport Link">Suport Link</label>
+                            <input type="text" id="Suport Link" placeholder="Suport Link" name="suportLink"  value="<?php echo $suportLink ?>">
                         </fieldset>
                         <fieldset>
                             <legend>Admin</legend>
