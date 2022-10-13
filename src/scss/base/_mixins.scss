@@ -38,6 +38,7 @@
 @mixin lines($margin){
     .lineas_cont{
         margin: $margin;
+        height: 100%;
     }
     &:hover {
         color: rgba(205,205,205,1);;

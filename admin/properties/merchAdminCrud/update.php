@@ -33,6 +33,7 @@ $image = $property['Image'];
 $price = $property['Price'];
 $admin = $property['admin_idadmin'];
 $date = date("Y/m/d");
+$description = $property['Description'];
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -42,7 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $image = $_FILES['image'];
     $price = mysqli_real_escape_string($db, $_POST['price']);
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
-
+    $description = mysqli_real_escape_string($db, $_POST['description']);
+    $description = str_replace('\r\n', "\r\n", $description);
+    $description = str_replace('\r\n\r\n', "\r\n\r\n", $description);
 
     if (!$title) {
         $errores[] = "Debes añadir un titulo";
@@ -59,7 +62,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$admin) {
         $errores[] = "Debes seleccionar un administrador";
     }
-
+    if ($description) {
+        if (strlen($description) < 50 ) {
+            $errores[] = "Debes añadir una descripcion de mas de 50 caracteres";
+        }
+    } else {
+        $errores[] = "Debes añadir una descripcion";
+    }
 
     //revisar que el arreglo este vacio
     if (empty($errores)) {
@@ -88,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         $query = "UPDATE merch SET `Title` = '${title}', `Image` = '${imageName}', `Price` = ${price},
-                     `admin_idadmin` = $admin, `Date` = '${date}' WHERE `idmerch` = $id";
+                     `admin_idadmin` = $admin, `Date` = '${date}',`Description` = '${description}' WHERE `idmerch` = $id";
         echo $query;
 
 
@@ -135,6 +144,8 @@ incluirTemplate('circleMenu');
                             <input type="number" id="price" placeholder="Price" min="1" name="price" value="<?php echo $price ?>">
                             <label for="date">Date</label>
                             <input type="text" id="date" value="<?php echo $date; ?>" disabled>
+                            <label for="description">Description</label>
+                            <textarea id="description" placeholder="description" name="description"><?php echo $description ?></textarea>
                         </fieldset>
                         <fieldset>
                             <legend>Admin</legend>

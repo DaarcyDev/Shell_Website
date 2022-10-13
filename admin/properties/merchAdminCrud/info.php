@@ -72,6 +72,12 @@ require '../../../includes/funciones.php';
                 </tr>
               </tbody>
             </table>
+            <div class="description">
+              <h3>Description</h3>
+              <p>
+              <?php echo $property['Description']; ?>
+              </p>
+            </div>
             <div class="single-variations">
               <div class="quantity">
                 <button type="button" onclick="decrementClick()">-</button>

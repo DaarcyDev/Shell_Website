@@ -56,6 +56,15 @@
                 </tr>
               </tbody>
             </table>
+            <div class="description">
+              <h3>Description</h3>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem officia quia inventore blanditiis similique fuga dolores, 
+                laudantium saepe nisi quaerat pariatur. Quam eveniet praesentium cum, qui nobis sit iure reiciendis.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem officia quia inventore blanditiis similique fuga dolores, 
+                laudantium saepe nisi quaerat pariatur. Quam eveniet praesentium cum, qui nobis sit iure reiciendis.
+              </p>
+            </div>
             <div class="single-variations">
               <div class="quantity">
                 <button type="button" onclick="decrementClick()">-</button>

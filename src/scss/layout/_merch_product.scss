@@ -197,6 +197,17 @@
                                 transform: scale(.99);
                             }
                         }
+                        .description{
+                            @include background;
+                            padding: 0 2rem;
+                            h3{
+                                font-weight: 600;
+                                color: $blanco;
+                            }
+                            p{
+                                color: $blanco;
+                            }
+                        }
                     }
                 }
             }

@@ -40,7 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $messages = mysqli_real_escape_string($db, $_POST['messages']);
     $descriptionComplete = mysqli_real_escape_string($db, $_POST['descriptionComplete']);
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
-
+    $descriptionComplete = str_replace('\r\n', "\r\n", $descriptionComplete);
+    $descriptionComplete = str_replace('\r\n\r\n', "\r\n\r\n", $descriptionComplete);
     //asignar imagenes hacia una variable
     //$image = $_FILES['image'];
     //var_dump($image);

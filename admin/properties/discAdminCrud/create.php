@@ -38,6 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $suportLink = mysqli_real_escape_string($db, $_POST['suportLink']);
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
+    $ytlink = str_replace('\"', '"', $ytlink);
+    $spotifylink = str_replace('\"', '"', $spotifylink);
+    $lyric = str_replace('\r\n', "\r\n", $lyric);
+    $lyric = str_replace('\r\n\r\n', "\r\n\r\n", $lyric);
+    $explain = str_replace('\r\n', "\r\n", $explain);
+    $explain = str_replace('\r\n\r\n', "\r\n\r\n", $explain);
     // $ytlink =  str_replace('\r\n','',$ytlink);
 
     if (!$title) {

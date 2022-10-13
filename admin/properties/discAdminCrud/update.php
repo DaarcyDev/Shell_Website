@@ -57,7 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ytlink = str_replace('\"', '"', $ytlink);
     $spotifylink = str_replace('\"', '"', $spotifylink);
     $lyric = str_replace('\r\n', "\r\n", $lyric);
+    $lyric = str_replace('\r\n\r\n', "\r\n\r\n", $lyric);
     $explain = str_replace('\r\n', "\r\n", $explain);
+    $explain = str_replace('\r\n\r\n', "\r\n\r\n", $explain);
 
     if (!$title) {
         $errores[] = "Debes añadir un titulo";

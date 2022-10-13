@@ -23,6 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     $description = mysqli_real_escape_string($db, $_POST['description']);
+    $description = str_replace('\r\n\r\n', "\r\n\r\n", $description);
+    $description = str_replace('\r\n', "\r\n", $description);
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
     if ($description) {

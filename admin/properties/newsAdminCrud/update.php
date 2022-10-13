@@ -35,7 +35,7 @@ $fire = $property['Fire'];
 $messages = $property['Message'];
 $descriptionComplete = $property['DescriptionComplete'];
 $admin = $property['admin_idadmin'];
-
+$descriptionComplete = str_replace('\r\n', "\r\n", $descriptionComplete);
 $descriptionComplete = str_replace('\r\n\r\n', "\r\n\r\n", $descriptionComplete);
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

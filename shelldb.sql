@@ -84,6 +84,7 @@ CREATE TABLE IF NOT EXISTS `shell`.`merch`(
     `Price` INT(11) NOT NULL,
     `admin_idadmin` INT(11) NOT NULL,
     `Date` DATE NOT NULL,
+    `Description` MEDIUMTEXT NOT NULL,
     PRIMARY KEY(`idmerch`),
     INDEX `fk_merch_admin_idx`(`admin_idadmin` ASC),
     CONSTRAINT `fk_merch_admin` FOREIGN KEY(`admin_idadmin`) REFERENCES `shell`.`admin`(`idadmin`) ON DELETE NO ACTION ON UPDATE NO ACTION

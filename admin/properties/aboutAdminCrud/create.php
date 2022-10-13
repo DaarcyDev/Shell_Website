@@ -25,6 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descriptionShort = mysqli_real_escape_string($db, $_POST['descriptionShort']);
     $descriptionComplete = mysqli_real_escape_string($db, $_POST['descriptionComplete']);
     $admin = mysqli_real_escape_string($db, $_POST['admin']);
+    $descriptionShort = str_replace('\r\n\r\n', "\r\n\r\n", $descriptionShort);
+    $descriptionComplete = str_replace('\r\n\r\n', "\r\n\r\n", $descriptionComplete);
+    $descriptionShort = str_replace('\r\n', "\r\n", $descriptionShort);
+    $descriptionComplete = str_replace('\r\n', "\r\n", $descriptionComplete);
 
     if ($descriptionShort) {
         if (strlen($descriptionShort) > 600 ) {
