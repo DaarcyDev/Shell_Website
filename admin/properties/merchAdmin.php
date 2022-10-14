@@ -1,4 +1,9 @@
 <?php
+require '../../includes/funciones.php';
+$auth = autenticate();
+if(!$auth){
+  header('Location: /');
+}
 //importar conexion de la base de dato
 require '../../includes/config/database.php';
 $db = conectarDB();
@@ -8,7 +13,7 @@ $result2 = $_GET['resultado'] ?? null;
 $query = "SELECT * FROM merch";
 // echo $query;
 $result = mysqli_query($db, $query);
-require '../../includes/funciones.php';
+
 
 incluirTemplate('circleMenu');
 

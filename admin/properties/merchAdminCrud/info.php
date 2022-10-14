@@ -1,4 +1,9 @@
 <?php
+require '../../../includes/funciones.php';
+$auth = autenticate();
+if(!$auth){
+    header('Location: /');
+  }
 $id = $_GET["id"];
 $id = filter_var($id, FILTER_VALIDATE_INT); 
 
@@ -15,8 +20,6 @@ $query = "SELECT * FROM merch WHERE idmerch = $id";
 $result = mysqli_query($db, $query);
 $property = mysqli_fetch_assoc($result);
 
-
-require '../../../includes/funciones.php';
 
   incluirTemplate('circleMenu');
 

@@ -10,8 +10,8 @@ $Password = "";
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $Email = $_POST['email'];
-    $Password = $_POST['password'];
+    $Email = mysqli_real_escape_string($db, filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL));
+    $Password = mysqli_real_escape_string($db, $_POST['password']);
 
     if (!$Email) {
         $errores[] = "Debes añadir un correo";
@@ -21,20 +21,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errores[] = "Debes añadir una contraseña";
     }
     if (empty($errores)) {
-        $consulta = "SELECT * FROM register WHERE Email = '$Email'";
-        $resultado = mysqli_query($db, $consulta);
-        
-        $followingdata = $resultado->fetch_assoc();
-        // echo "<pre>";
-        // echo ".";
-        // echo "</pre>";
-        // echo "<pre>";
-        // echo ".";
-        // echo "</pre>";
-        // echo "<pre>";
-        // echo ".";
-        // echo "</pre>";
-        echo $followingdata['Email'];
+        //revisar si el usuario existe
+        $query = "SELECT * FROM admin WHERE Email = '${Email}'";
+        $result = mysqli_query($db, $query);
+        //var_dump($result);
+        //entramos dentro del objeto result para ver cuantas rows hay del query que pusimos  
+        if($result ->num_rows){
+            //revisar si el password es correcto
+            $user = mysqli_fetch_assoc($result);
+            
+            //verificar si el password es correcto o no
+            $auth = password_verify($Password,$user['Password']);
+            if($auth){
+                //el usuario esta autenticado
+                session_start();
+                //llenar el arreglo de la sesion
+                $_SESSION['user'] = $user['UserName'];
+                $_SESSION['login'] = True;
+                header('Location:admin/indexAdmin.php');
+            }else{
+                $errores[] = "El password es incorrecto ";
+            }
+        }else{
+            $errores[] = "usuario no existe";
+        }
         
         
     }
@@ -67,18 +77,18 @@ incluirTemplate('circleMenu');
                         </div>
 
                     <?php endforeach; ?>
-                    <form method="POST" class="formulario" novalidate>
+                    <form method="POST" class="formulario" >
                         <fieldset>
                             <legend>Email y Password</legend>
 
                             <label for="email">Email</label>
-                            <input required type="email" name="email" placeholder="Tu Email" id="email" value="<?php $Email ?>">
+                            <input  type="email" name="email" placeholder="Tu Email" id="email" value="<?php $Email ?>" required>
 
                             <label for="password">Password</label>
-                            <input required type="password" name="password" placeholder="Tu Password" id="password" value="<?php $Password ?>">
+                            <input type="password" name="password" placeholder="Tu Password" id="password" value="<?php $Password ?>" required>
                         </fieldset>
 
-                        <input type="submit" value="Crear Propiedad" class="button_accept">
+                        <input type="submit" value="Login" class="button_accept">
                         <!-- <a href="/register.php" class="button_accept">registro</a> -->
                     </form>
                 </div>

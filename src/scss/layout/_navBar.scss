@@ -102,3 +102,46 @@ nav ul li i{
     font-size: 20px;
     margin-right: 10px;
 }
+
+
+
+.circle-container-exit{
+    position: fixed;
+    top: -100px;
+    right: -100px;
+    z-index: 10;
+    
+    .circle-exit{
+        backdrop-filter: blur(10px)  brightness(.4);
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        position: relative;
+        transition: transform 0.5s linear;
+        background-color: rgba(125, 0, 0, 0.3);
+        border: 1px solid #fff;
+    }
+    .circle-exit.show-nav{
+        transform: rotate(90deg);
+    }
+    .circle-exit button{
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 100px;
+        background:transparent;
+        border: 0;
+        font-size: 26px;
+        color: #fff;
+    }
+    .circle-exit button:focus{
+        outline: none;
+    }
+    
+    .circle-exit button#exit{
+        top: 45%;
+        left: 17%;
+    }
+    
+}

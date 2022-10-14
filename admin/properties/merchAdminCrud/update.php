@@ -1,5 +1,9 @@
 <?php
-
+require '../../../includes/funciones.php';
+$auth = autenticate();
+if(!$auth){
+    header('Location: /');
+  }
 $id = $_GET["id"];
 $id = filter_var($id, FILTER_VALIDATE_INT);
 
@@ -98,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $query = "UPDATE merch SET `Title` = '${title}', `Image` = '${imageName}', `Price` = ${price},
                      `admin_idadmin` = $admin, `Date` = '${date}',`Description` = '${description}' WHERE `idmerch` = $id";
-        echo $query;
+        //echo $query;
 
 
         $result = mysqli_query($db, $query);
@@ -110,7 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require '../../../includes/funciones.php';
 
 incluirTemplate('circleMenu');
 

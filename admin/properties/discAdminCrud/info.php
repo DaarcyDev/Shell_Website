@@ -1,4 +1,9 @@
 <?php
+require '../../../includes/funciones.php';
+$auth = autenticate();
+if(!$auth){
+    header('Location: /');
+  }
 $id = $_GET["id"];
 $id = filter_var($id, FILTER_VALIDATE_INT); 
 
@@ -23,7 +28,6 @@ $SpotifyLink =  str_replace("iframe",'iframe class="spotify"',$property["Spotify
 
 
 
-require '../../../includes/funciones.php';
 
   incluirTemplate('circleMenu');
 

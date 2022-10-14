@@ -1,4 +1,9 @@
 <?php
+require '../../../includes/funciones.php';
+$auth = autenticate();
+if(!$auth){
+    header('Location: /');
+  }
 $id = $_GET["id"];
 $id = filter_var($id, FILTER_VALIDATE_INT); 
 
@@ -19,7 +24,6 @@ $query2 = "SELECT * FROM news WHERE idnews != $id LIMIT 2";
 
 $result2 = mysqli_query($db, $query2);
 
-require '../../../includes/funciones.php';
 
   incluirTemplate('circleMenu');
 

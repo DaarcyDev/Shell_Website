@@ -1,5 +1,9 @@
 <?php
-  require '../includes/funciones.php';
+require '../includes/funciones.php';
+$auth = autenticate();
+if(!$auth){
+    header('Location: /');
+  }
   incluirTemplate('circleMenu');
 
 ?>

@@ -1,3 +1,11 @@
+<?php
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+$auth = $_SESSION['login'] ?? false;
+//var_dump($_SESSION);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,3 +33,13 @@
             </button>
         </div>
     </div>
+    <?php if ($auth) : ?>
+        <div class="circle-container-exit">
+            <div class="circle-exit">
+                <button id="exit">
+                    <a href="exit.php">Exit</a>
+                </button>
+
+            </div>
+        </div>
+    <?php endif ?>

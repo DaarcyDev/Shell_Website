@@ -3,6 +3,7 @@ const open = document.getElementById('open');
 const close = document.getElementById('close');
 const container = document.querySelector('.container');
 const circle = document.querySelector('.circle');
+const circleExit = document.querySelector('.circle-exit');
 const body = document.querySelector('body');
 const html = document.querySelector('HTML');
 const lu = document.querySelector('.lu');
@@ -17,9 +18,14 @@ function functions(){
   discOptions()
   functionOpen()
   functionClose()
+  //openExit()
 }
 functions();
-
+// function openExit(){
+//   circleExit.addEventListener('click',()=> {
+//     circleExit.classList.add('show-nav');
+// });
+// }
 var swiper = new Swiper(".mySwiper", {
   direction: getDirection(),
   grabCursor: true,
