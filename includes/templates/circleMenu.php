@@ -37,7 +37,7 @@ $auth = $_SESSION['login'] ?? false;
         <div class="circle-container-exit">
             <div class="circle-exit">
                 <button id="exit">
-                    <a href="exit.php">Exit</a>
+                    <a href="/exit.php">Exit</a>
                 </button>
 
             </div>

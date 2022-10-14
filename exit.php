@@ -3,5 +3,5 @@
 
     $_SESSION=[];
     //var_dump($_SESSION);
-    header('Location: /')
+    header('Location: /index')
 ?>
