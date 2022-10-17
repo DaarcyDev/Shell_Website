@@ -11,9 +11,12 @@ function autenticate () : bool{
     //var_dump($_SESSION);
 
     $auth= $_SESSION['login'];
+
     if($auth){
        return true; 
+       
     }
     return false;
+
     
 }

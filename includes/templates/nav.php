@@ -5,10 +5,16 @@ if (!isset($_SESSION)) {
 }
 $auth = $_SESSION['login'] ?? false;
 //var_dump($_SESSION);
+
+$auth2 = $_SESSION['loginUser'] ?? false;
+$userName = $_SESSION['userUser'] ?? "";
+//var_dump($userName);
 ?>
 <nav class="nav">
     <ul class="lu">
-        <li><i class="fas fa-user"></i><a class="link" href="/index.php" data-text="Home">User</a></li>
+        <?php if ($auth2) : ?>
+            <li><i class="fas fa-user"></i><a class="link" href="/index.php" data-text="Home"><?php echo $userName ?></a></li>
+        <?php endif ?>
         <li><i class="fas fa-home"></i><a class="link" href="/index.php" data-text="Home">Home</a></li>
         <li><i class="fas fa-newspaper"></i><a class="link" href="/news.php" data-text="stuff">Stuff</a></li>
         <li><i class="fas fa-user-alt"></i><a class="link" href="/about.php" data-text="About">About</a></li>

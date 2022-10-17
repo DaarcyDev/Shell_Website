@@ -14,6 +14,8 @@ $result = mysqli_query($db, $query);
 //consular la base de datos
 $result2 = $_GET['resultado'] ?? null;
 
+// $idadmin = $_GET["idadmin"];
+// $idadmin = filter_var($idadmin, FILTER_VALIDATE_INT); 
 
 
 
@@ -74,7 +76,7 @@ incluirTemplate('circleMenu');
                   <a href="/admin/properties/newsAdminCrud/info.php?id=<?php echo $propertys['idnews'] ?>" class="boton-entrada">Leer Entrada</a>
                   <div class="optionsCrud">
                     <a href="/admin/properties/newsAdminCrud/update.php?id=<?php echo $propertys['idnews'] ?>" class="boton-entrada-Update">Update</a>
-                    <a href="/admin/properties/newsAdminCrud/delete.php?id=<?php echo $propertys['idnews'] ?>" class="boton-entrada-Delete">Delete</a>
+                    <a href="/admin/properties/newsAdminCrud/delete.php?id=<?php echo $propertys['idnews'] ?> " class="boton-entrada-Delete">Delete</a>
                   </div>
                 </div>
               <?php endwhile; ?>

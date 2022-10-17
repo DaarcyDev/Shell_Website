@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $BirthDate = $_POST['BirthDate'];
     $Email = $_POST['Email'];
     $Password = $_POST['Password'];
+    $PasswordHash =  password_hash($Password, PASSWORD_DEFAULT);
 
     if (!$UserName) {
         $errores[] = "Debes añadir un titulo";
@@ -58,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if (empty($errores)) {
         $query = "INSERT INTO register ( UserName, FirstName, LastName, BirthDate, Email, Password) 
-                VALUES ('$UserName', '$FirstName', '$LastName', '$BirthDate', '$Email', '$Password')";
+                VALUES ('$UserName', '$FirstName', '$LastName', '$BirthDate', '$Email', '$PasswordHash')";
         $result = mysqli_query($db, $query);
         //echo $query;
         if($result){

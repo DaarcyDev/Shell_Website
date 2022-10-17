@@ -10,6 +10,8 @@ $db = conectarDB();
 $query1 = "SELECT * FROM admin";
 $result1 = mysqli_query($db, $query1);
 
+
+
 $errores = [];
 
 // echo "<pre>";

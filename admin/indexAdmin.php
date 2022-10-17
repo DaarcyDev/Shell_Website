@@ -6,6 +6,9 @@ if(!$auth){
   }
   incluirTemplate('circleMenu');
 
+// $idadmin = $_GET["idadmin"];
+// $idadmin = filter_var($idadmin, FILTER_VALIDATE_INT); 
+
 ?>
 <div class="container">
   <div id="about" class="crud">
