@@ -34,6 +34,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $Password = $_POST['Password'];
     $PasswordHash =  password_hash($Password, PASSWORD_DEFAULT);
 
+    $query = "SELECT * FROM register WHERE Email = '$Email' OR UserName = '${UserName}'";
+    $result = mysqli_query($db, $query);
+    //verificamos si el user exite con un condicional
+    // var_dump($result);
+    if ($result->num_rows) {
+        // mysql_num_rows <- esta funcion me imprime el numero de registro que encontro 
+        // si el numero es igual a 0 es porque el registro no exite, en otras palabras ese user no esta en la tabla miembro por lo tanto se puede registrar
+        $errores[] = "El Email o UserName ya fue registrado ";
+    } 
+
     if (!$UserName) {
         $errores[] = "Debes añadir un titulo";
     }
@@ -58,11 +68,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errores[] = "Debes añadir una contraseña";
     }
     if (empty($errores)) {
+
+
         $query = "INSERT INTO register ( UserName, FirstName, LastName, BirthDate, Email, Password) 
                 VALUES ('$UserName', '$FirstName', '$LastName', '$BirthDate', '$Email', '$PasswordHash')";
         $result = mysqli_query($db, $query);
         //echo $query;
-        if($result){
+        if ($result) {
             //redireeccionar
             header("Location:/#contact");
         }
@@ -108,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <label for="password">Password</label>
                             <input type="password" id="password" name="Password" placeholder="Password" value="<?php echo $Password ?>">
                         </fieldset>
-                        
+
                         <input type="submit" value="Create" class="button_accept">
                     </form>
                 </div>

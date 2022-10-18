@@ -1,16 +1,9 @@
 <?php
-require '../../../includes/funciones.php';
-$auth = autenticate();
-if (!$auth) {
-    header('Location: /');
-}
-$id = $_GET["id"];
-$id = filter_var($id, FILTER_VALIDATE_INT);
+require 'includes/funciones.php';
 
-if (!$id) {
-    header('Location: /admin/indexAdmin.php');
-}
-require '../../../includes/config/database.php';
+require 'includes/config/database.php';
+$id = $_GET["idUser"];
+$id = filter_var($id, FILTER_VALIDATE_INT); 
 
 $db = conectarDB();
 
@@ -31,11 +24,9 @@ $Password = $property['Password'];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    $UserName = mysqli_real_escape_string($db,  $_POST['UserName']);
     $FirstName = mysqli_real_escape_string($db, $_POST['FirstName']);
     $LastName = mysqli_real_escape_string($db, $_POST['LastName']);
     $BirthDate = mysqli_real_escape_string($db, $_POST['BirthDate']);
-    $Email = mysqli_real_escape_string($db, $_POST['Email']);
     $Password = mysqli_real_escape_string($db, $_POST['Password']);
     $PasswordHash =  password_hash($Password, PASSWORD_DEFAULT);
 
@@ -49,9 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //     $errores[] = "El Email o UserName ya fue registrado ";
     // } 
 
-    if (!$UserName) {
-        $errores[] = "Debes añadir un titulo";
-    }
+
 
     if (!$FirstName) {
         $errores[] = "Debes añadir tu nombre";
@@ -65,9 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errores[] = "Debes añadir un fecha de nacimeinto";
     }
 
-    if (!$Email) {
-        $errores[] = "Debes añadir un correo";
-    }
 
     if (!$Password) {
         $errores[] = "Debes añadir una contraseña";
@@ -87,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             //echo $PasswordHash , $user['Password'];
             echo $Password, $user['Password'];
             if ($Password == $user['Password']) {
-                $query = "UPDATE register SET `UserName` = '${UserName}', `FirstName` = '${FirstName}', `LastName` = '${LastName}', `BirthDate` = '${BirthDate}', `Email` = '${Email}' WHERE `idregister` = $id";
+                $query = "UPDATE register SET  `FirstName` = '${FirstName}', `LastName` = '${LastName}', `BirthDate` = '${BirthDate}' WHERE `idregister` = $id";
                 $result = mysqli_query($db, $query);
 
                 //echo $query;
@@ -98,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
         if ($Password != $user['Password']) {
-            $query = "UPDATE register SET `UserName` = '${UserName}', `FirstName` = '${FirstName}', `LastName` = '${LastName}', `BirthDate` = '${BirthDate}', `Email` = '${Email}', `Password` = '${PasswordHash}' WHERE `idregister` = $id";
+            $query = "UPDATE register SET  `FirstName` = '${FirstName}', `LastName` = '${LastName}', `BirthDate` = '${BirthDate}', `Password` = '${PasswordHash}' WHERE `idregister` = $id";
             echo $query;
             $result = mysqli_query($db, $query);
 
@@ -119,7 +105,7 @@ incluirTemplate('circleMenu');
         <div class="content-crud userAdmin">
             <div class="crud-content-text">
                 <div class="title-crud">
-                    <h2>Register</h2>
+                    <h2>Update User</h2>
                 </div>
                 <div class="form-create">
                     <?php foreach ($errores as $error) : ?>
@@ -135,7 +121,7 @@ incluirTemplate('circleMenu');
                             <legend>General Information</legend>
 
                             <label for="UserName">UserName</label>
-                            <input type="text" id="UserName" name="UserName" placeholder="User Name" value="<?php echo $UserName ?>">
+                            <input value="<?php echo $UserName ?>" disabled>
 
                             <label for="FirstName">First Name</label>
                             <input type="text" id="FirstName" name="FirstName" placeholder="First Name" value="<?php echo $FirstName ?>">
@@ -147,7 +133,7 @@ incluirTemplate('circleMenu');
                             <input type="date" id="BirthDate" name="BirthDate" placeholder="Birth Date" value="<?php echo $BirthDate ?>">
 
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="Email" placeholder="Email" value="<?php echo $Email ?>">
+                            <input  value="<?php echo $Email ?>" disabled>
 
                             <label for="password">Password</label>
                             <input type="password" id="password" name="Password" placeholder="Password" value="<?php echo $Password ?>">

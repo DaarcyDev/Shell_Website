@@ -191,6 +191,16 @@
                         padding: 1rem;
                         grid-template-columns: 1fr;
                     }
+                    .data{
+                        display: flex;
+                        flex-direction: column;
+                        @include background;
+                        padding: 1rem;
+                        h2,h3{
+                            font-size: 2rem;
+                            @include background;
+                        }
+                    }
 
                     .lineas_cont {
                         background: rgba(255, 255, 255, 0.1);

@@ -13,7 +13,7 @@ $userName = $_SESSION['userUser'] ?? "";
 <nav class="nav">
     <ul class="lu">
         <?php if ($auth2) : ?>
-            <li><i class="fas fa-user"></i><a class="link" href="/index.php" data-text="Home"><?php echo $userName ?></a></li>
+            <li><i class="fas fa-user"></i><a class="link" href="/users.php" data-text="Home"><?php echo $userName ?></a></li>
         <?php endif ?>
         <li><i class="fas fa-home"></i><a class="link" href="/index.php" data-text="Home">Home</a></li>
         <li><i class="fas fa-newspaper"></i><a class="link" href="/news.php" data-text="stuff">Stuff</a></li>

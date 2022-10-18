@@ -11,53 +11,57 @@ $Password = "";
 //ejecutar e, codigo despues de que el usuario envia el formulario 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $UserName = mysqli_real_escape_string($db, $_POST['username']);
-    $Password = mysqli_real_escape_string($db, $_POST['password']);
+  $UserName = mysqli_real_escape_string($db, $_POST['username']);
+  $Password = mysqli_real_escape_string($db, $_POST['password']);
 
-    if (!$UserName) {
-        $errores[] = "Debes añadir un nombre de usuario";
-    }
-    if (!$Password) {
-        $errores[] = "Debes añadir una contraseña";
-    }
-    if (empty($errores)) {
-        //revisar si el usuario existe
-        $query = "SELECT * FROM register WHERE UserName = '${UserName}'";
-        //echo $query;
-        $result = mysqli_query($db, $query);
+  if (!$UserName) {
+    $errores[] = "Debes añadir un nombre de usuario";
+  }
+  if (!$Password) {
+    $errores[] = "Debes añadir una contraseña";
+  }
+  if (empty($errores)) {
+    //revisar si el usuario existe
+    $query = "SELECT * FROM register WHERE UserName = '${UserName}'";
+    //echo $query;
+    $result = mysqli_query($db, $query);
 
-        // $query1 = "SELECT * FROM admin WHERE UserName = '${UserName}' ";
-        // $result1 = mysqli_query($db, $query1);
-        //var_dump($result);
-        //entramos dentro del objeto result para ver cuantas rows hay del query que pusimos  
-        if($result ->num_rows){
-            //revisar si el password es correcto
-            $user = mysqli_fetch_assoc($result);
-            
-            //verificar si el password es correcto o no
-            $auth = password_verify($Password,$user['Password']);
-            if($auth){
-                
-                //el usuario esta autenticado
-                session_start();
-                //llenar el arreglo de la sesion
-                $_SESSION['userUser'] = $user['UserName'];
-                $_SESSION['loginUser'] = True;
-                header('Location:/');
-            }else{
-                $errores[] = "El password es incorrecto ";
-            }
-        }else{
-            $errores[] = "usuario no existe";
-        }
-        
-        
+    // $query1 = "SELECT * FROM admin WHERE UserName = '${UserName}' ";
+    // $result1 = mysqli_query($db, $query1);
+    //var_dump($result);
+    //entramos dentro del objeto result para ver cuantas rows hay del query que pusimos  
+    if ($result->num_rows) {
+      //revisar si el password es correcto
+      $user = mysqli_fetch_assoc($result);
+      // var_dump( $user);
+      //verificar si el password es correcto o no
+      $auth = password_verify($Password, $user['Password']);
+      // exit;
+      if ($auth) {
+
+        //el usuario esta autenticado
+        session_start();
+        //llenar el arreglo de la sesion
+        $_SESSION['userUser'] = $user['UserName'];
+        $_SESSION['loginUser'] = True;
+        header('Location:/');
+      } else {
+        $errores[] = "El password es incorrecto ";
+      }
+    } else {
+      $errores[] = "usuario no existe";
     }
+  }
 }
+if (!isset($_SESSION)) {
+  session_start();
+}
+$auth2 = $_SESSION['loginUser'] ?? false;
+$userName = $_SESSION['userUser'] ?? "";
 
-  require 'includes/funciones.php';
+require 'includes/funciones.php';
 
-  incluirTemplate('circleMenu');
+incluirTemplate('circleMenu');
 
 ?>
 
@@ -72,6 +76,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="before"></div>
             <div class="after">
               <div class="bannertext">
+                <?php if ($auth2) : ?>
+                  <h2>Welcome <?php echo $userName ?></h2>
+                <?php endif ?>
 
                 <div class="name-home">
                   <img src="build/img/Logo-círuclo-Blanco-c.webp">
@@ -326,41 +333,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </div>
           <div class="container-contact">
             <form method="POST" class="formulario">
-            <?php foreach ($errores as $error) : ?>
-                        <div class="alert">
-                            <div class="errorAlert">
-                                <?php echo $error; ?>
-                            </div>
-                        </div>
-
-                    <?php endforeach; ?>
-            <h2>Login</h2>
-            <div class="row100">
-              <div class="col">
-                <div class="inputBox">
-                <input  type="username" name="username" id="username" value="<?php $Email ?>" required>
-                  <span class="text-contact">UserName</span>
-                  <span class="line-contact"></span>
+              <?php foreach ($errores as $error) : ?>
+                <div class="alert">
+                  <div class="errorAlert">
+                    <?php echo $error; ?>
+                  </div>
                 </div>
-              </div>
 
+              <?php endforeach; ?>
+              <h2>Login</h2>
               <div class="row100">
                 <div class="col">
                   <div class="inputBox">
-                  <input type="password" name="password" id="password" value="<?php $Password ?>" required>
-                    <span class="text-contact">Password</span>
+                    <input type="username" name="username" id="username" value="<?php $Email ?>" required>
+                    <span class="text-contact">UserName</span>
                     <span class="line-contact"></span>
                   </div>
                 </div>
-              </div>
-              <div class="row100">
-                <div class="col">
-                  <input type="submit" value="send">
+
+                <div class="row100">
+                  <div class="col">
+                    <div class="inputBox">
+                      <input type="password" name="password" id="password" value="<?php $Password ?>" required>
+                      <span class="text-contact">Password</span>
+                      <span class="line-contact"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row100">
+                  <div class="col">
+                    <input type="submit" value="send">
+                  </div>
                 </div>
               </div>
-            </div>
             </form>
-            
+
           </div>
           <div class="container-singin">
             <h2>You are not registered?</h2>
