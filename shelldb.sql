@@ -68,8 +68,8 @@ CREATE TABLE IF NOT EXISTS `shell`.`discography`(
     `Lyric` LONGTEXT NOT NULL,
     `Explain` LONGTEXT NOT NULL,
     `admin_idadmin` INT(11) NOT NULL,
-    `StreamLink` VARCHAR(45) NOT NULL,
-    `SuportLink` VARCHAR(45) NOT NULL,
+    `StreamLink` VARCHAR(100) NOT NULL,
+    `SuportLink` VARCHAR(100) NOT NULL,
     PRIMARY KEY(`iddiscography`),
     INDEX `fk_discography_admin1_idx`(`admin_idadmin` ASC),
     CONSTRAINT `fk_discography_admin1` FOREIGN KEY(`admin_idadmin`) REFERENCES `shell`.`admin`(`idadmin`) ON DELETE NO ACTION ON UPDATE NO ACTION
