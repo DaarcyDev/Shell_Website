@@ -77,8 +77,9 @@ $queryDisc = "SELECT * FROM discography ORDER BY iddiscography DESC LIMIT 5 ";
 
 $resultDisc = mysqli_query($db, $queryDisc);
 $propertyDisc = mysqli_fetch_assoc($resultDisc);
-$ytLink =  str_replace("iframe",'iframe class="youtube"',$propertyDisc["YtLink"]);
-$SpotifyLink =  str_replace("iframe",'iframe class="spotify"',$propertyDisc["SpotifyLink"]);
+//var_dump($propertyDisc);
+$YtLink= (empty($propertyDisc["YtLink"])) ? "":str_replace("iframe",'iframe class="youtube"',$propertyDisc["YtLink"]);
+$SpotifyLink=  (empty($propertyDisc["SpotifyLink"])) ? "":str_replace("iframe",'iframe class="spotify"',$propertyDisc["SpotifyLink"]);
 
 $queryMerch = "SELECT * FROM merch";
 $resultMerch = mysqli_query($db, $queryMerch);
@@ -107,7 +108,9 @@ incluirTemplate('circleMenu');
                 </div>
                 <div class="text-banner">
                   <p>
-                  <?php echo nl2br($propertyBanner['Description']) ?>
+                  <?php if ($propertyBanner) : ?>
+                    <?php echo nl2br($propertyBanner['Description']) ?>
+                  <?php endif ?>
                   </p>
                 </div>
               </div>
@@ -156,7 +159,10 @@ incluirTemplate('circleMenu');
             </div>
             <div class="text-about">
               <p>
-                <?php echo nl2br($propertyAbout['DescriptionShort']) ?>
+                  <?php if ($propertyAbout) : ?>
+                    <?php echo nl2br($propertyAbout['DescriptionShort']) ?>
+                  <?php endif ?>
+                
               </p>
               <div class="button-more">
                 <a href="about.php" class="button"><span class="button_top"> more</span></a>
@@ -170,8 +176,11 @@ incluirTemplate('circleMenu');
         <div class="carousel1">
           <div class="last-realease">
             <h2>Listen to Sheru!'s latest release</h2>
-            <?php echo $SpotifyLink; ?>
-            <?php echo $ytLink; ?>
+            <?php if ($propertyDisc) : ?>
+              <?php echo $SpotifyLink; ?>
+              <?php echo $YtLink; ?>
+            <?php endif ?>
+            
           </div>
           <div class="content-discography">
           <?php while ($propertys = mysqli_fetch_assoc($resultDisc)): ?>
