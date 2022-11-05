@@ -3,7 +3,6 @@ require 'includes/config/database.php';
 $db = conectarDB();
 
 $errores = [];
-
 $UserName = "";
 
 $Password = "";
